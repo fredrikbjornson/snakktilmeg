@@ -1,318 +1,296 @@
 <!DOCTYPE html>
 <html lang="no">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>CareerPrep</title>
+  <title>CareerPrep — Forbered deg til drømmejobben</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Segoe UI', Arial, sans-serif; background: #f4f6f9; color: #0d1f3c; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0a1628;
+      --navy-mid: #0d1f3c;
+      --navy-light: #1e3a5f;
+      --blue: #1a56a0;
+      --blue-bright: #4a9eff;
+      --blue-pale: #e8f2ff;
+      --text-dark: #0d1f3c;
+      --text-mid: #4a6a8a;
+      --text-light: #7a9bc0;
+      --border: #d0dae8;
+      --bg: #f4f6f9;
+      --white: #ffffff;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', 'Segoe UI', Arial, sans-serif; background: var(--bg); color: var(--text-dark); line-height: 1.6; }
 
-    /* NAV */
-    nav { background: #0a1628; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 56px; }
-    .logo { color: #fff; font-size: 17px; font-weight: 600; letter-spacing: 0.5px; }
-    .logo span { color: #4a9eff; }
-    .nav-links { display: flex; gap: 2rem; }
-    .nav-links a { color: #a0b0c8; font-size: 13px; text-decoration: none; cursor: pointer; }
+    nav { background: var(--navy); padding: 0 3rem; display: flex; align-items: center; justify-content: space-between; height: 60px; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .logo { color: #fff; font-size: 18px; font-weight: 700; letter-spacing: 0.3px; text-decoration: none; cursor: pointer; }
+    .logo span { color: var(--blue-bright); }
+    .logo small { font-size: 10px; font-weight: 400; color: var(--text-light); display: block; letter-spacing: 1.5px; text-transform: uppercase; margin-top: -2px; }
+    .nav-links { display: flex; gap: 2rem; align-items: center; }
+    .nav-links a { color: #a0b0c8; font-size: 13px; text-decoration: none; font-weight: 400; transition: color 0.2s; cursor: pointer; }
     .nav-links a:hover { color: #fff; }
+    .nav-cta { background: var(--blue); color: #fff !important; padding: 7px 18px; border-radius: 6px; font-weight: 500 !important; }
+    .nav-cta:hover { background: #154887 !important; }
 
-    /* HERO */
-    .hero { background: #0d1f3c; padding: 3rem 2rem 2.5rem; text-align: center; border-bottom: 1px solid #1e3a5f; }
-    .hero h1 { color: #fff; font-size: 28px; font-weight: 600; margin-bottom: 0.5rem; }
-    .hero p { color: #7a9bc0; font-size: 15px; max-width: 500px; margin: 0 auto 1.5rem; line-height: 1.6; }
-
-    /* STEP BAR */
-    .step-bar { display: flex; align-items: center; justify-content: center; gap: 0; }
-    .step { display: flex; align-items: center; gap: 6px; font-size: 12px; color: #4a6a8a; }
-    .step.active { color: #4a9eff; }
+    .step-bar { background: var(--navy); padding: 0 3rem; display: flex; align-items: center; justify-content: center; gap: 0; height: 52px; border-bottom: 1px solid var(--navy-light); }
+    .step { display: flex; align-items: center; gap: 8px; font-size: 12px; color: #4a6a8a; font-weight: 500; }
+    .step.active { color: var(--blue-bright); }
     .step.done { color: #2ecc71; }
-    .step-num { width: 22px; height: 22px; border-radius: 50%; border: 1.5px solid currentColor; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; }
-    .step-div { width: 32px; height: 1px; background: #1e3a5f; margin: 0 6px; }
+    .step-num { width: 24px; height: 24px; border-radius: 50%; border: 1.5px solid currentColor; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; }
+    .step-div { width: 40px; height: 1px; background: var(--navy-light); margin: 0 8px; }
 
-    /* CONTENT */
-    .content { padding: 2rem; max-width: 860px; margin: 0 auto; }
-    .section-title { font-size: 12px; color: #4a6a8a; font-weight: 600; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 1px; }
+    .page { display: none; }
+    .page.active { display: block; }
 
-    /* CARDS */
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-bottom: 1.5rem; }
-    .card { background: #fff; border: 1px solid #d0dae8; border-radius: 10px; padding: 1.2rem 1rem; cursor: pointer; transition: border-color 0.15s; }
-    .card:hover { border-color: #4a9eff; }
-    .card.selected { border: 2px solid #1a56a0; background: #f0f6ff; }
-    .card-icon { font-size: 22px; margin-bottom: 8px; }
-    .card-title { font-size: 14px; font-weight: 600; color: #0d1f3c; margin-bottom: 3px; }
-    .card-sub { font-size: 12px; color: #7a9bc0; }
+    .hero { background: var(--navy-mid); padding: 5rem 3rem 4rem; text-align: center; border-bottom: 1px solid var(--navy-light); }
+    .hero-badge { display: inline-block; background: rgba(74,158,255,0.12); color: var(--blue-bright); font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; padding: 5px 14px; border-radius: 20px; border: 1px solid rgba(74,158,255,0.25); margin-bottom: 1.5rem; }
+    .hero h1 { color: #fff; font-size: 42px; font-weight: 700; line-height: 1.15; margin-bottom: 1rem; max-width: 640px; margin-left: auto; margin-right: auto; }
+    .hero h1 em { color: var(--blue-bright); font-style: normal; }
+    .hero p { color: var(--text-light); font-size: 16px; max-width: 520px; margin: 0 auto 2.5rem; font-weight: 300; line-height: 1.7; }
+    .hero-stats { display: flex; justify-content: center; gap: 3rem; margin-bottom: 2.5rem; }
+    .stat { text-align: center; }
+    .stat-num { color: #fff; font-size: 26px; font-weight: 700; display: block; }
+    .stat-label { color: var(--text-light); font-size: 12px; }
+    .hero-btn { background: var(--blue); color: #fff; border: none; padding: 14px 36px; border-radius: 8px; font-size: 15px; font-weight: 600; cursor: pointer; transition: all 0.2s; font-family: inherit; }
+    .hero-btn:hover { background: #154887; transform: translateY(-1px); }
 
-    /* BUTTONS */
-    .btn { background: #1a56a0; color: #fff; border: none; padding: 10px 24px; border-radius: 6px; font-size: 14px; cursor: pointer; font-weight: 600; }
-    .btn:hover { background: #154887; }
-    .btn:disabled { opacity: 0.4; cursor: not-allowed; }
-    .btn-ghost { background: transparent; border: 1px solid #d0dae8; color: #4a6a8a; padding: 10px 20px; border-radius: 6px; font-size: 14px; cursor: pointer; margin-right: 8px; }
-    .btn-ghost:hover { background: #f0f4f8; }
-    .btn-row { display: flex; justify-content: flex-end; align-items: center; margin-top: 1.5rem; }
+    .features { max-width: 900px; margin: 0 auto; padding: 4rem 2rem; }
+    .features-label { text-align: center; font-size: 12px; color: var(--text-mid); font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 0.5rem; }
+    .features-title { text-align: center; font-size: 22px; font-weight: 700; color: var(--text-dark); margin-bottom: 3rem; }
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 20px; }
+    .feature-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; transition: all 0.2s; }
+    .feature-card:hover { border-color: var(--blue-bright); transform: translateY(-2px); }
+    .feature-icon { width: 44px; height: 44px; background: var(--blue-pale); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; margin-bottom: 1rem; }
+    .feature-card h3 { font-size: 15px; font-weight: 600; color: var(--text-dark); margin-bottom: 6px; }
+    .feature-card p { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
 
-    /* QUESTION LIST */
+    .section { max-width: 900px; margin: 0 auto; padding: 2rem 2rem 3rem; }
+    .section-label { font-size: 12px; color: var(--text-mid); font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 0.75rem; }
+    .section-title { font-size: 22px; font-weight: 700; color: var(--text-dark); margin-bottom: 0.5rem; }
+    .section-sub { font-size: 14px; color: var(--text-mid); margin-bottom: 2rem; }
+
+    .industry-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-bottom: 2rem; }
+    .industry-card { background: var(--white); border: 1.5px solid var(--border); border-radius: 12px; padding: 1.4rem 1.2rem; cursor: pointer; transition: all 0.2s; display: flex; align-items: flex-start; gap: 14px; }
+    .industry-card:hover { border-color: var(--blue-bright); transform: translateY(-1px); }
+    .industry-card.selected { border: 2px solid var(--blue); background: #f0f6ff; }
+    .ind-icon { font-size: 26px; flex-shrink: 0; margin-top: 2px; }
+    .ind-title { font-size: 15px; font-weight: 600; color: var(--text-dark); margin-bottom: 3px; }
+    .ind-sub { font-size: 12px; color: var(--text-mid); }
+    .ind-count { font-size: 11px; color: var(--blue); font-weight: 600; margin-top: 4px; }
+
+    .spec-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-bottom: 2rem; }
+    .spec-card { background: var(--white); border: 1.5px solid var(--border); border-radius: 10px; padding: 1rem; cursor: pointer; transition: all 0.2s; text-align: center; }
+    .spec-card:hover { border-color: var(--blue-bright); }
+    .spec-card.selected { border: 2px solid var(--blue); background: #f0f6ff; }
+    .spec-card span { font-size: 13px; font-weight: 500; color: var(--text-dark); }
+
+    .prep-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 2rem; }
+    .prep-card { background: var(--white); border: 1.5px solid var(--border); border-radius: 12px; padding: 1.5rem 1.2rem; cursor: pointer; transition: all 0.2s; text-align: center; }
+    .prep-card:hover { border-color: var(--blue-bright); transform: translateY(-2px); }
+    .prep-icon { font-size: 28px; margin-bottom: 10px; }
+    .prep-title { font-size: 14px; font-weight: 600; color: var(--text-dark); margin-bottom: 4px; }
+    .prep-sub { font-size: 12px; color: var(--text-mid); }
+
+    .content-section { margin-top: 2rem; }
+    .content-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
+    .content-header h2 { font-size: 18px; font-weight: 700; color: var(--text-dark); }
+    .tag { display: inline-block; background: var(--blue-pale); color: var(--blue); font-size: 11px; padding: 3px 10px; border-radius: 20px; font-weight: 600; }
+
     .q-list { list-style: none; }
-    .q-list li { background: #fff; border: 1px solid #d0dae8; border-radius: 8px; padding: 1rem 1.2rem; margin-bottom: 10px; font-size: 14px; line-height: 1.6; }
-    .q-list li strong { display: block; color: #0d1f3c; margin-bottom: 4px; }
-    .q-list li span { color: #4a6a8a; font-size: 13px; }
+    .q-item { background: var(--white); border: 1px solid var(--border); border-left: 3px solid var(--blue); border-radius: 0 10px 10px 0; padding: 1.1rem 1.3rem; margin-bottom: 10px; }
+    .q-item strong { display: block; font-size: 14px; font-weight: 600; color: var(--text-dark); margin-bottom: 6px; }
+    .q-item .answer { font-size: 13px; color: var(--text-mid); line-height: 1.6; background: var(--bg); padding: 8px 10px; border-radius: 6px; }
+    .q-item .answer::before { content: "💡 Tips: "; font-weight: 600; color: var(--blue); }
 
-    /* TIPS BOX */
-    .tips-box { background: #e8f0fb; border-left: 4px solid #1a56a0; border-radius: 6px; padding: 1rem 1.2rem; margin-bottom: 1rem; font-size: 13px; color: #0d2a52; line-height: 1.7; }
+    .tips-box { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; font-size: 14px; line-height: 1.8; }
+    .tips-box h3 { font-size: 16px; font-weight: 700; margin-bottom: 1rem; color: var(--text-dark); }
+    .tips-box ul { padding-left: 1.2rem; }
+    .tips-box li { margin-bottom: 8px; color: var(--text-mid); }
 
-    .hidden { display: none; }
+    .case-box { background: var(--navy-mid); border-radius: 12px; padding: 1.5rem; color: #fff; font-size: 14px; line-height: 1.8; margin-bottom: 1rem; }
+    .case-box h3 { font-size: 16px; font-weight: 700; margin-bottom: 0.75rem; }
+    .case-tag { background: rgba(74,158,255,0.2); color: var(--blue-bright); font-size: 11px; padding: 3px 10px; border-radius: 20px; font-weight: 600; display: inline-block; margin-bottom: 1rem; }
+    .case-body { color: #a0b8d0; margin-bottom: 0.5rem; }
+    .case-task { color: #fff; margin-top: 0.75rem; font-weight: 500; }
+    .case-hint { background: rgba(74,158,255,0.1); border: 1px solid rgba(74,158,255,0.2); border-radius: 8px; padding: 10px 14px; margin-top: 1rem; font-size: 13px; color: var(--blue-bright); }
 
-    /* CV UPLOAD */
-    .upload-area { background: #fff; border: 2px dashed #d0dae8; border-radius: 10px; padding: 3rem; text-align: center; margin-bottom: 1rem; }
-    .upload-area input[type=file] { margin: 1rem 0; }
+    .btn { background: var(--blue); color: #fff; border: none; padding: 11px 26px; border-radius: 8px; font-size: 14px; cursor: pointer; font-weight: 600; transition: all 0.2s; font-family: inherit; }
+    .btn:hover { background: #154887; transform: translateY(-1px); }
+    .btn:disabled { opacity: 0.35; cursor: not-allowed; transform: none; }
+    .btn-ghost { background: transparent; border: 1.5px solid var(--border); color: var(--text-mid); padding: 11px 22px; border-radius: 8px; font-size: 14px; cursor: pointer; margin-right: 10px; transition: all 0.2s; font-family: inherit; }
+    .btn-ghost:hover { border-color: var(--blue); color: var(--blue); }
+    .btn-row { display: flex; justify-content: flex-end; align-items: center; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
+
+    footer { background: var(--navy); padding: 2.5rem 3rem; margin-top: 4rem; border-top: 1px solid var(--navy-light); }
+    .footer-inner { max-width: 900px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+    .footer-logo { color: #fff; font-size: 16px; font-weight: 700; }
+    .footer-logo span { color: var(--blue-bright); }
+    .footer-text { color: var(--text-light); font-size: 12px; }
+
+    .hidden { display: none !important; }
   </style>
 </head>
 <body>
 
 <nav>
-  <div class="logo">Career<span>Prep</span></div>
+  <div class="logo" onclick="showLanding()">Career<span>Prep</span><small>For Students</small></div>
   <div class="nav-links">
-    <a onclick="resetAll()">Hjem</a>
-    <a>Om oss</a>
+    <a onclick="startFlow()">Kom i gang</a>
+    <a>Om plattformen</a>
+    <a class="nav-cta" onclick="startFlow()">Start nå →</a>
   </div>
 </nav>
 
-<div class="hero">
-  <h1>Forbered deg til din neste stilling</h1>
-  <p>Velg bransje og spesialisering for skreddersydde intervjuspørsmål, søknadstips og caseøvelser.</p>
-  <div class="step-bar">
-    <div class="step active" id="s1"><div class="step-num">1</div>&nbsp;Bransje</div>
-    <div class="step-div"></div>
-    <div class="step" id="s2"><div class="step-num">2</div>&nbsp;Spesialisering</div>
-    <div class="step-div"></div>
-    <div class="step" id="s3"><div class="step-num">3</div>&nbsp;Forberedelse</div>
+<div class="step-bar hidden" id="step-bar">
+  <div class="step active" id="s1"><div class="step-num">1</div>&nbsp;Bransje</div>
+  <div class="step-div"></div>
+  <div class="step" id="s2"><div class="step-num">2</div>&nbsp;Spesialisering</div>
+  <div class="step-div"></div>
+  <div class="step" id="s3"><div class="step-num">3</div>&nbsp;Forberedelse</div>
+</div>
+
+<div id="landing">
+  <div class="hero">
+    <div class="hero-badge">Karriereverktøy for studenter</div>
+    <h1>Forbered deg til<br><em>drømmejobben</em></h1>
+    <p>Skreddersydde intervjuspørsmål, case-øvelser og søknadstips basert på din bransje og stilling.</p>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num">6+</span><span class="stat-label">Bransjer</span></div>
+      <div class="stat"><span class="stat-num">30+</span><span class="stat-label">Spesialiseringer</span></div>
+      <div class="stat"><span class="stat-num">100+</span><span class="stat-label">Intervjuspørsmål</span></div>
+    </div>
+    <button class="hero-btn" onclick="startFlow()">Kom i gang gratis →</button>
+  </div>
+  <div class="features">
+    <div class="features-label">Hva får du</div>
+    <div class="features-title">Alt du trenger for å lykkes i intervjuprosessen</div>
+    <div class="features-grid">
+      <div class="feature-card"><div class="feature-icon">🎯</div><h3>Intervjuspørsmål</h3><p>Vanlige spørsmål med konkrete svartips tilpasset din spesialisering.</p></div>
+      <div class="feature-card"><div class="feature-icon">🧩</div><h3>Case-øvelser</h3><p>Realistiske cases med steg-for-steg løsningsforslag fra bransjen.</p></div>
+      <div class="feature-card"><div class="feature-icon">✉️</div><h3>Søknadsskriving</h3><p>Konkrete tips til hvordan du skriver en søknad som skiller seg ut.</p></div>
+      <div class="feature-card"><div class="feature-icon">📄</div><h3>CV-tips</h3><p>Lær hva rekrutterere ser etter i din bransje og hva du bør fremheve.</p></div>
+    </div>
   </div>
 </div>
 
-<!-- STEP 1: BRANSJE -->
-<div class="content" id="step1">
-  <div class="section-title">Velg din bransje</div>
-  <div class="grid">
-    <div class="card" onclick="selectIndustry(this,'finance')">
-      <div class="card-icon">🏦</div>
-      <div class="card-title">Finans & Banking</div>
-      <div class="card-sub">M&A, Corporate Finance, Markets</div>
+<div id="step1" class="page">
+  <div class="section">
+    <div class="section-label">Steg 1 av 3</div>
+    <div class="section-title">Velg din bransje</div>
+    <div class="section-sub">Vi tilpasser innholdet basert på bransjen du søker jobb i.</div>
+    <div class="industry-grid" id="industry-grid">
+      <div class="industry-card" onclick="selectIndustry(this,'finance')"><div class="ind-icon">🏦</div><div><div class="ind-title">Finans & Banking</div><div class="ind-sub">Investeringsbank, kapitalmarkeder</div><div class="ind-count">7 spesialiseringer</div></div></div>
+      <div class="industry-card" onclick="selectIndustry(this,'consulting')"><div class="ind-icon">📊</div><div><div class="ind-title">Konsulent</div><div class="ind-sub">Strategy, management, tech</div><div class="ind-count">6 spesialiseringer</div></div></div>
+      <div class="industry-card" onclick="selectIndustry(this,'accounting')"><div class="ind-icon">📋</div><div><div class="ind-title">Revisjon & Regnskap</div><div class="ind-sub">Big 4, forensics, tax</div><div class="ind-count">5 spesialiseringer</div></div></div>
+      <div class="industry-card" onclick="selectIndustry(this,'marketing')"><div class="ind-icon">📣</div><div><div class="ind-title">Markedsføring</div><div class="ind-sub">Brand, digital, strategi</div><div class="ind-count">5 spesialiseringer</div></div></div>
+      <div class="industry-card" onclick="selectIndustry(this,'hr')"><div class="ind-icon">👥</div><div><div class="ind-title">HR & People</div><div class="ind-sub">Talent, HRBP, recruitment</div><div class="ind-count">5 spesialiseringer</div></div></div>
+      <div class="industry-card" onclick="selectIndustry(this,'tech')"><div class="ind-icon">💻</div><div><div class="ind-title">Teknologi</div><div class="ind-sub">Product, engineering, data</div><div class="ind-count">5 spesialiseringer</div></div></div>
     </div>
-    <div class="card" onclick="selectIndustry(this,'consulting')">
-      <div class="card-icon">📊</div>
-      <div class="card-title">Konsulent</div>
-      <div class="card-sub">Strategy, Management, Tech</div>
+    <div class="btn-row">
+      <button class="btn-ghost" onclick="showLanding()">← Tilbake</button>
+      <button class="btn" id="next1" disabled onclick="goToStep2()">Neste →</button>
     </div>
-    <div class="card" onclick="selectIndustry(this,'accounting')">
-      <div class="card-icon">📋</div>
-      <div class="card-title">Revisjon & Regnskap</div>
-      <div class="card-sub">Big 4, Forensics, Tax</div>
-    </div>
-    <div class="card" onclick="selectIndustry(this,'marketing')">
-      <div class="card-icon">📣</div>
-      <div class="card-title">Markedsføring</div>
-      <div class="card-sub">Brand, Digital, Strategy</div>
-    </div>
-    <div class="card" onclick="selectIndustry(this,'hr')">
-      <div class="card-icon">👥</div>
-      <div class="card-title">HR & People</div>
-      <div class="card-sub">Talent, HRBP, Recruitment</div>
-    </div>
-    <div class="card" onclick="selectIndustry(this,'tech')">
-      <div class="card-icon">💻</div>
-      <div class="card-title">Teknologi</div>
-      <div class="card-sub">Product, Engineering, Data</div>
-    </div>
-  </div>
-  <div class="btn-row">
-    <button class="btn" id="next1" disabled onclick="goToStep2()">Neste →</button>
   </div>
 </div>
 
-<!-- STEP 2: SPESIALISERING -->
-<div class="content hidden" id="step2">
-  <div class="section-title" id="spec-label">Velg spesialisering</div>
-  <div class="grid" id="spec-grid"></div>
-  <div class="btn-row">
-    <button class="btn-ghost" onclick="goBack(1)">← Tilbake</button>
-    <button class="btn" id="next2" disabled onclick="goToStep3()">Neste →</button>
+<div id="step2" class="page">
+  <div class="section">
+    <div class="section-label">Steg 2 av 3</div>
+    <div class="section-title" id="spec-title">Velg spesialisering</div>
+    <div class="section-sub">Velg den rollen som passer best til stillingen du søker.</div>
+    <div class="spec-grid" id="spec-grid"></div>
+    <div class="btn-row">
+      <button class="btn-ghost" onclick="goBack(1)">← Tilbake</button>
+      <button class="btn" id="next2" disabled onclick="goToStep3()">Neste →</button>
+    </div>
   </div>
 </div>
 
-<!-- STEP 3: FORBEREDELSE -->
-<div class="content hidden" id="step3">
-  <div class="section-title" id="prep-label">Velg hva du vil øve på</div>
-  <div class="grid">
-    <div class="card" onclick="showSection('questions')">
-      <div class="card-icon">🎯</div>
-      <div class="card-title">Intervjuspørsmål</div>
-      <div class="card-sub">Vanlige spørsmål + svartips</div>
+<div id="step3" class="page">
+  <div class="section">
+    <div class="section-label">Steg 3 av 3</div>
+    <div class="section-title" id="prep-title">Hva vil du øve på?</div>
+    <div class="section-sub" id="prep-sub"></div>
+    <div class="prep-grid">
+      <div class="prep-card" onclick="showContent('questions')"><div class="prep-icon">🎯</div><div class="prep-title">Intervjuspørsmål</div><div class="prep-sub">Vanlige spørsmål med svartips</div></div>
+      <div class="prep-card" onclick="showContent('case')"><div class="prep-icon">🧩</div><div class="prep-title">Case-øvelse</div><div class="prep-sub">Realistisk case med løsning</div></div>
+      <div class="prep-card" onclick="showContent('soeknad')"><div class="prep-icon">✉️</div><div class="prep-title">Søknadsskriving</div><div class="prep-sub">Skreddersydde søknadstips</div></div>
+      <div class="prep-card" onclick="showContent('cv')"><div class="prep-icon">📄</div><div class="prep-title">CV-tips</div><div class="prep-sub">Hva rekrutterere ser etter</div></div>
     </div>
-    <div class="card" onclick="showSection('case')">
-      <div class="card-icon">🧩</div>
-      <div class="card-title">Case-øvelse</div>
-      <div class="card-sub">Realistisk case med løsning</div>
+    <div id="content-area"></div>
+    <div class="btn-row">
+      <button class="btn-ghost" onclick="goBack(2)">← Tilbake</button>
     </div>
-    <div class="card" onclick="showSection('soeknad')">
-      <div class="card-icon">✉️</div>
-      <div class="card-title">Søknadsskriving</div>
-      <div class="card-sub">Tips til søknadsbrev</div>
-    </div>
-    <div class="card" onclick="showSection('cv')">
-      <div class="card-icon">📄</div>
-      <div class="card-title">CV-tips</div>
-      <div class="card-sub">Hva du bør fremheve</div>
-    </div>
-  </div>
-
-  <!-- INTERVJUSPØRSMÅL -->
-  <div class="hidden" id="section-questions">
-    <div class="section-title" style="margin-top:1.5rem" id="q-title"></div>
-    <ul class="q-list" id="q-list"></ul>
-  </div>
-
-  <!-- CASE -->
-  <div class="hidden" id="section-case">
-    <div class="section-title" style="margin-top:1.5rem">Case-øvelse</div>
-    <div class="tips-box" id="case-box"></div>
-  </div>
-
-  <!-- SØKNAD -->
-  <div class="hidden" id="section-soeknad">
-    <div class="section-title" style="margin-top:1.5rem">Søknadstips</div>
-    <div class="tips-box" id="soeknad-box"></div>
-  </div>
-
-  <!-- CV -->
-  <div class="hidden" id="section-cv">
-    <div class="section-title" style="margin-top:1.5rem">CV-tips</div>
-    <div class="tips-box" id="cv-box"></div>
-  </div>
-
-  <div class="btn-row">
-    <button class="btn-ghost" onclick="goBack(2)">← Tilbake</button>
   </div>
 </div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Career<span>Prep</span></div>
+    <div class="footer-text">Laget for norske studenter · 2025</div>
+  </div>
+</footer>
 
 <script>
 const industries = {
-  finance: { label: 'Finans & Banking', specs: ['M&A','Corporate Finance','CFO Advisory','Equity Research','Private Equity','Capital Markets','Treasury'] },
-  consulting: { label: 'Konsulent', specs: ['Strategy Consulting','Management Consulting','Tech Consulting','Operations','Due Diligence','Restructuring'] },
-  accounting: { label: 'Revisjon & Regnskap', specs: ['Revisjon (Big 4)','Forensic Accounting','Tax Advisory','Risk & Compliance','Transaction Services'] },
-  marketing: { label: 'Markedsføring', specs: ['Brand Management','Digital Marketing','Growth Marketing','Market Strategy','Communications'] },
-  hr: { label: 'HR & People', specs: ['Talent Acquisition','HRBP','Compensation & Benefits','L&D','People Analytics'] },
-  tech: { label: 'Teknologi', specs: ['Product Management','Software Engineering','Data Science','UX/Design','Cybersecurity'] }
+  finance:{label:'Finans & Banking',specs:['M&A','Corporate Finance','CFO Advisory','Equity Research','Private Equity','Capital Markets','Treasury']},
+  consulting:{label:'Konsulent',specs:['Strategy Consulting','Management Consulting','Tech Consulting','Operations','Due Diligence','Restructuring']},
+  accounting:{label:'Revisjon & Regnskap',specs:['Revisjon (Big 4)','Forensic Accounting','Tax Advisory','Risk & Compliance','Transaction Services']},
+  marketing:{label:'Markedsføring',specs:['Brand Management','Digital Marketing','Growth Marketing','Market Strategy','Communications']},
+  hr:{label:'HR & People',specs:['Talent Acquisition','HRBP','Compensation & Benefits','L&D','People Analytics']},
+  tech:{label:'Teknologi',specs:['Product Management','Software Engineering','Data Science','UX/Design','Cybersecurity']}
 };
-
 const content = {
-  'M&A': {
-    questions: [
-      { q: 'Walk me through a DCF.', a: 'Beregn frie kontantstrømmer, diskonter med WACC, legg til terminalverdi. Vis at du forstår hvert steg.' },
-      { q: 'Hva er forskjellen på EV og Equity Value?', a: 'EV = markedsverdi + gjeld - kontanter. Equity Value er verdien til aksjonærene.' },
-      { q: 'Hvorfor fusjonerer to selskaper?', a: 'Synergier, markedsandeler, diversifisering, finansielle fordeler eller eliminering av konkurrent.' },
-      { q: 'Hva er accretion/dilution?', a: 'Om EPS til kjøper øker (accretive) eller minker (dilutive) etter oppkjøpet.' },
-      { q: 'Forklar LBO-modellen kort.', a: 'PE-fond kjøper selskap med mye gjeld, øker verdi over tid og selger med gevinst.' }
+  'M&A':{
+    questions:[
+      {q:'Walk me through a DCF.',a:'Beregn frie kontantstrømmer, diskonter med WACC, legg til terminalverdi. Vis at du forstår hvert steg og hvilke forutsetninger som driver verdien.'},
+      {q:'Hva er forskjellen på EV og Equity Value?',a:'EV = markedsverdi av egenkapital + netto gjeld. Equity Value er verdien til aksjonærene alene.'},
+      {q:'Hvorfor fusjonerer to selskaper?',a:'Synergier (kostnad/inntekt), markedsandeler, diversifisering, finansielle fordeler eller eliminering av konkurrent.'},
+      {q:'Hva er accretion/dilution i en oppkjøpsanalyse?',a:'Om EPS til kjøper øker (accretive) eller minker (dilutive) etter oppkjøpet. Avhenger av pris, finansiering og synergier.'},
+      {q:'Forklar LBO-modellen kort.',a:'PE-fond kjøper selskap med mye gjeld (~60-70%), betaler ned over 5 år, selger med gevinst. Avkastning drives av vekst, marginforbedring og gjeldsnedbetaling.'}
     ],
-    case: '🏢 <strong>Case: Kjøp av NorTech AS</strong><br><br>Et PE-fond vurderer å kjøpe NorTech AS for 500 MNOK. Selskapet har EBITDA på 80 MNOK og vokser 10% per år.<br><br><strong>Oppgave:</strong> Vurder om prisen er fornuftig. Hvilke synergier ser du? Hva ville vært dine due diligence-prioriteringer?<br><br><strong>Tips til løsning:</strong> Start med EV/EBITDA (500/80 = 6,25x). Sammenlign med bransjenorm (typisk 6-10x). Vurder vekstpotensial og risiko.',
-    soeknad: '✉️ <strong>Tips til søknad for M&A-stilling:</strong><br><br>• Fremhev kvantitative resultater — tall selger<br>• Vis at du forstår dealflyt og prosessen fra pitch til closing<br>• Nevn relevant kursarbeid: corporate finance, verdsettelse, regnskap<br>• Hvis du har hatt internship, beskriv konkrete arbeidsoppgaver<br>• Avslutt alltid med hvorfor akkurat dette selskapet',
-    cv: '📄 <strong>CV-tips for M&A:</strong><br><br>• Legg finanskurs og prosjekter øverst under utdanning<br>• Fremhev Excel/modellerfaring eksplisitt<br>• Inkluder eventuelle investeringscase-presentasjoner<br>• Legg til LinkedIn og sørg for at den er oppdatert<br>• Maks 1 side — kortfattet og presist'
+    case:{title:'Oppkjøp av NorTech AS',tag:'M&A Case',body:'Et PE-fond vurderer å kjøpe NorTech AS for 500 MNOK. Selskapet har EBITDA på 80 MNOK og vokser 10% per år.',task:'Oppgave: Vurder om prisen er fornuftig. Hvilke synergier ser du? Hva ville vært dine due diligence-prioriteringer?',hint:'💡 Start med EV/EBITDA (500/80 = 6,25x). Sammenlign med bransjenorm (typisk 6-10x). Vurder vekstpremie og risiko.'},
+    soeknad:{title:'Søknadstips for M&A',points:['Fremhev kvantitative resultater — tall selger','Vis forståelse for dealflyt fra pitch til closing','Nevn relevant kursarbeid: corporate finance, verdsettelse, finansregnskap','Beskriv eventuelle modellerings- eller analyseprosjekter konkret','Avslutt med en sterk begrunnelse for hvorfor akkurat dette selskapet']},
+    cv:{title:'CV-tips for M&A',points:['Legg finanskurs og relevante prosjekter øverst','Fremhev Excel- og modelleringserfaring eksplisitt','Inkluder investeringscase-presentasjoner eller konkurranser','CFA Level 1 er et sterkt signal','Maks 1 side — kortfattet og presist']}
   },
-  'Corporate Finance': {
-    questions: [
-      { q: 'Hva er de tre viktigste finansielle rapportene?', a: 'Resultatregnskap, balanse og kontantstrømoppstilling — og sammenhengen mellom dem.' },
-      { q: 'Hva er WACC og hvordan beregner du det?', a: 'Weighted Average Cost of Capital = vektet snitt av kostnad for egenkapital og gjeld.' },
-      { q: 'Forklar capital structure og optimal gjeldsgrad.', a: 'Balanse mellom gjeld og egenkapital som minimerer kapitalkostnad og maksimerer verdi.' },
-      { q: 'Hva er NPV og IRR?', a: 'NPV er nåverdi av fremtidige kontantstrømmer. IRR er avkastningskravet som gir NPV = 0.' },
-      { q: 'Hva mener du med working capital management?', a: 'Styring av omløpsmidler og kortsiktig gjeld for å optimere likviditet.' }
+  'Corporate Finance':{
+    questions:[
+      {q:'Hva er de tre viktigste finansielle rapportene?',a:'Resultatregnskap, balanse og kontantstrømoppstilling — og sammenhengen mellom dem er avgjørende å forstå.'},
+      {q:'Hva er WACC?',a:'Weighted Average Cost of Capital = vektet snitt av kostnad for egenkapital (CAPM) og gjeld (etter skatt).'},
+      {q:'Forklar optimal kapitalstruktur.',a:'Balansen mellom gjeld og egenkapital som minimerer WACC og maksimerer selskapets verdi.'},
+      {q:'Hva er NPV og IRR?',a:'NPV er absolutt verdiskaping i kroner. IRR er prosentavkastning. NPV er teorimessig overlegen, men IRR er lettere å kommunisere.'},
+      {q:'Hva er working capital?',a:'Omløpsmidler minus kortsiktig gjeld. Kritisk for likviditet og finansieringsbehov.'}
     ],
-    case: '📊 <strong>Case: Kapitalstruktur for NorEnergy</strong><br><br>NorEnergy vurderer å ta opp 200 MNOK i lån for å finansiere et nytt vindkraftprosjekt med forventet IRR på 12%. Selskapets WACC er i dag 9%.<br><br><strong>Oppgave:</strong> Bør de gjennomføre prosjektet? Hva skjer med kapitalstrukturen?<br><br><strong>Tips:</strong> IRR > WACC = value-creating. Diskuter gjeldskapasitet og kredittvurdering.',
-    soeknad: '✉️ <strong>Tips til søknad for Corporate Finance:</strong><br><br>• Vis forståelse for hele verdikjeden fra kapitalinnhenting til investering<br>• Nevn konkrete prosjekter eller case du har jobbet med<br>• Fremhev analytiske verktøy som Excel, Python eller Bloomberg<br>• Vis at du kan kommunisere kompleks finansiell info enkelt',
-    cv: '📄 <strong>CV-tips for Corporate Finance:</strong><br><br>• Fremhev kurs i corporate finance, verdsettelse og regnskap<br>• Legg til relevante sertifiseringer (CFA Level 1 er et stort pluss)<br>• Beskriv analyseprosjekter med konkrete tall og resultater'
+    case:{title:'Kapitalstruktur for NorEnergy',tag:'Corporate Finance Case',body:'NorEnergy vurderer å ta opp 200 MNOK i lån for et vindkraftprosjekt med forventet IRR på 12%. WACC er 9%.',task:'Oppgave: Bør de gjennomføre prosjektet? Hva er effekten på kapitalstrukturen?',hint:'💡 IRR (12%) > WACC (9%) = verdiskapende. Vurder gjeldskapasitet og kredittvurdering.'},
+    soeknad:{title:'Søknadstips for Corporate Finance',points:['Vis forståelse for hele verdikjeden fra kapitalinnhenting til investering','Nevn konkrete modellerings- eller analyseprosjekter','Fremhev analytiske verktøy: Excel, Python, Bloomberg','Vis at du kan kommunisere kompleks finansiell info til ikke-finansielle beslutningstakere']},
+    cv:{title:'CV-tips for Corporate Finance',points:['Fremhev kurs i corporate finance, verdsettelse og finansregnskap','CFA Level 1 er et sterkt signal','Beskriv analyseprosjekter med konkrete tall','Inkluder internship-erfaringer med ansvar og resultater']}
   }
 };
-
-const defaultContent = {
-  questions: [
-    { q: 'Fortell om deg selv.', a: 'Vær konsis — 60-90 sekunder. Utdanning, relevant erfaring, hvorfor denne stillingen.' },
-    { q: 'Hvorfor denne bransjen?', a: 'Vis genuin interesse og kunnskap. Koble til egne erfaringer og fremtidsmål.' },
-    { q: 'Hva er din største styrke?', a: 'Velg én styrke som er relevant for rollen og støtt den med et konkret eksempel.' },
-    { q: 'Hvor ser du deg selv om 5 år?', a: 'Vis ambisjon, men vær realistisk. Koble svaret til vekst i selskapet du søker til.' },
-    { q: 'Hva vet du om selskapet vårt?', a: 'Forbered deg grundig — strategi, nyheter, konkurrenter og kultur.' }
+const def = {
+  questions:[
+    {q:'Fortell om deg selv.',a:'Vær konsis — 60-90 sekunder. Utdanning → relevant erfaring → hvorfor denne stillingen.'},
+    {q:'Hvorfor denne bransjen og dette selskapet?',a:'Vis genuin interesse og bransjekunnskap. Koble til egne erfaringer og verdier.'},
+    {q:'Hva er din største styrke?',a:'Velg én styrke relevant for rollen og støtt med et konkret STAR-eksempel.'},
+    {q:'Beskriv en situasjon der du løste et vanskelig problem.',a:'Bruk STAR-metoden: Situasjon, Oppgave, Handling, Resultat.'},
+    {q:'Hva vet du om selskapet?',a:'Forbered deg grundig — strategi, nyheter, konkurrenter og kultur.'}
   ],
-  case: '📋 <strong>Generelt case-rammeverk:</strong><br><br>1. Klargjør oppgaven og still oppklarende spørsmål<br>2. Strukturer analysen (f.eks. MECE, 2x2-matrise)<br>3. Presenter hypotese tidlig<br>4. Gå gjennom data systematisk<br>5. Konkluder med klar anbefaling og begrunnelse',
-  soeknad: '✉️ <strong>Generelle søknadstips:</strong><br><br>• Åpningsavsnitt: hvorfor du og hvorfor dette selskapet<br>• Midtdel: 2-3 konkrete eksempler på relevante prestasjoner<br>• Avslutning: hva du kan bidra med og entusiasme for rollen<br>• Tilpass alltid til stillingsbeskrivelsen — unngå generiske tekster',
-  cv: '📄 <strong>Generelle CV-tips:</strong><br><br>• Hold deg til 1 side for student/junior<br>• Bruk handlingsorientert språk: "Ledet", "Analyserte", "Økte"<br>• Kvantifiser der mulig: "økte salget med 20%"<br>• Tilpass CV til hver enkelt stilling'
+  case:{title:'Generelt case-rammeverk',tag:'Case Tips',body:'De fleste cases handler om å strukturere et problem, analysere data og gi en klar anbefaling.',task:'Fremgangsmåte: 1) Klargjør oppgaven 2) Strukturer analysen (MECE) 3) Presenter hypotese tidlig 4) Gå gjennom data systematisk 5) Konkluder med klar anbefaling.',hint:'💡 Vis tydelig struktur og tenk høyt. Intervjueren vil se prosessen din, ikke bare svaret.'},
+  soeknad:{title:'Generelle søknadstips',points:['Åpningsavsnitt: hvorfor du og hvorfor dette selskapet — vær spesifikk','Midtdel: 2-3 konkrete eksempler med tall','Avslutning: hva du kan bidra med fremover','Tilpass alltid til stillingsbeskrivelsen','Hold det til maks én side']},
+  cv:{title:'Generelle CV-tips',points:['Hold deg til 1 side for student/junior','Bruk handlingsorientert språk: "Ledet", "Analyserte", "Økte med X%"','Kvantifiser der mulig','Tilpass CV til hver stilling','Ha alltid oppdatert LinkedIn']}
 };
 
-let selectedIndustry = null;
-let selectedSpec = null;
+let selInd=null, selSpec=null;
 
-function selectIndustry(el, key) {
-  document.querySelectorAll('#step1 .card').forEach(c => c.classList.remove('selected'));
-  el.classList.add('selected');
-  selectedIndustry = key;
-  document.getElementById('next1').disabled = false;
-}
-
-function goToStep2() {
-  document.getElementById('step1').classList.add('hidden');
-  document.getElementById('step2').classList.remove('hidden');
-  document.getElementById('s1').className = 'step done';
-  document.getElementById('s2').className = 'step active';
-  document.getElementById('spec-label').textContent = industries[selectedIndustry].label + ' — velg spesialisering';
-  const grid = document.getElementById('spec-grid');
-  grid.innerHTML = '';
-  industries[selectedIndustry].specs.forEach(s => {
-    grid.innerHTML += `<div class="card" onclick="selectSpec(this,'${s}')"><div class="card-title" style="font-size:13px">${s}</div></div>`;
-  });
-  selectedSpec = null;
-  document.getElementById('next2').disabled = true;
-}
-
-function selectSpec(el, name) {
-  document.querySelectorAll('#spec-grid .card').forEach(c => c.classList.remove('selected'));
-  el.classList.add('selected');
-  selectedSpec = name;
-  document.getElementById('next2').disabled = false;
-}
-
-function goToStep3() {
-  document.getElementById('step2').classList.add('hidden');
-  document.getElementById('step3').classList.remove('hidden');
-  document.getElementById('s2').className = 'step done';
-  document.getElementById('s3').className = 'step active';
-  document.getElementById('prep-label').textContent = selectedSpec + ' — hva vil du øve på?';
-  ['questions','case','soeknad','cv'].forEach(s => document.getElementById('section-'+s).classList.add('hidden'));
-}
-
-function showSection(type) {
-  ['questions','case','soeknad','cv'].forEach(s => document.getElementById('section-'+s).classList.add('hidden'));
-  document.getElementById('section-'+type).classList.remove('hidden');
-  const c = content[selectedSpec] || defaultContent;
-  if (type === 'questions') {
-    document.getElementById('q-title').textContent = 'Vanlige intervjuspørsmål — ' + selectedSpec;
-    const list = document.getElementById('q-list');
-    const qs = c.questions || defaultContent.questions;
-    list.innerHTML = qs.map(q => `<li><strong>${q.q}</strong><span>💡 ${q.a}</span></li>`).join('');
-  }
-  if (type === 'case') document.getElementById('case-box').innerHTML = c.case || defaultContent.case;
-  if (type === 'soeknad') document.getElementById('soeknad-box').innerHTML = c.soeknad || defaultContent.soeknad;
-  if (type === 'cv') document.getElementById('cv-box').innerHTML = c.cv || defaultContent.cv;
-}
-
-function goBack(step) {
-  if (step === 1) { document.getElementById('step1').classList.remove('hidden'); document.getElementById('step2').classList.add('hidden'); document.getElementById('s1').className='step active'; document.getElementById('s2').className='step'; }
-  if (step === 2) { document.getElementById('step2').classList.remove('hidden'); document.getElementById('step3').classList.add('hidden'); document.getElementById('s2').className='step active'; document.getElementById('s3').className='step'; }
-}
-
-function resetAll() {
-  ['step2','step3'].forEach(s => document.getElementById(s).classList.add('hidden'));
-  document.getElementById('step1').classList.remove('hidden');
-  document.getElementById('s1').className='step active';
-  document.getElementById('s2').className='step';
-  document.getElementById('s3').className='step';
-  document.querySelectorAll('.card').forEach(c => c.classList.remove('selected'));
-  document.getElementById('next1').disabled = true;
-}
+function showLanding(){document.getElementById('landing').style.display='block';['step1','step2','step3'].forEach(id=>document.getElementById(id).classList.remove('active'));document.getElementById('step-bar').classList.add('hidden');}
+function startFlow(){document.getElementById('landing').style.display='none';document.getElementById('step-bar').classList.remove('hidden');document.getElementById('step1').classList.add('active');document.getElementById('s1').className='step active';document.getElementById('s2').className='step';document.getElementById('s3').className='step';window.scrollTo(0,0);}
+function selectIndustry(el,key){document.querySelectorAll('#industry-grid .industry-card').forEach(c=>c.classList.remove('selected'));el.classList.add('selected');selInd=key;document.getElementById('next1').disabled=false;}
+function goToStep2(){document.getElementById('step1').classList.remove('active');document.getElementById('step2').classList.add('active');document.getElementById('s1').className='step done';document.getElementById('s2').className='step active';document.getElementById('spec-title').textContent=industries[selInd].label+' — velg spesialisering';const g=document.getElementById('spec-grid');g.innerHTML='';industries[selInd].specs.forEach(s=>{g.innerHTML+=`<div class="spec-card" onclick="selectSpec(this,'${s}')"><span>${s}</span></div>`;});selSpec=null;document.getElementById('next2').disabled=true;window.scrollTo(0,0);}
+function selectSpec(el,name){document.querySelectorAll('#spec-grid .spec-card').forEach(c=>c.classList.remove('selected'));el.classList.add('selected');selSpec=name;document.getElementById('next2').disabled=false;}
+function goToStep3(){document.getElementById('step2').classList.remove('active');document.getElementById('step3').classList.add('active');document.getElementById('s2').className='step done';document.getElementById('s3').className='step active';document.getElementById('prep-title').textContent=selSpec;document.getElementById('prep-sub').textContent='Velg hva du vil forberede deg på for en '+selSpec+'-stilling.';document.getElementById('content-area').innerHTML='';window.scrollTo(0,0);}
+function showContent(type){const c=content[selSpec]||def;let h='<div class="content-section">';if(type==='questions'){const qs=c.questions||def.questions;h+=`<div class="content-header"><h2>Intervjuspørsmål</h2><span class="tag">${selSpec}</span></div><ul class="q-list">`;qs.forEach(q=>{h+=`<li class="q-item"><strong>${q.q}</strong><div class="answer">${q.a}</div></li>`;});h+='</ul>';}else if(type==='case'){const ca=c.case||def.case;h+=`<div class="content-header"><h2>Case-øvelse</h2><span class="tag">${selSpec}</span></div><div class="case-box"><div class="case-tag">${ca.tag}</div><h3>${ca.title}</h3><p class="case-body">${ca.body}</p><p class="case-task">${ca.task}</p><div class="case-hint">${ca.hint}</div></div>`;}else if(type==='soeknad'){const so=c.soeknad||def.soeknad;h+=`<div class="content-header"><h2>Søknadstips</h2><span class="tag">${selSpec}</span></div><div class="tips-box"><h3>${so.title}</h3><ul>${so.points.map(p=>`<li>${p}</li>`).join('')}</ul></div>`;}else if(type==='cv'){const cv=c.cv||def.cv;h+=`<div class="content-header"><h2>CV-tips</h2><span class="tag">${selSpec}</span></div><div class="tips-box"><h3>${cv.title}</h3><ul>${cv.points.map(p=>`<li>${p}</li>`).join('')}</ul></div>`;}h+='</div>';document.getElementById('content-area').innerHTML=h;}
+function goBack(step){if(step===1){document.getElementById('step1').classList.add('active');document.getElementById('step2').classList.remove('active');document.getElementById('s1').className='step active';document.getElementById('s2').className='step';}if(step===2){document.getElementById('step2').classList.add('active');document.getElementById('step3').classList.remove('active');document.getElementById('s2').className='step active';document.getElementById('s3').className='step';}window.scrollTo(0,0);}
 </script>
 </body>
 </html>
