@@ -12,28 +12,42 @@ html{scroll-behavior:smooth;}
 body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;}
 
 /* ── NAV ── */
-nav{background:var(--navy);height:62px;display:flex;align-items:center;justify-content:space-between;padding:0 3rem;position:sticky;top:0;z-index:200;border-bottom:1px solid rgba(255,255,255,0.05);}
+nav{background:var(--navy);height:62px;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;position:sticky;top:0;z-index:200;border-bottom:1px solid rgba(255,255,255,0.05);}
 .logo{display:flex;align-items:baseline;gap:4px;cursor:pointer;}
 .logo-main{font-family:'DM Serif Display',serif;font-size:22px;color:#fff;}
 .logo-main span{color:var(--accent);}
 .logo-tag{font-size:10px;color:var(--text3);letter-spacing:2px;text-transform:uppercase;font-weight:400;}
-.nav-r{display:flex;align-items:center;gap:1.5rem;}
+.nav-r{display:flex;align-items:center;gap:1.2rem;}
 .nav-r a{color:#8aaac8;font-size:13px;text-decoration:none;cursor:pointer;transition:color .2s;}
 .nav-r a:hover{color:#fff;}
-.nav-pill{background:var(--blue);color:#fff!important;padding:7px 18px;border-radius:100px;font-weight:500!important;}
+.nav-pill{background:var(--blue);color:#fff!important;padding:7px 16px;border-radius:100px;font-weight:500!important;}
 .nav-pill:hover{background:var(--blue2)!important;}
 
-/* ── SMOOTH VIEW TRANSITIONS ── */
-.view{display:none;opacity:0;transform:translateY(8px);transition:opacity .35s ease,transform .35s ease;}
-.view.active{display:block;opacity:1;transform:translateY(0);}
-#v-landing{display:block;opacity:1;transform:none;}
+/* LANGUAGE SWITCHER */
+.lang-switcher{position:relative;}
+.lang-btn{display:flex;align-items:center;gap:5px;color:#8aaac8;font-size:13px;cursor:pointer;background:none;border:1px solid rgba(255,255,255,.12);border-radius:6px;padding:5px 10px;font-family:inherit;transition:all .2s;}
+.lang-btn:hover,.lang-btn.open{border-color:rgba(255,255,255,.3);color:#fff;}
+.lang-flag{font-size:14px;}
+.lang-dropdown{position:absolute;top:calc(100% + 8px);right:0;background:var(--navy2);border:1px solid var(--navy4);border-radius:10px;padding:5px;min-width:155px;box-shadow:0 8px 28px rgba(0,0,0,.35);display:none;z-index:400;animation:fadeUp .2s ease;}
+.lang-dropdown.open{display:block;}
+.lang-opt{display:flex;align-items:center;gap:9px;padding:8px 10px;border-radius:7px;cursor:pointer;transition:background .15s;font-size:13px;color:#8aaac8;white-space:nowrap;}
+.lang-opt:hover{background:var(--navy3);color:#fff;}
+.lang-opt.active{color:var(--accent);font-weight:500;}
+.lang-check{margin-left:auto;font-size:12px;}
 
-/* ── LANDING ── */
+/* SMOOTH TRANSITIONS */
+.view{display:none;opacity:0;transform:translateY(8px);}
+.view.active{display:block;}
+#v-landing{display:block;opacity:1;transform:none;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
+@keyframes bounce{0%,60%,100%{transform:translateY(0);}30%{transform:translateY(-5px);}}
+
+/* HERO */
 .hero{background:var(--navy2);padding:6rem 2rem 5rem;text-align:center;border-bottom:1px solid var(--navy4);position:relative;overflow:hidden;}
 .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 700px 350px at 50% 0%,rgba(26,86,160,.18),transparent 70%);pointer-events:none;}
 .eyebrow{display:inline-flex;align-items:center;gap:6px;background:rgba(74,158,255,.1);border:1px solid rgba(74,158,255,.2);color:var(--accent);font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;padding:5px 14px;border-radius:100px;margin-bottom:1.8rem;}
 .eyebrow::before{content:'';width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse 2s infinite;}
-@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.4;}}
 .hero h1{font-family:'DM Serif Display',serif;font-size:52px;color:#fff;line-height:1.1;margin-bottom:1.2rem;max-width:680px;margin-left:auto;margin-right:auto;}
 .hero h1 em{color:var(--accent);font-style:normal;}
 .hero-sub{color:var(--text3);font-size:16px;max-width:460px;margin:0 auto 3rem;font-weight:300;line-height:1.75;}
@@ -48,7 +62,7 @@ nav{background:var(--navy);height:62px;display:flex;align-items:center;justify-c
 .f-h{text-align:center;font-family:'DM Serif Display',serif;font-size:30px;color:var(--text);margin-bottom:.75rem;}
 .f-sub{text-align:center;font-size:14px;color:var(--text2);margin-bottom:3rem;}
 .feat-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;}
-.feat-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.5rem 1.2rem;transition:all .25s;cursor:default;}
+.feat-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.5rem 1.2rem;transition:all .25s;}
 .feat-card:hover{border-color:var(--accent);transform:translateY(-3px);}
 .feat-ic{width:44px;height:44px;background:#e8f2ff;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:1rem;}
 .feat-card h3{font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px;}
@@ -63,44 +77,42 @@ nav{background:var(--navy);height:62px;display:flex;align-items:center;justify-c
 .pip-title{font-size:12px;font-weight:500;color:#fff;margin-bottom:2px;}
 .pip-sub{font-size:11px;color:var(--text3);}
 
-/* ── INDUSTRIES EXPLORER ── */
+/* INDUSTRIES */
 .ind-hero{background:var(--navy2);padding:4rem 2rem 3rem;border-bottom:1px solid var(--navy4);text-align:center;}
 .ind-hero h1{font-family:'DM Serif Display',serif;font-size:36px;color:#fff;margin-bottom:.5rem;}
 .ind-hero p{color:var(--text3);font-size:15px;max-width:500px;margin:0 auto;}
-.ind-layout{max-width:1100px;margin:0 auto;padding:2.5rem 2rem 4rem;display:grid;grid-template-columns:280px 1fr;gap:2rem;}
+.ind-layout{max-width:1100px;margin:0 auto;padding:2.5rem 2rem 4rem;display:grid;grid-template-columns:250px 1fr;gap:2rem;}
 .ind-sidebar{position:sticky;top:80px;height:fit-content;}
 .ind-sidebar h3{font-size:11px;font-weight:600;color:var(--text2);letter-spacing:1px;text-transform:uppercase;margin-bottom:.75rem;}
-.ind-btn{width:100%;text-align:left;background:var(--white);border:1px solid var(--border);border-radius:10px;padding:.85rem 1rem;font-size:14px;color:var(--text2);cursor:pointer;font-family:inherit;margin-bottom:6px;transition:all .2s;display:flex;align-items:center;gap:10px;}
+.ind-btn{width:100%;text-align:left;background:var(--white);border:1px solid var(--border);border-radius:10px;padding:.75rem .9rem;font-size:13px;color:var(--text2);cursor:pointer;font-family:inherit;margin-bottom:6px;transition:all .2s;display:flex;align-items:center;gap:9px;}
 .ind-btn:hover{border-color:var(--accent);color:var(--text);}
 .ind-btn.active{background:var(--blue);border-color:var(--blue);color:#fff;font-weight:500;}
-.ind-btn .ind-ic{font-size:18px;flex-shrink:0;}
-.ind-main{}
 .ind-detail{animation:fadeUp .3s ease;}
-@keyframes fadeUp{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
-.ind-detail-header{background:var(--navy2);border-radius:14px;padding:1.5rem;margin-bottom:1.5rem;display:flex;align-items:center;gap:16px;}
-.ind-detail-ic{font-size:36px;}
-.ind-detail-header h2{font-family:'DM Serif Display',serif;font-size:24px;color:#fff;margin-bottom:3px;}
+.ind-detail-header{background:var(--navy2);border-radius:14px;padding:1.4rem;margin-bottom:1.4rem;display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+.ind-detail-ic{font-size:30px;}
+.ind-detail-header h2{font-family:'DM Serif Display',serif;font-size:22px;color:#fff;margin-bottom:2px;}
 .ind-detail-header p{color:var(--text3);font-size:13px;}
-.ind-coming{background:rgba(74,158,255,.08);border:1px solid rgba(74,158,255,.15);border-radius:8px;padding:6px 12px;font-size:11px;color:var(--accent);font-weight:500;margin-left:auto;white-space:nowrap;}
-.area-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px;}
-.area-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.3rem;cursor:pointer;transition:all .2s;}
+.ind-coming{background:rgba(74,158,255,.08);border:1px solid rgba(74,158,255,.15);border-radius:8px;padding:5px 10px;font-size:11px;color:var(--accent);font-weight:500;margin-left:auto;white-space:nowrap;}
+.area-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;}
+.area-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.2rem;cursor:pointer;transition:all .2s;}
 .area-card:hover{border-color:var(--accent);transform:translateY(-2px);}
 .area-card.open{border-color:var(--blue);border-width:2px;}
-.area-title{font-size:15px;font-weight:600;color:var(--text);margin-bottom:4px;display:flex;align-items:center;justify-content:space-between;}
-.area-title .chevron{transition:transform .25s;color:var(--text3);font-size:12px;}
-.area-card.open .chevron{transform:rotate(180deg);}
-.area-sub{font-size:12px;color:var(--text2);margin-bottom:.75rem;}
+.area-title{font-size:14px;font-weight:600;color:var(--text);margin-bottom:3px;display:flex;align-items:center;justify-content:space-between;}
+.chev{transition:transform .25s;color:var(--text3);font-size:11px;}
+.area-card.open .chev{transform:rotate(180deg);}
+.area-sub{font-size:12px;color:var(--text2);margin-bottom:.5rem;}
 .area-detail{display:none;border-top:1px solid var(--border);margin-top:.75rem;padding-top:.75rem;}
 .area-card.open .area-detail{display:block;}
-.area-detail h4{font-size:12px;font-weight:600;color:var(--text2);letter-spacing:.5px;text-transform:uppercase;margin-bottom:.5rem;}
-.task-list{list-style:none;margin-bottom:.75rem;}
-.task-list li{font-size:13px;color:var(--text2);padding:3px 0;display:flex;gap:7px;}
+.area-detail h4{font-size:11px;font-weight:600;color:var(--text2);letter-spacing:.5px;text-transform:uppercase;margin-bottom:.4rem;margin-top:.6rem;}
+.area-detail h4:first-child{margin-top:0;}
+.task-list{list-style:none;margin-bottom:.5rem;}
+.task-list li{font-size:12px;color:var(--text2);padding:2px 0;display:flex;gap:6px;line-height:1.5;}
 .task-list li::before{content:'·';color:var(--blue);font-weight:700;flex-shrink:0;}
-.company-pills{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:.5rem;}
-.cpill{font-size:11px;background:var(--bg);border:1px solid var(--border);border-radius:100px;padding:3px 10px;color:var(--text2);}
-.future-badge{font-size:11px;background:rgba(74,158,255,.08);border:1px solid rgba(74,158,255,.15);border-radius:6px;padding:6px 10px;color:var(--accent);margin-top:.75rem;line-height:1.5;}
+.company-pills{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:.4rem;}
+.cpill{font-size:11px;background:var(--bg);border:1px solid var(--border);border-radius:100px;padding:2px 8px;color:var(--text2);}
+.future-badge{font-size:11px;background:rgba(74,158,255,.07);border:1px solid rgba(74,158,255,.12);border-radius:6px;padding:5px 9px;color:var(--accent);margin-top:.5rem;line-height:1.5;}
 
-/* ── PAGE HERO ── */
+/* PAGE HERO */
 .page-hero{background:var(--navy2);padding:3rem 2rem 2.5rem;border-bottom:1px solid var(--navy4);}
 .page-hero-in{max-width:900px;margin:0 auto;}
 .back{display:inline-flex;align-items:center;gap:5px;color:var(--text3);font-size:13px;cursor:pointer;margin-bottom:1.5rem;transition:color .2s;background:none;border:none;font-family:inherit;}
@@ -108,7 +120,7 @@ nav{background:var(--navy);height:62px;display:flex;align-items:center;justify-c
 .page-hero h1{font-family:'DM Serif Display',serif;font-size:30px;color:#fff;margin-bottom:.3rem;}
 .page-hero p{color:var(--text3);font-size:14px;}
 
-/* ── PROFILE ── */
+/* PROFILE */
 .form-wrap{max-width:820px;margin:2.5rem auto;padding:0 2rem 4rem;}
 .form-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.8rem;margin-bottom:1.5rem;}
 .form-card h2{font-size:15px;font-weight:600;color:var(--text);margin-bottom:1.2rem;padding-bottom:.75rem;border-bottom:1px solid var(--border);}
@@ -117,90 +129,99 @@ nav{background:var(--navy);height:62px;display:flex;align-items:center;justify-c
 .fg label{font-size:11px;font-weight:600;color:var(--text2);letter-spacing:.5px;text-transform:uppercase;}
 .fg select,.fg input{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px 12px;font-size:14px;color:var(--text);font-family:inherit;outline:none;transition:border-color .2s;}
 .fg select:focus,.fg input:focus{border-color:var(--accent);}
-.tag-grid{display:flex;flex-wrap:wrap;gap:8px;}
 .tg{background:var(--bg);border:1px solid var(--border);border-radius:100px;padding:6px 14px;font-size:13px;cursor:pointer;transition:all .2s;font-family:inherit;color:var(--text2);}
 .tg:hover{border-color:var(--accent);color:var(--accent);}
 .tg.on{background:var(--blue);border-color:var(--blue);color:#fff;}
+.tag-grid{display:flex;flex-wrap:wrap;gap:8px;}
+.role-section{margin-top:1rem;}
+.role-section h3{font-size:13px;font-weight:600;color:var(--text2);margin-bottom:.5rem;}
 .submit-btn{width:100%;background:var(--blue);color:#fff;border:none;padding:14px;border-radius:10px;font-size:15px;font-weight:600;cursor:pointer;transition:all .25s;font-family:inherit;}
 .submit-btn:hover{background:var(--blue2);transform:translateY(-1px);}
-.role-section{margin-top:1.2rem;}
-.role-section h3{font-size:13px;font-weight:600;color:var(--text2);margin-bottom:.6rem;}
 
-/* ── JOBS ── */
-.results-layout{display:grid;grid-template-columns:250px 1fr;min-height:80vh;}
-.filter-panel{background:var(--white);border-right:1px solid var(--border);padding:1.5rem;position:sticky;top:62px;height:calc(100vh - 62px);overflow-y:auto;}
-.fp-h{font-size:11px;font-weight:600;color:var(--text2);letter-spacing:1px;text-transform:uppercase;margin:1.2rem 0 .6rem;}
+/* CITY SELECTOR */
+.country-block{margin-bottom:1.2rem;}
+.country-header{display:flex;align-items:center;gap:8px;margin-bottom:.6rem;}
+.country-flag{font-size:16px;}
+.country-name{font-size:13px;font-weight:600;color:var(--text);}
+.city-grid{display:flex;flex-wrap:wrap;gap:7px;}
+.city-btn{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:5px 12px;font-size:13px;cursor:pointer;transition:all .2s;font-family:inherit;color:var(--text2);}
+.city-btn:hover{border-color:var(--accent);color:var(--accent);}
+.city-btn.on{background:var(--blue);border-color:var(--blue);color:#fff;}
+.city-all-btn{background:var(--bg);border:1px dashed var(--border);border-radius:8px;padding:5px 12px;font-size:12px;cursor:pointer;transition:all .2s;font-family:inherit;color:var(--text3);}
+.city-all-btn:hover{border-color:var(--text3);color:var(--text2);}
+
+/* JOBS */
+.results-layout{display:grid;grid-template-columns:240px 1fr;min-height:80vh;}
+.filter-panel{background:var(--white);border-right:1px solid var(--border);padding:1.4rem;position:sticky;top:62px;height:calc(100vh - 62px);overflow-y:auto;}
+.fp-h{font-size:11px;font-weight:600;color:var(--text2);letter-spacing:1px;text-transform:uppercase;margin:1rem 0 .5rem;}
 .fp-h:first-child{margin-top:0;}
-.fc{display:flex;align-items:center;gap:8px;padding:4px 0;cursor:pointer;}
+.fc{display:flex;align-items:center;gap:8px;padding:3px 0;cursor:pointer;}
 .fc input{accent-color:var(--blue);}
 .fc span{font-size:13px;color:var(--text2);}
-.fc-n{margin-left:auto;font-size:11px;color:var(--text3);background:var(--bg);padding:1px 7px;border-radius:100px;}
+.fc-n{margin-left:auto;font-size:11px;color:var(--text3);background:var(--bg);padding:1px 6px;border-radius:100px;}
 .jobs-panel{padding:1.5rem 2rem;}
-.portal-note{background:var(--navy2);border-radius:10px;padding:.9rem 1.2rem;margin-bottom:1.5rem;font-size:13px;color:var(--text3);}
+.portal-note{background:var(--navy2);border-radius:10px;padding:.8rem 1.1rem;margin-bottom:1.3rem;font-size:13px;color:var(--text3);}
 .portal-note strong{color:var(--accent);}
-.jobs-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.2rem;}
-.jobs-top h2{font-size:17px;font-weight:600;color:var(--text);}
-.jobs-top span{font-size:13px;color:var(--text3);}
-.search-bar{display:flex;gap:10px;margin-bottom:1.5rem;}
-.search-bar input{flex:1;background:var(--white);border:1px solid var(--border);border-radius:8px;padding:10px 14px;font-size:14px;font-family:inherit;outline:none;transition:border-color .2s;}
+.jobs-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;}
+.jobs-top h2{font-size:16px;font-weight:600;}
+.search-bar{display:flex;gap:9px;margin-bottom:1.2rem;}
+.search-bar input{flex:1;background:var(--white);border:1px solid var(--border);border-radius:8px;padding:9px 13px;font-size:14px;font-family:inherit;outline:none;transition:border-color .2s;}
 .search-bar input:focus{border-color:var(--accent);}
-.search-bar button{background:var(--blue);color:#fff;border:none;padding:10px 20px;border-radius:8px;font-size:14px;cursor:pointer;font-family:inherit;font-weight:500;}
-.job-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.3rem;margin-bottom:12px;cursor:pointer;transition:all .25s;display:flex;gap:14px;}
-.job-card:hover{border-color:var(--accent);box-shadow:0 4px 20px rgba(26,86,160,.08);transform:translateY(-1px);}
-.jl{width:44px;height:44px;border-radius:10px;background:var(--bg);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.search-bar button{background:var(--blue);color:#fff;border:none;padding:9px 16px;border-radius:8px;font-size:14px;cursor:pointer;font-family:inherit;font-weight:500;}
+.job-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.2rem;margin-bottom:10px;cursor:pointer;transition:all .25s;display:flex;gap:12px;}
+.job-card:hover{border-color:var(--accent);box-shadow:0 4px 18px rgba(26,86,160,.07);transform:translateY(-1px);}
+.jl{width:42px;height:42px;border-radius:9px;background:var(--bg);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;}
 .ji{flex:1;}
-.jt{font-size:15px;font-weight:600;color:var(--text);margin-bottom:2px;}
-.jc{font-size:13px;color:var(--text2);margin-bottom:6px;}
-.jm{display:flex;flex-wrap:wrap;gap:6px;}
-.jtag{font-size:11px;color:var(--text2);background:var(--bg);border:1px solid var(--border);padding:2px 9px;border-radius:100px;}
+.jt{font-size:14px;font-weight:600;color:var(--text);margin-bottom:2px;}
+.jc{font-size:12px;color:var(--text2);margin-bottom:5px;}
+.jm{display:flex;flex-wrap:wrap;gap:5px;}
+.jtag{font-size:11px;color:var(--text2);background:var(--bg);border:1px solid var(--border);padding:2px 8px;border-radius:100px;}
 .jtag.new{background:var(--green-bg);border-color:#a8e8c8;color:var(--green);}
 .jtag.hot{background:#fff3e0;border-color:#ffd08a;color:#a06010;}
 .jtag.exp{background:#fef0f0;border-color:#f8c0c0;color:#a33;}
 .ja{display:flex;flex-direction:column;align-items:flex-end;gap:5px;flex-shrink:0;}
 .jdate{font-size:11px;color:var(--text3);}
-.jexp{font-size:10px;color:#a33;font-weight:500;}
-.prep-btn{background:var(--blue);color:#fff;border:none;padding:7px 14px;border-radius:6px;font-size:12px;font-weight:500;cursor:pointer;white-space:nowrap;font-family:inherit;transition:background .2s;}
+.prep-btn{background:var(--blue);color:#fff;border:none;padding:6px 12px;border-radius:6px;font-size:12px;font-weight:500;cursor:pointer;white-space:nowrap;font-family:inherit;transition:background .2s;}
 .prep-btn:hover{background:var(--blue2);}
-.view-btn{background:transparent;color:var(--blue);border:1px solid var(--border);padding:5px 10px;border-radius:6px;font-size:11px;cursor:pointer;white-space:nowrap;font-family:inherit;text-decoration:none;display:block;text-align:center;transition:border-color .2s;}
+.view-btn{background:transparent;color:var(--blue);border:1px solid var(--border);padding:4px 9px;border-radius:6px;font-size:11px;cursor:pointer;white-space:nowrap;font-family:inherit;text-decoration:none;display:block;text-align:center;transition:border-color .2s;}
 .view-btn:hover{border-color:var(--blue);}
 
-/* ── PREP ── */
+/* PREP */
 .prep-layout{max-width:940px;margin:0 auto;padding:2rem 2rem 4rem;}
-.job-banner{background:var(--white);border:1px solid var(--border);border-radius:13px;padding:1.2rem 1.4rem;display:flex;align-items:center;gap:14px;margin-bottom:2rem;}
-.jbl{width:50px;height:50px;border-radius:11px;background:var(--bg);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:22px;}
+.job-banner{background:var(--white);border:1px solid var(--border);border-radius:13px;padding:1.2rem 1.4rem;display:flex;align-items:center;gap:13px;margin-bottom:1.8rem;}
+.jbl{width:48px;height:48px;border-radius:10px;background:var(--bg);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:20px;}
 .jbi{flex:1;}
-.jbi h2{font-size:16px;font-weight:600;color:var(--text);margin-bottom:2px;}
+.jbi h2{font-size:15px;font-weight:600;color:var(--text);margin-bottom:2px;}
 .jbi p{font-size:13px;color:var(--text2);}
-.jbt{display:flex;gap:6px;margin-top:4px;}
-.jbi-link{display:inline-flex;align-items:center;gap:5px;background:var(--blue);color:#fff;border:none;padding:8px 16px;border-radius:7px;font-size:13px;font-weight:500;text-decoration:none;cursor:pointer;transition:background .2s;margin-left:auto;flex-shrink:0;}
+.jbt{display:flex;gap:5px;margin-top:4px;}
+.jbi-link{display:inline-flex;align-items:center;gap:5px;background:var(--blue);color:#fff;border:none;padding:7px 14px;border-radius:7px;font-size:13px;font-weight:500;text-decoration:none;cursor:pointer;transition:background .2s;margin-left:auto;flex-shrink:0;}
 .jbi-link:hover{background:var(--blue2);}
-.pipeline-nav{display:flex;gap:0;background:var(--white);border:1px solid var(--border);border-radius:12px;padding:5px;margin-bottom:2rem;overflow-x:auto;}
-.ptab{flex:1;min-width:90px;padding:9px 8px;border-radius:8px;border:none;background:transparent;font-size:13px;font-weight:500;color:var(--text2);cursor:pointer;transition:all .2s;font-family:inherit;text-align:center;white-space:nowrap;}
-.ptab:hover{color:var(--text);}
+.pipeline-nav{display:flex;gap:0;background:var(--white);border:1px solid var(--border);border-radius:12px;padding:4px;margin-bottom:1.8rem;overflow-x:auto;}
+.ptab{flex:1;min-width:85px;padding:8px 7px;border-radius:8px;border:none;background:transparent;font-size:13px;font-weight:500;color:var(--text2);cursor:pointer;transition:all .2s;font-family:inherit;text-align:center;white-space:nowrap;}
 .ptab.active{background:var(--blue);color:#fff;}
 .pc{display:none;animation:fadeUp .25s ease;}
 .pc.active{display:block;}
-.cv-sec{background:var(--white);border:1px solid var(--border);border-radius:13px;padding:1.5rem;margin-bottom:1.2rem;}
-.cv-sec h3{font-size:15px;font-weight:600;color:var(--text);margin-bottom:1rem;display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.cv-sec{background:var(--white);border:1px solid var(--border);border-radius:13px;padding:1.4rem;margin-bottom:1.2rem;}
+.cv-sec h3{font-size:14px;font-weight:600;color:var(--text);margin-bottom:.9rem;display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
 .tip-list{list-style:none;}
-.tip-list li{padding:7px 0;border-bottom:1px solid var(--bg);font-size:14px;color:var(--text2);display:flex;gap:10px;line-height:1.55;}
+.tip-list li{padding:6px 0;border-bottom:1px solid var(--bg);font-size:13px;color:var(--text2);display:flex;gap:9px;line-height:1.55;}
 .tip-list li:last-child{border-bottom:none;}
 .tip-list li::before{content:'→';color:var(--blue);font-weight:600;flex-shrink:0;}
-.letter-box{background:var(--bg);border:1px solid var(--border);border-radius:9px;padding:1.2rem;font-size:13px;color:var(--text2);line-height:1.8;min-height:260px;white-space:pre-wrap;}
-.gen-btn{display:inline-flex;align-items:center;gap:6px;background:var(--blue);color:#fff;border:none;padding:10px 20px;border-radius:8px;font-size:14px;font-weight:500;cursor:pointer;font-family:inherit;margin-top:1rem;transition:background .2s;}
+.letter-box{background:var(--bg);border:1px solid var(--border);border-radius:9px;padding:1.1rem;font-size:13px;color:var(--text2);line-height:1.8;min-height:240px;white-space:pre-wrap;}
+.gen-btn{display:inline-flex;align-items:center;gap:6px;background:var(--blue);color:#fff;border:none;padding:9px 18px;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;font-family:inherit;margin-top:.9rem;transition:background .2s;}
 .gen-btn:hover{background:var(--blue2);}
-.ai-badge{background:rgba(74,158,255,.12);border:1px solid rgba(74,158,255,.25);color:var(--accent);font-size:10px;padding:2px 8px;border-radius:100px;font-weight:600;letter-spacing:.5px;}
-.q-card{background:var(--white);border:1px solid var(--border);border-left:3px solid var(--blue);border-radius:0 10px 10px 0;padding:1rem 1.2rem;margin-bottom:10px;transition:border-color .2s;}
+.ai-badge{background:rgba(74,158,255,.12);border:1px solid rgba(74,158,255,.25);color:var(--accent);font-size:10px;padding:2px 8px;border-radius:100px;font-weight:600;}
+.q-card{background:var(--white);border:1px solid var(--border);border-left:3px solid var(--blue);border-radius:0 10px 10px 0;padding:1rem 1.2rem;margin-bottom:9px;transition:border-color .2s;}
 .q-card:hover{border-left-color:var(--accent);}
 .q-card strong{display:block;font-size:14px;font-weight:600;color:var(--text);margin-bottom:5px;}
 .q-hint{font-size:13px;color:var(--text2);background:var(--bg);padding:7px 10px;border-radius:6px;line-height:1.6;}
 .q-hint::before{content:"💡 Tip: ";font-weight:600;color:var(--blue);}
-.case-dark{background:var(--navy2);border-radius:13px;padding:1.5rem;color:#fff;margin-bottom:1.2rem;}
-.case-dark h3{font-size:16px;font-weight:600;margin-bottom:.75rem;}
+.case-dark{background:var(--navy2);border-radius:13px;padding:1.4rem;color:#fff;margin-bottom:1.2rem;}
+.case-dark h3{font-size:15px;font-weight:600;margin-bottom:.75rem;}
 .cbody{color:#8aaac8;font-size:14px;line-height:1.7;margin-bottom:.5rem;}
 .ctask{color:#fff;font-weight:500;margin-top:.75rem;font-size:14px;}
-.chint{background:rgba(74,158,255,.1);border:1px solid rgba(74,158,255,.2);border-radius:8px;padding:10px 14px;margin-top:1rem;font-size:13px;color:var(--accent);}
-.ctag{background:rgba(74,158,255,.2);color:var(--accent);font-size:11px;padding:2px 10px;border-radius:100px;font-weight:600;display:inline-block;margin-bottom:1rem;}
+.chint{background:rgba(74,158,255,.1);border:1px solid rgba(74,158,255,.2);border-radius:8px;padding:9px 13px;margin-top:.9rem;font-size:13px;color:var(--accent);}
+.ctag{background:rgba(74,158,255,.2);color:var(--accent);font-size:11px;padding:2px 10px;border-radius:100px;font-weight:600;display:inline-block;margin-bottom:.9rem;}
 .upload-area{background:var(--bg);border:2px dashed var(--border);border-radius:10px;padding:2rem;text-align:center;cursor:pointer;transition:border-color .2s;margin-bottom:1rem;}
 .upload-area:hover{border-color:var(--accent);}
 .upload-area input{display:none;}
@@ -208,71 +229,84 @@ nav{background:var(--navy);height:62px;display:flex;align-items:center;justify-c
 .upload-lbl{font-size:13px;font-weight:500;color:var(--blue);cursor:pointer;}
 .badge{display:inline-block;background:#e8f2ff;color:var(--blue);font-size:11px;padding:3px 10px;border-radius:100px;font-weight:600;}
 
-/* ── MOCK INTERVIEW ── */
+/* MOCK INTERVIEW */
 .iv-bar{background:var(--navy2);padding:.75rem 2rem;border-bottom:1px solid var(--navy4);display:flex;align-items:center;justify-content:space-between;}
 .live-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(46,204,113,.12);border:1px solid rgba(46,204,113,.25);color:#2ecc71;font-size:11px;padding:3px 10px;border-radius:100px;font-weight:600;}
 .live-badge::before{content:'';width:5px;height:5px;background:#2ecc71;border-radius:50%;animation:pulse 1.5s infinite;}
-.iv-layout{display:grid;grid-template-columns:1fr 340px;height:calc(100vh - 110px);}
-.iv-main{display:flex;flex-direction:column;padding:1.5rem 2rem;overflow:hidden;}
-.iv-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;flex-shrink:0;}
+.iv-layout{display:grid;grid-template-columns:1fr 320px;height:calc(100vh - 110px);}
+.iv-main{display:flex;flex-direction:column;padding:1.4rem 1.8rem;overflow:hidden;}
+.iv-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:.9rem;flex-shrink:0;}
 .iv-hdr h2{font-size:17px;font-weight:600;color:var(--text);}
-.interviewer-card{background:var(--navy2);border-radius:12px;padding:1.3rem;flex-shrink:0;margin-bottom:1rem;display:flex;align-items:center;gap:14px;}
-.iv-avatar{width:52px;height:52px;border-radius:50%;background:var(--navy4);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;position:relative;}
+.interviewer-card{background:var(--navy2);border-radius:12px;padding:1.2rem;flex-shrink:0;margin-bottom:.9rem;display:flex;align-items:center;gap:13px;}
+.iv-avatar{width:50px;height:50px;border-radius:50%;background:var(--navy4);display:flex;align-items:center;justify-content:center;font-size:21px;flex-shrink:0;position:relative;}
 .iv-avatar::after{content:'';position:absolute;bottom:2px;right:2px;width:11px;height:11px;background:#2ecc71;border-radius:50%;border:2px solid var(--navy2);}
 .iv-info h3{font-size:15px;font-weight:600;color:#fff;}
 .iv-info p{font-size:12px;color:var(--text3);}
-.chat-area{flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:10px;padding-right:4px;margin-bottom:.75rem;}
-.msg{max-width:78%;display:flex;gap:9px;align-items:flex-start;}
+.chat-area{flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:9px;padding-right:4px;margin-bottom:.75rem;}
+.msg{max-width:80%;display:flex;gap:8px;align-items:flex-start;}
 .msg.ai{align-self:flex-start;}
 .msg.user{align-self:flex-end;flex-direction:row-reverse;}
-.mavatar{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;background:var(--navy4);}
+.mavatar{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;background:var(--navy4);}
 .msg.user .mavatar{background:var(--blue);}
 .mbubble{padding:10px 13px;border-radius:12px;font-size:14px;line-height:1.6;}
 .msg.ai .mbubble{background:var(--white);border:1px solid var(--border);color:var(--text);border-top-left-radius:2px;}
 .msg.user .mbubble{background:var(--blue);color:#fff;border-top-right-radius:2px;}
+.msg.feedback .mbubble{background:#fff8e8;border:1px solid #ffd580;color:#5a4000;border-top-left-radius:2px;}
 .mtime{font-size:10px;color:var(--text3);margin-top:3px;}
 .msg.user .mtime{text-align:right;}
-.typing{display:flex;gap:4px;padding:12px 14px;background:var(--white);border:1px solid var(--border);border-radius:12px;border-top-left-radius:2px;align-self:flex-start;width:56px;}
+.typing{display:flex;gap:4px;padding:11px 14px;background:var(--white);border:1px solid var(--border);border-radius:12px;border-top-left-radius:2px;align-self:flex-start;width:54px;}
 .tdot{width:5px;height:5px;background:var(--text3);border-radius:50%;animation:bounce .8s infinite;}
 .tdot:nth-child(2){animation-delay:.15s;}
 .tdot:nth-child(3){animation-delay:.3s;}
-@keyframes bounce{0%,60%,100%{transform:translateY(0);}30%{transform:translateY(-5px);}}
-.chat-inp{display:flex;gap:8px;flex-shrink:0;}
+.chat-inp-area{flex-shrink:0;}
+.tips-toggle{display:flex;align-items:center;gap:6px;background:none;border:none;color:var(--text3);font-size:12px;cursor:pointer;font-family:inherit;padding:0 0 6px;transition:color .2s;}
+.tips-toggle:hover{color:var(--accent);}
+.tips-panel{background:#fff8e8;border:1px solid #ffd580;border-radius:10px;padding:1rem 1.2rem;margin-bottom:.75rem;display:none;animation:fadeUp .2s ease;}
+.tips-panel.open{display:block;}
+.tips-panel h4{font-size:13px;font-weight:600;color:#5a4000;margin-bottom:.6rem;}
+.star-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:.8rem;}
+.star-card{background:#fff;border:1px solid #ffd580;border-radius:8px;padding:.7rem .6rem;text-align:center;}
+.star-letter{font-size:18px;font-weight:700;color:var(--blue);display:block;margin-bottom:2px;}
+.star-word{font-size:11px;font-weight:600;color:var(--text);}
+.star-desc{font-size:11px;color:var(--text2);margin-top:2px;}
+.example-box{background:#fff;border:1px solid #ffd580;border-radius:8px;padding:.75rem;font-size:12px;color:var(--text2);line-height:1.6;}
+.example-box strong{color:var(--text);display:block;margin-bottom:3px;}
+.chat-inp{display:flex;gap:8px;}
 .chat-inp input{flex:1;background:var(--white);border:1px solid var(--border);border-radius:9px;padding:11px 13px;font-size:14px;font-family:inherit;outline:none;transition:border-color .2s;}
 .chat-inp input:focus{border-color:var(--accent);}
-.send-btn{background:var(--blue);color:#fff;border:none;padding:11px 17px;border-radius:9px;font-size:14px;cursor:pointer;font-family:inherit;font-weight:500;transition:background .2s;}
+.send-btn{background:var(--blue);color:#fff;border:none;padding:11px 16px;border-radius:9px;font-size:14px;cursor:pointer;font-family:inherit;font-weight:500;transition:background .2s;}
 .send-btn:hover{background:var(--blue2);}
-.iv-sidebar{background:var(--white);border-left:1px solid var(--border);padding:1.5rem;overflow-y:auto;}
-.ss-h{font-size:11px;font-weight:600;color:var(--text2);letter-spacing:1px;text-transform:uppercase;margin-bottom:.75rem;margin-top:1.2rem;}
+.iv-sidebar{background:var(--white);border-left:1px solid var(--border);padding:1.4rem;overflow-y:auto;}
+.ss-h{font-size:11px;font-weight:600;color:var(--text2);letter-spacing:1px;text-transform:uppercase;margin-bottom:.7rem;margin-top:1.2rem;}
 .ss-h:first-child{margin-top:0;}
-.prog-item{display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid var(--bg);}
+.prog-item{display:flex;align-items:center;gap:9px;padding:6px 0;border-bottom:1px solid var(--bg);}
 .prog-item:last-child{border-bottom:none;}
-.prog-ic{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;transition:all .3s;}
+.prog-ic{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;flex-shrink:0;transition:all .3s;}
 .prog-ic.done{background:var(--green-bg);color:var(--green);}
 .prog-ic.act{background:var(--blue);color:#fff;}
 .prog-ic.todo{background:var(--bg);color:var(--text3);border:1px solid var(--border);}
 .prog-txt{font-size:13px;color:var(--text2);}
-.score-card{background:var(--bg);border-radius:10px;padding:1rem;text-align:center;}
-.score-n{font-family:'DM Serif Display',serif;font-size:36px;color:var(--blue);}
-.score-l{font-size:12px;color:var(--text3);}
-.sbar-row{display:flex;align-items:center;gap:8px;margin-bottom:4px;}
-.sbar-lbl{font-size:11px;color:var(--text2);width:72px;text-align:right;flex-shrink:0;}
+.score-card{background:var(--bg);border-radius:10px;padding:.9rem;text-align:center;}
+.score-n{font-family:'DM Serif Display',serif;font-size:34px;color:var(--blue);}
+.score-l{font-size:11px;color:var(--text3);}
+.sbar-row{display:flex;align-items:center;gap:7px;margin-bottom:4px;}
+.sbar-lbl{font-size:11px;color:var(--text2);width:68px;text-align:right;flex-shrink:0;}
 .sbar-track{flex:1;background:var(--border);border-radius:4px;height:4px;}
 .sbar-fill{height:4px;border-radius:4px;background:var(--blue);transition:width .8s ease;}
 
-/* ── ABOUT / CONTACT ── */
+/* ABOUT / CONTACT */
 .about-hero{background:var(--navy2);padding:5rem 2rem;text-align:center;border-bottom:1px solid var(--navy4);}
 .about-hero h1{font-family:'DM Serif Display',serif;font-size:42px;color:#fff;margin-bottom:1rem;}
 .about-hero p{color:var(--text3);font-size:16px;max-width:500px;margin:0 auto;}
-.about-body{max-width:720px;margin:0 auto;padding:4rem 2rem;}
-.about-body h2{font-family:'DM Serif Display',serif;font-size:26px;color:var(--text);margin-bottom:1rem;margin-top:2.5rem;}
+.about-body{max-width:700px;margin:0 auto;padding:4rem 2rem;}
+.about-body h2{font-family:'DM Serif Display',serif;font-size:24px;color:var(--text);margin-bottom:.9rem;margin-top:2.5rem;}
 .about-body h2:first-child{margin-top:0;}
 .about-body p{font-size:15px;color:var(--text2);line-height:1.8;margin-bottom:1rem;}
-.highlight{background:var(--white);border-left:3px solid var(--blue);border-radius:0 10px 10px 0;padding:1rem 1.3rem;margin:1.5rem 0;font-size:15px;color:var(--text);font-style:italic;}
-.contact-body{max-width:600px;margin:0 auto;padding:4rem 2rem;}
+.highlight{background:var(--white);border-left:3px solid var(--blue);border-radius:0 10px 10px 0;padding:.9rem 1.2rem;margin:1.4rem 0;font-size:14px;color:var(--text);font-style:italic;}
+.contact-body{max-width:580px;margin:0 auto;padding:4rem 2rem;}
 .contact-card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:2rem;}
 .contact-card h2{font-family:'DM Serif Display',serif;font-size:24px;color:var(--text);margin-bottom:.5rem;}
-.contact-card p{font-size:14px;color:var(--text2);margin-bottom:1.5rem;}
+.contact-card p{font-size:14px;color:var(--text2);margin-bottom:1.4rem;}
 .contact-item{display:flex;align-items:center;gap:12px;padding:1rem 0;border-bottom:1px solid var(--bg);}
 .contact-item:last-child{border-bottom:none;}
 .contact-ic{width:40px;height:40px;background:#e8f2ff;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
@@ -298,76 +332,86 @@ footer{background:var(--navy);padding:2.5rem 3rem;border-top:1px solid var(--nav
     <span class="logo-tag">Beta</span>
   </div>
   <div class="nav-r">
-    <a onclick="sv('v-profile')">Find Jobs</a>
-    <a onclick="sv('v-industries')">Industries</a>
-    <a onclick="sv('v-about')">About Us</a>
-    <a onclick="sv('v-contact')">Contact</a>
-    <a class="nav-pill" onclick="sv('v-profile')">Get Started →</a>
+    <a onclick="sv('v-profile')" data-i18n="nav_jobs">Find Jobs</a>
+    <a onclick="sv('v-industries')" data-i18n="nav_industries">Industries</a>
+    <a onclick="sv('v-about')" data-i18n="nav_about">About Us</a>
+    <a onclick="sv('v-contact')" data-i18n="nav_contact">Contact</a>
+    <div class="lang-switcher" id="lang-switcher">
+      <button class="lang-btn" id="lang-btn" onclick="toggleLang()">
+        <span class="lang-flag" id="lang-flag">🇬🇧</span>
+        <span id="lang-label">EN</span>
+        <span style="font-size:9px;opacity:.6;">▼</span>
+      </button>
+      <div class="lang-dropdown" id="lang-dropdown">
+        <div class="lang-opt active" onclick="setLang('en')"><span>🇬🇧</span> English<span class="lang-check" id="lc-en">✓</span></div>
+        <div class="lang-opt" onclick="setLang('no')"><span>🇳🇴</span> Norsk<span class="lang-check" id="lc-no"></span></div>
+        <div class="lang-opt" onclick="setLang('sv')"><span>🇸🇪</span> Svenska<span class="lang-check" id="lc-sv"></span></div>
+        <div class="lang-opt" onclick="setLang('da')"><span>🇩🇰</span> Dansk<span class="lang-check" id="lc-da"></span></div>
+      </div>
+    </div>
+    <a class="nav-pill" onclick="sv('v-profile')" data-i18n="nav_start">Get Started →</a>
   </div>
 </nav>
 
 <!-- ══ LANDING ══ -->
 <div id="v-landing" class="view active">
   <div class="hero">
-    <div class="eyebrow">AI-powered career platform</div>
-    <h1>Land your<br><em>dream job</em></h1>
-    <p class="hero-sub">Find open positions, tailor your application, and practice with an AI interviewer — all in one place.</p>
-    <button class="hero-cta" onclick="sv('v-profile')">Build your profile →</button>
-    <p class="hero-note">Free to use · No account required</p>
+    <div class="eyebrow" data-i18n="hero_eyebrow">AI-powered career platform</div>
+    <h1 data-i18n="hero_h1">Land your<br><em>dream job</em></h1>
+    <p class="hero-sub" data-i18n="hero_sub">Find open positions, tailor your application, and practice with an AI interviewer — all in one place.</p>
+    <button class="hero-cta" onclick="sv('v-profile')" data-i18n="hero_cta">Build your profile →</button>
+    <p class="hero-note" data-i18n="hero_note">Free to use · No account required</p>
   </div>
   <div class="stats-row">
-    <div><div class="stat-n">10+</div><div class="stat-l">Industries</div></div>
-    <div><div class="stat-n">50+</div><div class="stat-l">Specialisations</div></div>
-    <div><div class="stat-n">200+</div><div class="stat-l">Interview questions</div></div>
-    <div><div class="stat-n">AI</div><div class="stat-l">Mock interviews</div></div>
+    <div><div class="stat-n">10+</div><div class="stat-l" data-i18n="stat_ind">Industries</div></div>
+    <div><div class="stat-n">50+</div><div class="stat-l" data-i18n="stat_spec">Specialisations</div></div>
+    <div><div class="stat-n">200+</div><div class="stat-l" data-i18n="stat_qs">Interview questions</div></div>
+    <div><div class="stat-n">AI</div><div class="stat-l" data-i18n="stat_mock">Mock interviews</div></div>
   </div>
   <div class="features">
-    <div class="f-label">What you get</div>
-    <div class="f-h">Everything you need to succeed</div>
-    <p class="f-sub">From finding the right job to acing the final round</p>
+    <div class="f-label" data-i18n="feat_label">What you get</div>
+    <div class="f-h" data-i18n="feat_h">Everything you need to succeed</div>
+    <p class="f-sub" data-i18n="feat_sub">From finding the right job to acing the final round</p>
     <div class="feat-grid">
-      <div class="feat-card"><div class="feat-ic">🔍</div><h3>Live Job Search</h3><p>Openings across Finn.no, LinkedIn and more — filtered for your profile.</p></div>
-      <div class="feat-card"><div class="feat-ic">📄</div><h3>CV & Cover Letter</h3><p>AI-tailored tips and draft cover letters for the specific role.</p></div>
-      <div class="feat-card"><div class="feat-ic">🎯</div><h3>Interview Prep</h3><p>Role-specific Q&A with recruiter-level answer tips.</p></div>
-      <div class="feat-card"><div class="feat-ic">🧩</div><h3>Case Training</h3><p>Realistic cases with step-by-step solution frameworks.</p></div>
-      <div class="feat-card"><div class="feat-ic">🤖</div><h3>AI Mock Interview</h3><p>Practice face-to-face with an AI recruiter personalised to your CV.</p></div>
+      <div class="feat-card"><div class="feat-ic">🔍</div><h3 data-i18n="feat1_h">Live Job Search</h3><p data-i18n="feat1_p">Openings across Finn.no, LinkedIn and more — filtered for your profile.</p></div>
+      <div class="feat-card"><div class="feat-ic">📄</div><h3 data-i18n="feat2_h">CV & Cover Letter</h3><p data-i18n="feat2_p">AI-tailored tips and draft cover letters for the specific role.</p></div>
+      <div class="feat-card"><div class="feat-ic">🎯</div><h3 data-i18n="feat3_h">Interview Prep</h3><p data-i18n="feat3_p">Role-specific Q&A with recruiter-level answer tips.</p></div>
+      <div class="feat-card"><div class="feat-ic">🧩</div><h3 data-i18n="feat4_h">Case Training</h3><p data-i18n="feat4_p">Realistic cases with step-by-step solution frameworks.</p></div>
+      <div class="feat-card"><div class="feat-ic">🤖</div><h3 data-i18n="feat5_h">AI Mock Interview</h3><p data-i18n="feat5_p">Practice face-to-face with an AI recruiter personalised to your CV.</p></div>
     </div>
   </div>
   <div class="how-section">
     <div class="how-inner">
-      <div class="f-label" style="color:var(--text3)">How it works</div>
-      <div class="f-h" style="color:#fff">Your complete interview pipeline</div>
-      <p class="f-sub" style="color:var(--text3)">Six steps from profile to offer</p>
+      <div class="f-label" style="color:var(--text3)" data-i18n="how_label">How it works</div>
+      <div class="f-h" style="color:#fff" data-i18n="how_h">Your complete interview pipeline</div>
+      <p class="f-sub" style="color:var(--text3)" data-i18n="how_sub">Six steps from profile to offer</p>
       <div class="pip-steps">
-        <div class="pip-s"><div class="pip-num">1</div><div class="pip-title">Profile</div><div class="pip-sub">Your background</div></div>
-        <div class="pip-s"><div class="pip-num">2</div><div class="pip-title">Find Jobs</div><div class="pip-sub">Live openings</div></div>
-        <div class="pip-s"><div class="pip-num">3</div><div class="pip-title">CV & Letter</div><div class="pip-sub">Tailor your docs</div></div>
-        <div class="pip-s"><div class="pip-num">4</div><div class="pip-title">1st Interview</div><div class="pip-sub">Q&A prep</div></div>
-        <div class="pip-s"><div class="pip-num">5</div><div class="pip-title">Case Round</div><div class="pip-sub">Case frameworks</div></div>
-        <div class="pip-s"><div class="pip-num">6</div><div class="pip-title">Mock Interview</div><div class="pip-sub">AI face-to-face</div></div>
+        <div class="pip-s"><div class="pip-num">1</div><div class="pip-title" data-i18n="pip1">Profile</div><div class="pip-sub" data-i18n="pip1s">Your background</div></div>
+        <div class="pip-s"><div class="pip-num">2</div><div class="pip-title" data-i18n="pip2">Find Jobs</div><div class="pip-sub" data-i18n="pip2s">Live openings</div></div>
+        <div class="pip-s"><div class="pip-num">3</div><div class="pip-title" data-i18n="pip3">CV & Letter</div><div class="pip-sub" data-i18n="pip3s">Tailor your docs</div></div>
+        <div class="pip-s"><div class="pip-num">4</div><div class="pip-title" data-i18n="pip4">1st Interview</div><div class="pip-sub" data-i18n="pip4s">Q&A prep</div></div>
+        <div class="pip-s"><div class="pip-num">5</div><div class="pip-title" data-i18n="pip5">Case Round</div><div class="pip-sub" data-i18n="pip5s">Case frameworks</div></div>
+        <div class="pip-s"><div class="pip-num">6</div><div class="pip-title" data-i18n="pip6">Mock Interview</div><div class="pip-sub" data-i18n="pip6s">AI face-to-face</div></div>
       </div>
     </div>
   </div>
   <footer><div class="fi">
     <div class="fl">Career<span>Prep</span></div>
-    <div class="flinks"><a onclick="sv('v-industries')">Industries</a><a onclick="sv('v-about')">About</a><a onclick="sv('v-contact')">Contact</a></div>
+    <div class="flinks"><a onclick="sv('v-industries')" data-i18n="nav_industries">Industries</a><a onclick="sv('v-about')" data-i18n="nav_about">About</a><a onclick="sv('v-contact')" data-i18n="nav_contact">Contact</a></div>
     <div class="fcopy">Built for students · 2026</div>
   </div></footer>
 </div>
 
-<!-- ══ INDUSTRIES EXPLORER ══ -->
+<!-- ══ INDUSTRIES ══ -->
 <div id="v-industries" class="view">
   <div class="ind-hero">
-    <div class="eyebrow" style="margin-bottom:1rem;">Industry Guide</div>
-    <h1>Explore industries</h1>
-    <p>Dive deep into each sector — business areas, typical tasks, key employers, and what it takes to get hired.</p>
+    <div class="eyebrow" style="margin-bottom:1rem;" data-i18n="ind_eyebrow">Industry Guide</div>
+    <h1 data-i18n="ind_h">Explore industries</h1>
+    <p data-i18n="ind_sub">Dive deep into each sector — business areas, typical tasks, key employers, and what it takes to get hired.</p>
   </div>
   <div class="ind-layout">
-    <div class="ind-sidebar">
-      <h3>Select an industry</h3>
-      <div id="ind-nav"></div>
-    </div>
-    <div class="ind-main" id="ind-main"></div>
+    <div class="ind-sidebar"><h3 data-i18n="ind_select">Select an industry</h3><div id="ind-nav"></div></div>
+    <div id="ind-main"></div>
   </div>
 </div>
 
@@ -388,11 +432,9 @@ footer{background:var(--navy);padding:2.5rem 3rem;border-top:1px solid var(--nav
     <p>Over the following semester, in between lectures on corporate valuation and late-night study sessions at CBS library, Fredrik started building. He interviewed 40+ students who had gone through finance and consulting recruitment in Scandinavia. He spoke to recruiters at DNB, McKinsey Oslo, Deloitte, and PwC. He mapped every step of every process.</p>
     <p>The pattern was always the same: students were smart and hardworking, but they were preparing with the wrong tools — generic, non-specific, and not adapted to the Nordic market.</p>
     <h2>CareerPrep is born</h2>
-    <p>CareerPrep launched in early 2026 as a simple side project. Within three months, 800+ Scandinavian students had used it to prepare for interviews at top firms. One of them landed the Goldman role Fredrik had missed. He sent Fredrik a bottle of Champagne.</p>
-    <p>Today CareerPrep is the go-to preparation platform for students at BI, NHH, CBS, SSE and other leading Scandinavian business schools — with role-specific prep, live job listings, and an AI mock interviewer that actually reads your CV.</p>
+    <p>CareerPrep launched in early 2026 as a side project. Within three months, 800+ Scandinavian students had used it to prepare for interviews at top firms. One of them landed the Goldman role Fredrik had missed. He sent Fredrik a bottle of Champagne.</p>
+    <p>Today CareerPrep is the go-to preparation platform for students at BI, NHH, CBS, SSE and other leading Scandinavian business schools — with role-specific prep, live job listings, and an AI mock interviewer that reads your CV.</p>
     <div class="highlight">"We're not trying to replace hard work. We're trying to make sure your hard work is pointed in exactly the right direction." — Fredrik Bjørnson, Founder</div>
-    <h2>What's next</h2>
-    <p>We're working on full AI integration (so the mock interviewer actually responds to your specific answers), live job scraping across Finn.no, LinkedIn and Glassdoor, and partnerships with companies so you get insider recruiter data directly on the platform. If you want to be part of it — reach out.</p>
   </div>
   <footer><div class="fi"><div class="fl">Career<span>Prep</span></div><div class="flinks"><a onclick="sv('v-landing')">Home</a><a onclick="sv('v-contact')">Contact</a></div><div class="fcopy">Built for students · 2026</div></div></footer>
 </div>
@@ -400,9 +442,9 @@ footer{background:var(--navy);padding:2.5rem 3rem;border-top:1px solid var(--nav
 <!-- ══ CONTACT ══ -->
 <div id="v-contact" class="view">
   <div class="page-hero"><div class="page-hero-in">
-    <button class="back" onclick="sv('v-landing')">← Back</button>
-    <h1>Get in touch</h1>
-    <p>Questions, feedback or partnership inquiries — we'd love to hear from you.</p>
+    <button class="back" onclick="sv('v-landing')">← <span data-i18n="back">Back</span></button>
+    <h1 data-i18n="contact_h">Get in touch</h1>
+    <p data-i18n="contact_sub">Questions, feedback or partnership inquiries — we'd love to hear from you.</p>
   </div></div>
   <div class="contact-body">
     <div class="contact-card">
@@ -418,19 +460,19 @@ footer{background:var(--navy);padding:2.5rem 3rem;border-top:1px solid var(--nav
 <!-- ══ PROFILE ══ -->
 <div id="v-profile" class="view">
   <div class="page-hero"><div class="page-hero-in">
-    <button class="back" onclick="sv('v-landing')">← Back</button>
-    <h1>Build your profile</h1>
-    <p>Tell us about your background and we'll find the most relevant open positions for you.</p>
+    <button class="back" onclick="sv('v-landing')">← <span data-i18n="back">Back</span></button>
+    <h1 data-i18n="profile_h">Build your profile</h1>
+    <p data-i18n="profile_sub">Tell us about your background and we'll find the most relevant open positions for you.</p>
   </div></div>
   <div class="form-wrap">
     <div class="form-card">
-      <h2>Academic Background</h2>
+      <h2 data-i18n="academic_bg">Academic Background</h2>
       <div class="form-row">
-        <div class="fg"><label>Degree level</label><select><option>Bachelor's</option><option selected>Master's</option><option>MBA</option><option>PhD</option></select></div>
-        <div class="fg"><label>Field of study</label><select><option selected>Finance</option><option>Economics</option><option>Business Administration</option><option>Accounting</option><option>Marketing</option><option>Computer Science</option><option>Engineering</option><option>Law</option><option>Psychology / HR</option></select></div>
+        <div class="fg"><label data-i18n="degree">Degree level</label><select><option>Bachelor's</option><option selected>Master's</option><option>MBA</option><option>PhD</option></select></div>
+        <div class="fg"><label data-i18n="field">Field of study</label><select><option selected>Finance</option><option>Economics</option><option>Business Administration</option><option>Accounting</option><option>Marketing</option><option>Computer Science</option><option>Engineering</option><option>Law</option><option>Psychology / HR</option></select></div>
       </div>
       <div class="form-row">
-        <div class="fg"><label>Graduation year</label>
+        <div class="fg"><label data-i18n="grad_year">Graduation year</label>
           <select>
             <option>Currently enrolled</option>
             <option selected>2026 (this year)</option>
@@ -438,15 +480,22 @@ footer{background:var(--navy);padding:2.5rem 3rem;border-top:1px solid var(--nav
             <option>2025</option><option>2024</option><option>2023 or earlier</option>
           </select>
         </div>
-        <div class="fg"><label>Years of experience</label><select><option selected>0 – internships only</option><option>1–2 years</option><option>3–4 years</option><option>5+ years</option></select></div>
+        <div class="fg"><label data-i18n="exp">Years of experience</label><select><option selected>0 – internships only</option><option>1–2 years</option><option>3–4 years</option><option>5+ years</option></select></div>
       </div>
       <div class="form-row">
-        <div class="fg"><label>Position type</label><select><option selected>Full-time position</option><option>Internship / Summer analyst</option><option>Both</option></select></div>
-        <div class="fg"><label>Country</label><select><option selected>Norway</option><option>Sweden</option><option>Denmark</option><option>United Kingdom</option><option>Germany</option><option>Netherlands</option></select></div>
+        <div class="fg"><label data-i18n="pos_type">Position type</label><select><option selected>Full-time position</option><option>Internship / Summer analyst</option><option>Both</option></select></div>
       </div>
     </div>
+
+    <!-- LOCATION -->
     <div class="form-card">
-      <h2>Target Industry</h2>
+      <h2 data-i18n="location_pref">Location Preferences</h2>
+      <p style="font-size:13px;color:var(--text2);margin-bottom:1.2rem;" data-i18n="location_hint">Select countries and then choose specific cities. You can mix cities across countries.</p>
+      <div id="location-selector"></div>
+    </div>
+
+    <div class="form-card">
+      <h2 data-i18n="target_ind">Target Industry</h2>
       <div class="tag-grid" id="industry-tags">
         <button class="tg on" onclick="toggleInd(this,'finance')">Finance & Banking</button>
         <button class="tg" onclick="toggleInd(this,'consulting')">Consulting</button>
@@ -460,42 +509,38 @@ footer{background:var(--navy);padding:2.5rem 3rem;border-top:1px solid var(--nav
         <button class="tg" onclick="toggleInd(this,'energy')">Energy & Sustainability</button>
       </div>
     </div>
-    <div class="form-card"><h2>Preferred Roles</h2><div id="roles-container"></div></div>
-    <button class="submit-btn" onclick="sv('v-jobs')">Find matching jobs →</button>
+    <div class="form-card"><h2 data-i18n="pref_roles">Preferred Roles</h2><div id="roles-container"></div></div>
+    <button class="submit-btn" onclick="sv('v-jobs')" data-i18n="find_jobs">Find matching jobs →</button>
   </div>
 </div>
 
 <!-- ══ JOBS ══ -->
 <div id="v-jobs" class="view">
   <div class="page-hero"><div class="page-hero-in">
-    <button class="back" onclick="sv('v-profile')">← Back to profile</button>
-    <h1>Open positions for you</h1>
-    <p>Based on your profile — Finance · Master's · Norway · Full-time</p>
+    <button class="back" onclick="sv('v-profile')">← <span data-i18n="back_profile">Back to profile</span></button>
+    <h1 data-i18n="jobs_h">Open positions for you</h1>
+    <p id="jobs-context">Based on your profile — Finance · Master's · Oslo, Copenhagen · Full-time</p>
   </div></div>
   <div class="results-layout">
     <div class="filter-panel">
-      <div class="fp-h">Industry</div>
+      <div class="fp-h" data-i18n="industry">Industry</div>
       <label class="fc"><input type="checkbox" checked><span>Finance & Banking</span><span class="fc-n">10</span></label>
       <label class="fc"><input type="checkbox" checked><span>Consulting</span><span class="fc-n">8</span></label>
       <label class="fc"><input type="checkbox"><span>Audit (Big 4)</span><span class="fc-n">7</span></label>
       <label class="fc"><input type="checkbox"><span>Private Equity</span><span class="fc-n">4</span></label>
-      <label class="fc"><input type="checkbox"><span>Asset Management</span><span class="fc-n">3</span></label>
-      <div class="fp-h">Position type</div>
-      <label class="fc"><input type="checkbox" checked><span>Full-time</span></label>
-      <label class="fc"><input type="checkbox"><span>Internship / Summer</span></label>
-      <div class="fp-h">Location</div>
-      <label class="fc"><input type="checkbox" checked><span>Oslo</span></label>
-      <label class="fc"><input type="checkbox"><span>Bergen</span></label>
-      <label class="fc"><input type="checkbox"><span>Stockholm</span></label>
-      <label class="fc"><input type="checkbox"><span>Copenhagen</span></label>
-      <div class="fp-h">Status</div>
-      <label class="fc"><input type="checkbox" checked><span>Active</span></label>
-      <label class="fc"><input type="checkbox" checked><span>Expired (reference)</span></label>
+      <div class="fp-h" data-i18n="pos_type">Position type</div>
+      <label class="fc"><input type="checkbox" checked><span data-i18n="fulltime">Full-time</span></label>
+      <label class="fc"><input type="checkbox"><span data-i18n="internship">Internship / Summer</span></label>
+      <div class="fp-h" data-i18n="location">Location</div>
+      <div id="filter-cities"></div>
+      <div class="fp-h" data-i18n="status">Status</div>
+      <label class="fc"><input type="checkbox" checked><span data-i18n="active">Active</span></label>
+      <label class="fc"><input type="checkbox" checked><span data-i18n="expired_ref">Expired (reference)</span></label>
     </div>
     <div class="jobs-panel">
-      <div class="portal-note">⚡ <strong>Live job search coming soon.</strong> Active listings link directly to the posting. Expired listings are kept as reference data for interview prep.</div>
-      <div class="jobs-top"><h2>15 positions</h2><span>Sorted by relevance</span></div>
-      <div class="search-bar"><input type="text" placeholder="Search by title, company or keyword…"><button>Search</button></div>
+      <div class="portal-note">⚡ <strong data-i18n="live_soon">Live job search coming soon.</strong> <span data-i18n="live_note">Active listings link directly to the posting. Expired listings are kept as reference data for interview prep.</span></div>
+      <div class="jobs-top"><h2 id="jobs-count">15 positions</h2><span data-i18n="sorted">Sorted by relevance</span></div>
+      <div class="search-bar"><input type="text" data-i18n-placeholder="search_ph" placeholder="Search by title, company or keyword…"><button data-i18n="search">Search</button></div>
       <div id="job-list"></div>
     </div>
   </div>
@@ -504,9 +549,9 @@ footer{background:var(--navy);padding:2.5rem 3rem;border-top:1px solid var(--nav
 <!-- ══ PREP ══ -->
 <div id="v-prep" class="view">
   <div class="page-hero"><div class="page-hero-in">
-    <button class="back" onclick="sv('v-jobs')">← Back to jobs</button>
+    <button class="back" onclick="sv('v-jobs')">← <span data-i18n="back_jobs">Back to jobs</span></button>
     <h1 id="ph">Prepare for your application</h1>
-    <p id="ps">Work through each step below</p>
+    <p id="ps"></p>
   </div></div>
   <div class="prep-layout">
     <div class="job-banner" id="job-banner"></div>
@@ -530,7 +575,7 @@ footer{background:var(--navy);padding:2.5rem 3rem;border-top:1px solid var(--nav
       </div>
     </div>
     <div id="t-interview" class="pc">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;"><h2 style="font-size:16px;font-weight:600;">First-round interview questions</h2><span class="badge" id="role-badge"></span></div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;"><h2 style="font-size:15px;font-weight:600;" data-i18n="qs_title">First-round interview questions</h2><span class="badge" id="role-badge"></span></div>
       <div id="q-list"></div>
     </div>
     <div id="t-case" class="pc">
@@ -540,9 +585,9 @@ footer{background:var(--navy);padding:2.5rem 3rem;border-top:1px solid var(--nav
     <div id="t-mock" class="pc">
       <div class="cv-sec">
         <h3>🤖 AI Mock Interview <span class="ai-badge">Placeholder</span></h3>
-        <p style="font-size:13px;color:var(--text2);margin-bottom:1rem;">Upload your CV and the AI interviewer will ask questions tailored to your exact background — referencing your specific experiences, just like a real recruiter. Connect a Claude or GPT-4 API key to activate full AI responses.</p>
+        <p style="font-size:13px;color:var(--text2);margin-bottom:1rem;">Upload your CV and the AI interviewer will ask questions tailored to your exact background. Connect a Claude or GPT-4 API key to activate full AI responses.</p>
         <div class="upload-area" onclick="document.getElementById('cv-file').click()">
-          <div style="font-size:28px;margin-bottom:6px;">📄</div>
+          <div style="font-size:26px;margin-bottom:5px;">📄</div>
           <label class="upload-lbl">Click to upload your CV</label>
           <p>PDF or Word · max 5MB</p>
           <input type="file" id="cv-file" accept=".pdf,.doc,.docx" onchange="cvUp(this)">
@@ -568,486 +613,639 @@ footer{background:var(--navy);padding:2.5rem 3rem;border-top:1px solid var(--nav
         <div class="iv-info"><h3>Sarah Mitchell</h3><p>Senior Recruiter · <span id="iv-co"></span></p><span class="live-badge" style="margin-top:4px;display:inline-flex;">Active</span></div>
       </div>
       <div class="chat-area" id="chat-area"></div>
-      <div class="chat-inp">
-        <input type="text" id="chat-input" placeholder="Type your answer…" onkeydown="if(event.key==='Enter')send()">
-        <button class="send-btn" onclick="send()">Send</button>
+      <div class="chat-inp-area">
+        <button class="tips-toggle" onclick="toggleTips()">💡 Show answer tips & STAR method</button>
+        <div class="tips-panel" id="tips-panel">
+          <h4>How to structure a great answer — STAR method</h4>
+          <div class="star-grid">
+            <div class="star-card"><span class="star-letter">S</span><div class="star-word">Situation</div><div class="star-desc">Set the scene briefly</div></div>
+            <div class="star-card"><span class="star-letter">T</span><div class="star-word">Task</div><div class="star-desc">Your specific responsibility</div></div>
+            <div class="star-card"><span class="star-letter">A</span><div class="star-word">Action</div><div class="star-desc">What YOU did — be specific</div></div>
+            <div class="star-card"><span class="star-letter">R</span><div class="star-word">Result</div><div class="star-desc">Quantify the outcome</div></div>
+          </div>
+          <div class="example-box">
+            <strong>Example — "Tell me about a time you worked under pressure"</strong>
+            <em>S:</em> "During my internship at DNB, we had a client deadline moved up by 48 hours."<br>
+            <em>T:</em> "I was responsible for the financial model and presentation slides."<br>
+            <em>A:</em> "I restructured the model to automate 3 manual calculations, stayed late two nights, and aligned with the senior analyst each morning."<br>
+            <em>R:</em> "We delivered on time. The client approved the proposal and it led to a NOK 200m mandate."
+          </div>
+        </div>
+        <div class="chat-inp">
+          <input type="text" id="chat-input" placeholder="Type your answer…" onkeydown="if(event.key==='Enter')send()">
+          <button class="send-btn" onclick="send()">Send</button>
+        </div>
       </div>
     </div>
     <div class="iv-sidebar">
       <div class="ss-h">Progress</div>
       <div id="prog-list"></div>
       <div class="ss-h" style="margin-top:1.2rem;">Performance</div>
-      <div class="score-card"><div class="score-n" id="score-n">—</div><div class="score-l">Overall score</div><div id="score-bars" style="margin-top:.75rem;"></div></div>
+      <div class="score-card"><div class="score-n" id="score-n">—</div><div class="score-l">Overall score</div><div id="score-bars" style="margin-top:.7rem;"></div></div>
       <div class="ss-h" style="margin-top:1.2rem;">Tips</div>
-      <ul class="tip-list" style="font-size:12px;"><li>Use STAR method for behavioural questions</li><li>Keep answers under 90 seconds</li><li>Quantify impact with numbers</li><li>Show you've researched the company</li></ul>
+      <ul class="tip-list" style="font-size:12px;"><li>Use STAR for behavioural questions</li><li>Keep answers under 90 seconds</li><li>Quantify impact with numbers</li><li>Show you've researched the company</li></ul>
     </div>
   </div>
 </div>
 
 <script>
-/* ══════════════════════
-   SMOOTH NAVIGATION
-══════════════════════ */
-function sv(id){
-  const current = document.querySelector('.view.active');
-  if(current && current.id !== id){
-    current.style.opacity = '0';
-    current.style.transform = 'translateY(-6px)';
-    setTimeout(()=>{
-      current.classList.remove('active');
-      current.style.display = 'none';
-      current.style.opacity = '';
-      current.style.transform = '';
-      show(id);
-    }, 200);
-  } else { show(id); }
-}
-function show(id){
-  const el = document.getElementById(id);
-  el.style.display = 'block';
-  el.style.opacity = '0';
-  el.style.transform = 'translateY(8px)';
-  el.classList.add('active');
-  requestAnimationFrame(()=>{
-    requestAnimationFrame(()=>{
-      el.style.transition = 'opacity .35s ease, transform .35s ease';
-      el.style.opacity = '1';
-      el.style.transform = 'translateY(0)';
-    });
-  });
-  window.scrollTo({top:0, behavior:'smooth'});
-  if(id === 'v-industries') renderIndNav();
-  if(id === 'v-interview') setupIV();
-}
-
-/* ══════════════════════
-   INDUSTRIES DATA
-══════════════════════ */
-const INDUSTRIES = [
-  { key:'finance', ic:'🏦', label:'Finance & Banking',
-    desc:'Investment banking, capital markets, and corporate advisory across Scandinavian and global institutions.',
-    areas:[
-      { name:'M&A / Investment Banking', desc:'Advisory on mergers, acquisitions and divestitures',
-        tasks:['Building financial models (DCF, LBO, comparable companies)','Preparing pitch books and information memoranda','Running due diligence processes','Coordinating with lawyers, accountants and management','Presenting to boards and management teams'],
-        companies:['Goldman Sachs Oslo','Carnegie','ABG Sundal Collier','Nordea Investment Banking','Arctic Securities','Fearnley Securities','SpareBank 1 Markets'] },
-      { name:'Corporate Finance & CFO Advisory', desc:'Strategic financial advice to corporates and CFOs',
-        tasks:['Capital structure analysis and optimisation','Refinancing and debt advisory','Working capital management','Board-level financial reporting','IPO and listing readiness'],
-        companies:['DNB Markets','Danske Bank Corporate Finance','Handelsbanken Capital Markets','Pareto Securities'] },
-      { name:'Equity Research', desc:'Covering listed companies and producing investment recommendations',
-        tasks:['Financial modelling and forecasting','Writing research notes and initiations','Meeting with company management','Presenting investment cases to portfolio managers','Monitoring sector news and data'],
-        companies:['Pareto Securities','ABG Sundal Collier','DNB Markets','Arctic Securities','Nordea Equities'] },
-      { name:'Capital Markets (ECM/DCM)', desc:'Structuring and executing equity and debt issuances',
-        tasks:['Structuring bond and equity issuances','Investor roadshows and bookbuilding','Pricing and allocation decisions','Regulatory and prospectus work','Post-deal investor relations support'],
-        companies:['Nordea','DNB','SEB','Handelsbanken','Swedbank'] }
-    ]
+/* ══ I18N ══ */
+const LANGS = {
+  en:{flag:'🇬🇧',label:'EN',
+    nav_jobs:'Find Jobs',nav_industries:'Industries',nav_about:'About Us',nav_contact:'Contact',nav_start:'Get Started →',
+    back:'Back',back_profile:'Back to profile',back_jobs:'Back to jobs',
+    hero_eyebrow:'AI-powered career platform',hero_h1:'Land your<br><em>dream job</em>',
+    hero_sub:'Find open positions, tailor your application, and practice with an AI interviewer — all in one place.',
+    hero_cta:'Build your profile →',hero_note:'Free to use · No account required',
+    stat_ind:'Industries',stat_spec:'Specialisations',stat_qs:'Interview questions',stat_mock:'Mock interviews',
+    feat_label:'What you get',feat_h:'Everything you need to succeed',feat_sub:'From finding the right job to acing the final round',
+    feat1_h:'Live Job Search',feat1_p:'Openings across Finn.no, LinkedIn and more — filtered for your profile.',
+    feat2_h:'CV & Cover Letter',feat2_p:'AI-tailored tips and draft cover letters for the specific role.',
+    feat3_h:'Interview Prep',feat3_p:'Role-specific Q&A with recruiter-level answer tips.',
+    feat4_h:'Case Training',feat4_p:'Realistic cases with step-by-step solution frameworks.',
+    feat5_h:'AI Mock Interview',feat5_p:'Practice face-to-face with an AI recruiter personalised to your CV.',
+    how_label:'How it works',how_h:'Your complete interview pipeline',how_sub:'Six steps from profile to offer',
+    pip1:'Profile',pip1s:'Your background',pip2:'Find Jobs',pip2s:'Live openings',pip3:'CV & Letter',pip3s:'Tailor your docs',pip4:'1st Interview',pip4s:'Q&A prep',pip5:'Case Round',pip5s:'Case frameworks',pip6:'Mock Interview',pip6s:'AI face-to-face',
+    ind_eyebrow:'Industry Guide',ind_h:'Explore industries',ind_sub:'Dive deep into each sector — business areas, typical tasks, key employers, and what it takes to get hired.',ind_select:'Select an industry',
+    contact_h:'Get in touch',contact_sub:"Questions, feedback or partnership inquiries — we'd love to hear from you.",
+    profile_h:'Build your profile',profile_sub:"Tell us about your background and we'll find the most relevant open positions for you.",
+    academic_bg:'Academic Background',degree:'Degree level',field:'Field of study',grad_year:'Graduation year',exp:'Years of experience',pos_type:'Position type',
+    location_pref:'Location Preferences',location_hint:'Select countries and choose specific cities. You can mix cities across countries.',
+    target_ind:'Target Industry',pref_roles:'Preferred Roles',find_jobs:'Find matching jobs →',
+    jobs_h:'Open positions for you',industry:'Industry',fulltime:'Full-time',internship:'Internship / Summer',location:'Location',status:'Status',active:'Active',expired_ref:'Expired (reference)',
+    live_soon:'Live job search coming soon.',live_note:'Active listings link directly to the posting. Expired listings are kept as reference data.',
+    sorted:'Sorted by relevance',search:'Search',search_ph:'Search by title, company or keyword…',qs_title:'First-round interview questions',
+    sarah_intro:"Good morning! I'm Sarah Mitchell, Senior Recruiter. Let's start — tell me about yourself and why you're interested in this role.",
+    feedback_short:"That's quite brief — can you expand on that? Use the STAR method: give me a specific situation, your exact actions, and the measurable result.",
+    feedback_vague:"I appreciate your answer, but I'd like more specifics. Can you give me a concrete example from your own experience to back that up?",
+    feedback_good:"Good answer — you gave a clear structure and concrete details. Let me push a bit further: ",
+    next_q_prefix:"Thanks for that. Moving on — ",
+    final_msg:"Excellent — that wraps up our mock interview! 🎉 In the full AI-powered version, I'd give you detailed feedback on each answer and a breakdown score. Connect a Claude or GPT-4 API key to unlock this.",
   },
-  { key:'consulting', ic:'📊', label:'Consulting',
-    desc:'Strategy, management and technology consulting at top Scandinavian and global firms.',
-    areas:[
-      { name:'Strategy Consulting', desc:'High-level strategic advice to C-suite clients',
-        tasks:['Market sizing and competitive analysis','Business model design and transformation','Organic and inorganic growth strategy','Post-merger integration planning','Board-level presentation delivery'],
-        companies:['McKinsey Oslo','Boston Consulting Group','Bain & Company','Oliver Wyman','Roland Berger'] },
-      { name:'Deloitte — Technology Transformation', desc:'Large-scale digital and IT transformation programmes',
-        tasks:['ERP strategy and implementation (SAP, Oracle)','Cloud migration and architecture','IT due diligence for M&A transactions','Digital operating model design','Change management and adoption'],
-        companies:['Deloitte Norway','Deloitte Sweden','Deloitte Denmark'] },
-      { name:'Deloitte — M&A & Valuation Advisory', desc:'Transaction support, valuation and financial due diligence',
-        tasks:['Financial due diligence on acquisitions','Business valuation (DCF, multiples, PPA)','Commercial due diligence','Post-merger integration support','Restructuring advisory'],
-        companies:['Deloitte Norway','Deloitte Sweden'] },
-      { name:'Deloitte — Business Transformation', desc:'End-to-end operational and organisational transformation',
-        tasks:['Operating model redesign','Finance transformation (FP&A, reporting)','Process optimisation and automation','HR transformation and workforce planning','Regulatory and compliance transformation'],
-        companies:['Deloitte Norway','Deloitte Sweden','Deloitte Denmark'] },
-      { name:'PwC & EY — Management Consulting', desc:'People, operations and finance advisory',
-        tasks:['Organisational design and restructuring','Supply chain optimisation','Regulatory strategy and compliance','Sustainability and ESG strategy','Finance function transformation'],
-        companies:['PwC Norway','EY Norway','PwC Sweden','EY Sweden'] },
-      { name:'Accenture / Capgemini — Tech Consulting', desc:'Technology-led transformation and implementation',
-        tasks:['Digital strategy and architecture','Agile transformation','Data and AI implementation','Cybersecurity consulting','Cloud strategy'],
-        companies:['Accenture Norway','Capgemini Norway','Infosys','Wipro'] }
-    ]
+  no:{flag:'🇳🇴',label:'NO',
+    nav_jobs:'Finn jobber',nav_industries:'Bransjer',nav_about:'Om oss',nav_contact:'Kontakt',nav_start:'Kom i gang →',
+    back:'Tilbake',back_profile:'Tilbake til profil',back_jobs:'Tilbake til jobber',
+    hero_eyebrow:'AI-drevet karriereplattform',hero_h1:'Få<br><em>drømmejobben</em>',
+    hero_sub:'Finn ledige stillinger, tilpass søknaden din og tren med en AI-intervjuer — alt på ett sted.',
+    hero_cta:'Bygg din profil →',hero_note:'Gratis å bruke · Ingen konto nødvendig',
+    stat_ind:'Bransjer',stat_spec:'Spesialiseringer',stat_qs:'Intervjuspørsmål',stat_mock:'Prøveintervjuer',
+    feat_label:'Hva du får',feat_h:'Alt du trenger for å lykkes',feat_sub:'Fra å finne riktig jobb til å bestå finalerunden',
+    feat1_h:'Jobbsøk',feat1_p:'Ledige stillinger fra Finn.no, LinkedIn og mer — filtrert etter din profil.',
+    feat2_h:'CV & søknadsbrev',feat2_p:'AI-tilpassede tips og utkast til søknadsbrev for den spesifikke rollen.',
+    feat3_h:'Intervjuforberedelse',feat3_p:'Rollebaserte spørsmål og svar med tips fra rekrutterere.',
+    feat4_h:'Case-trening',feat4_p:'Realistiske cases med steg-for-steg løsningsforslag.',
+    feat5_h:'AI Prøveintervju',feat5_p:'Øv ansikt-til-ansikt med en AI-rekrutterer tilpasset din CV.',
+    how_label:'Slik fungerer det',how_h:'Din komplette intervjuprosess',how_sub:'Seks steg fra profil til tilbud',
+    pip1:'Profil',pip1s:'Din bakgrunn',pip2:'Finn jobber',pip2s:'Ledige stillinger',pip3:'CV & brev',pip3s:'Tilpass dokumentene',pip4:'1. intervju',pip4s:'Q&A-forberedelse',pip5:'Caserunde',pip5s:'Caserammeverk',pip6:'Prøveintervju',pip6s:'AI ansikt-til-ansikt',
+    ind_eyebrow:'BransjeGuide',ind_h:'Utforsk bransjer',ind_sub:'Gå i dybden på hver sektor — forretningsområder, typiske arbeidsoppgaver og nøkkelarbeidsgivere.',ind_select:'Velg en bransje',
+    contact_h:'Ta kontakt',contact_sub:'Spørsmål, tilbakemeldinger eller partnerskap — vi hører gjerne fra deg.',
+    profile_h:'Bygg din profil',profile_sub:'Fortell oss om din bakgrunn så finner vi de mest relevante stillingene for deg.',
+    academic_bg:'Akademisk bakgrunn',degree:'Utdanningsnivå',field:'Studieretning',grad_year:'Uteksaminert år',exp:'Arbeidserfaring',pos_type:'Stillingstype',
+    location_pref:'Lokasjonsvalg',location_hint:'Velg land og deretter spesifikke byer. Du kan kombinere byer på tvers av land.',
+    target_ind:'Målbransje',pref_roles:'Foretrukne roller',find_jobs:'Finn matchende jobber →',
+    jobs_h:'Ledige stillinger for deg',industry:'Bransje',fulltime:'Fast stilling',internship:'Internship / Sommerstilling',location:'Sted',status:'Status',active:'Aktive',expired_ref:'Utløpte (referanse)',
+    live_soon:'Direktesøk kommer snart.',live_note:'Aktive annonser lenker direkte til stillingen. Utløpte annonser brukes som referansedata.',
+    sorted:'Sortert etter relevans',search:'Søk',search_ph:'Søk på tittel, selskap eller nøkkelord…',qs_title:'Vanlige første-runde spørsmål',
+    sarah_intro:"God morgen! Jeg er Sarah Mitchell, Senior Rekrutterer. La oss starte — fortell meg om deg selv og hvorfor du er interessert i denne stillingen.",
+    feedback_short:"Det var ganske kort — kan du utdype? Bruk STAR-metoden: gi meg en konkret situasjon, dine spesifikke handlinger og et målbart resultat.",
+    feedback_vague:"Jeg setter pris på svaret ditt, men jeg vil gjerne ha mer konkrete eksempler. Kan du gi meg et spesifikt eksempel fra din egen erfaring?",
+    feedback_good:"Godt svar — du hadde klar struktur og konkrete detaljer. La meg utfordre deg litt mer: ",
+    next_q_prefix:"Takk for det. Videre — ",
+    final_msg:"Utmerket — vi er ferdig med prøveintervjuet! 🎉 I den fullstendige AI-drevne versjonen ville jeg gitt deg detaljert tilbakemelding på hvert svar. Koble til en API-nøkkel for å låse opp dette.",
   },
-  { key:'audit', ic:'📋', label:'Audit & Accounting',
-    desc:'Assurance, advisory and tax services at the Big 4 and mid-tier firms.',
-    areas:[
-      { name:'External Audit (Big 4)', desc:'Statutory audit of financial statements for listed and private companies',
-        tasks:['Testing financial statement assertions','Reviewing accounting policies and estimates','Assessing internal controls','Writing audit reports and management letters','Coordinating with client finance teams'],
-        companies:['Deloitte Norway','PwC Norway','EY Norway','KPMG Norway','BDO Norway'] },
-      { name:'Transaction Services / Deals', desc:'Financial due diligence and deal support',
-        tasks:['Quality of earnings analysis','Working capital normalisation','Net debt and cash flow analysis','Identifying financial risks in targets','Presenting findings to PE and corporate buyers'],
-        companies:['Deloitte Deals','PwC Deals','EY Transaction Advisory','KPMG Deal Advisory'] },
-      { name:'Tax Advisory', desc:'Corporate tax structuring, transfer pricing and M&A tax',
-        tasks:['Corporate tax compliance and planning','Transfer pricing documentation and defence','M&A tax structuring','VAT and indirect tax advisory','International tax and cross-border structuring'],
-        companies:['PwC Tax','EY Tax','Deloitte Tax','KPMG Tax','Advokatfirma Thommessen'] },
-      { name:'Risk & Forensics', desc:'Risk management, internal audit and fraud investigation',
-        tasks:['Internal audit co-sourcing','Fraud investigation and forensic accounting','Anti-money laundering (AML) reviews','Regulatory compliance assessments','IT risk and cybersecurity audits'],
-        companies:['Deloitte Risk Advisory','PwC Risk','EY Forensics','KPMG Risk'] }
-    ]
+  sv:{flag:'🇸🇪',label:'SV',
+    nav_jobs:'Hitta jobb',nav_industries:'Branscher',nav_about:'Om oss',nav_contact:'Kontakt',nav_start:'Kom igång →',
+    back:'Tillbaka',back_profile:'Tillbaka till profil',back_jobs:'Tillbaka till jobb',
+    hero_eyebrow:'AI-drivet karriärverktyg',hero_h1:'Få<br><em>drömjobbet</em>',
+    hero_sub:'Hitta lediga tjänster, skräddarsy din ansökan och träna med en AI-intervjuare — allt på ett ställe.',
+    hero_cta:'Bygg din profil →',hero_note:'Gratis att använda · Inget konto krävs',
+    stat_ind:'Branscher',stat_spec:'Specialiseringar',stat_qs:'Intervjufrågor',stat_mock:'Provintervjuer',
+    feat_label:'Vad du får',feat_h:'Allt du behöver för att lyckas',feat_sub:'Från att hitta rätt jobb till att klara finalrundan',
+    feat1_h:'Jobbsökning',feat1_p:'Lediga tjänster från LinkedIn, Glassdoor och mer — filtrerade för din profil.',
+    feat2_h:'CV & Personligt brev',feat2_p:'AI-anpassade tips och utkast till personliga brev för den specifika rollen.',
+    feat3_h:'Intervjuförberedelse',feat3_p:'Rollspecifika frågor och svar med tips från rekryterare.',
+    feat4_h:'Case-träning',feat4_p:'Realistiska cases med steg-för-steg lösningsförslag.',
+    feat5_h:'AI Provintervju',feat5_p:'Öva ansikte mot ansikte med en AI-rekryterare anpassad efter ditt CV.',
+    how_label:'Så fungerar det',how_h:'Din kompletta intervjuprocess',how_sub:'Sex steg från profil till erbjudande',
+    pip1:'Profil',pip1s:'Din bakgrund',pip2:'Hitta jobb',pip2s:'Lediga tjänster',pip3:'CV & brev',pip3s:'Anpassa dina dokument',pip4:'1:a intervju',pip4s:'Frågor & svar',pip5:'Case-runda',pip5s:'Case-ramverk',pip6:'Provintervju',pip6s:'AI ansikte mot ansikte',
+    ind_eyebrow:'BranschGuide',ind_h:'Utforska branscher',ind_sub:'Dyk djupt i varje sektor — affärsområden, typiska arbetsuppgifter och nyckelarbetsgivare.',ind_select:'Välj en bransch',
+    contact_h:'Kontakta oss',contact_sub:'Frågor, feedback eller partnerförfrågningar — vi hör gärna från dig.',
+    profile_h:'Bygg din profil',profile_sub:'Berätta om din bakgrund så hittar vi de mest relevanta tjänsterna för dig.',
+    academic_bg:'Akademisk bakgrund',degree:'Utbildningsnivå',field:'Studieområde',grad_year:'Examinationsår',exp:'Arbetslivserfarenhet',pos_type:'Tjänstetyp',
+    location_pref:'Platspreferenser',location_hint:'Välj länder och specifika städer. Du kan kombinera städer från olika länder.',
+    target_ind:'Målbransch',pref_roles:'Föredragna roller',find_jobs:'Hitta matchande jobb →',
+    jobs_h:'Lediga tjänster för dig',industry:'Bransch',fulltime:'Heltid',internship:'Praktik / Sommarjobb',location:'Plats',status:'Status',active:'Aktiva',expired_ref:'Utgångna (referens)',
+    live_soon:'Live-jobbsökning kommer snart.',live_note:'Aktiva annonser länkar direkt till tjänsten. Utgångna annonser används som referensdata.',
+    sorted:'Sorterade efter relevans',search:'Sök',search_ph:'Sök på titel, företag eller nyckelord…',qs_title:'Vanliga intervjufrågor (första runda)',
+    sarah_intro:"God morgon! Jag heter Sarah Mitchell och är Senior Rekryterare. Vi börjar — berätta om dig själv och varför du är intresserad av den här rollen.",
+    feedback_short:"Det var ganska kort — kan du utveckla det? Använd STAR-metoden: ge mig en specifik situation, dina exakta handlingar och ett mätbart resultat.",
+    feedback_vague:"Jag uppskattar ditt svar, men jag skulle vilja ha mer specifika exempel. Kan du ge mig ett konkret exempel från din egen erfarenhet?",
+    feedback_good:"Bra svar — du hade en tydlig struktur och konkreta detaljer. Låt mig utmana dig lite: ",
+    next_q_prefix:"Tack för det. Vidare — ",
+    final_msg:"Utmärkt — provintervjun är avslutad! 🎉 I den fullständiga AI-drivna versionen skulle jag ge dig detaljerad feedback på varje svar. Anslut en API-nyckel för att låsa upp detta.",
   },
-  { key:'pe', ic:'💼', label:'Private Equity & VC',
-    desc:'Fund investment, portfolio management and venture financing.',
-    areas:[
-      { name:'Private Equity — Buyout', desc:'Acquiring and growing established companies',
-        tasks:['Deal sourcing and initial screening','Building LBO models and investment cases','Conducting commercial and financial due diligence','Working with portfolio company management teams','Preparing exit processes and investment committee memos'],
-        companies:['FSN Capital','Herkules Capital','Summa Equity','Nordic Capital','EQT','HitecVision'] },
-      { name:'Venture Capital', desc:'Early and growth-stage investment in startups',
-        tasks:['Sourcing and evaluating early-stage startups','Startup financial modelling and valuation','Supporting portfolio companies operationally','Market landscape and competitive analysis','Fundraising and LP reporting'],
-        companies:['Northzone','Alliance Venture','Firda','Investinor','Katapult'] }
-    ]
-  },
-  { key:'am', ic:'📈', label:'Asset Management',
-    desc:'Managing investment portfolios for institutions, pension funds and HNW clients.',
-    areas:[
-      { name:'Investment Analysis (Buy-side)', desc:'Researching and recommending securities for portfolios',
-        tasks:['Fundamental equity and credit analysis','Portfolio construction and risk management','ESG screening and integration','Quantitative modelling and factor analysis','Engaging with company management (IR)'],
-        companies:['Storebrand Asset Management','DNB Asset Management','Holberg Fondene','Alfred Berg','Norges Bank Investment Management (NBIM)'] },
-      { name:'Wealth Management', desc:'Managing assets and advising HNW individuals and families',
-        tasks:['Client portfolio construction and rebalancing','Financial planning and estate structuring','Alternative investment evaluation','Client reporting and relationship management','Tax-efficient investment strategies'],
-        companies:['Formue','Carnegie Private Banking','DNB Private Banking','Nordea Private Banking'] }
-    ]
-  },
-  { key:'re', ic:'🏢', label:'Real Estate',
-    desc:'Property investment, development finance and real estate advisory.',
-    areas:[
-      { name:'Real Estate Finance & Investment', desc:'Financing and investing in commercial and residential property',
-        tasks:['Property valuation and financial modelling','Real estate M&A and portfolio transactions','Development project financing','REIT analysis and investor reporting','Market rent and yield analysis'],
-        companies:['Entra','Norwegian Property','Selvaag','UNION Norsk Næringsmegling','Cushman & Wakefield'] }
-    ]
-  },
-  { key:'marketing', ic:'📣', label:'Marketing & Comms',
-    desc:'Brand strategy, digital marketing and corporate communications.',
-    areas:[
-      { name:'Brand & Market Strategy', desc:'Building and managing brand positioning and market share',
-        tasks:['Brand positioning and architecture work','Consumer research and segmentation','Pricing strategy and revenue modelling','Campaign briefing and creative oversight','Go-to-market planning for new products'],
-        companies:['Orkla','Telenor','Schibsted','Hagen Gruppen','Nordic Choice Hotels'] },
-      { name:'Digital Marketing & Growth', desc:'Performance marketing, SEO and data-driven growth',
-        tasks:['Paid media strategy (Google, Meta, TikTok)','SEO / SEM optimisation','Marketing analytics and attribution','CRM and email marketing automation','Growth hacking and conversion optimisation'],
-        companies:['Finn.no','Komplett','Colonnade','Oda','Kahoot!'] }
-    ]
-  },
-  { key:'hr', ic:'👥', label:'HR & People',
-    desc:'Talent acquisition, organisational development and people analytics.',
-    areas:[
-      { name:'Talent Acquisition & Recruitment', desc:'Attracting and hiring top talent at scale',
-        tasks:['Designing job descriptions and sourcing strategies','Conducting structured interviews and assessments','Campus recruitment and employer branding','Headhunting and executive search','Offer management and onboarding'],
-        companies:['Aker','Equinor','DNB','Telenor','Oslo University Hospital','All Big 4 firms'] },
-      { name:'HR Business Partner (HRBP)', desc:'Strategic HR support to business units',
-        tasks:['Workforce planning and org design','Performance management cycles','Change management and restructuring support','Leadership development','Succession planning and talent reviews'],
-        companies:['Statnett','Kongsberg Gruppen','Statkraft','Posten Norge','Schibsted'] },
-      { name:'Learning & Development', desc:'Building capability and developing people at scale',
-        tasks:['Designing learning programmes and curricula','Running leadership development initiatives','Onboarding programme design','Learning management system (LMS) administration','Measuring learning effectiveness'],
-        companies:['Accenture','Deloitte','DNB','Telenor','Equinor'] }
-    ]
-  },
-  { key:'tech', ic:'💻', label:'Technology',
-    desc:'Product management, software engineering and data science at tech companies and startups.',
-    areas:[
-      { name:'Product Management', desc:'Defining and shipping digital products',
-        tasks:['Writing product specs and user stories','Prioritising roadmap with engineering and design','Analysing user data and running A/B tests','Stakeholder alignment and go-to-market','OKR setting and success measurement'],
-        companies:['Kahoot!','Oda','Kolonial.no','Schibsted Tech','Visma','Aker Solutions Digital'] },
-      { name:'Data Science & Analytics', desc:'Turning data into business insights and models',
-        tasks:['Building predictive models and ML pipelines','Data visualisation and dashboarding','A/B testing and statistical analysis','Data engineering and pipeline maintenance','Communicating insights to business stakeholders'],
-        companies:['Finn.no','Schibsted','DNB Tech','Telenor Analytics','Norsk Hydro Digital'] }
-    ]
-  },
-  { key:'energy', ic:'⚡', label:'Energy & Sustainability',
-    desc:'Energy finance, ESG strategy and sustainability reporting for the transition economy.',
-    areas:[
-      { name:'Energy Finance & Project Finance', desc:'Financing energy infrastructure and transition projects',
-        tasks:['Project finance modelling for renewables','Infrastructure advisory (wind, solar, hydro)','Corporate development and M&A in energy','Commodity trading analytics','Regulatory and permitting analysis'],
-        companies:['Equinor','Statkraft','Hafslund','Aker Clean Hydrogen','Scatec','Fred. Olsen Renewables'] },
-      { name:'ESG & Sustainability Strategy', desc:'Embedding sustainability into business strategy and reporting',
-        tasks:['ESG materiality assessments','Sustainability reporting (GRI, TCFD, CSRD)','Carbon footprint analysis and target setting','Green finance and sustainability-linked bonds','Stakeholder engagement on ESG topics'],
-        companies:['Storebrand','DNB','Equinor','PwC ESG','Deloitte Sustainability','NBIM'] }
-    ]
+  da:{flag:'🇩🇰',label:'DA',
+    nav_jobs:'Find job',nav_industries:'Brancher',nav_about:'Om os',nav_contact:'Kontakt',nav_start:'Kom i gang →',
+    back:'Tilbage',back_profile:'Tilbage til profil',back_jobs:'Tilbage til jobs',
+    hero_eyebrow:'AI-drevet karriereplatform',hero_h1:'Få<br><em>drømmejobbet</em>',
+    hero_sub:'Find ledige stillinger, tilpas din ansøgning og træn med en AI-interviewer — alt på ét sted.',
+    hero_cta:'Byg din profil →',hero_note:'Gratis at bruge · Ingen konto kræves',
+    stat_ind:'Brancher',stat_spec:'Specialiseringer',stat_qs:'Interviewspørgsmål',stat_mock:'Prøveinterviews',
+    feat_label:'Hvad du får',feat_h:'Alt hvad du har brug for',feat_sub:'Fra at finde det rette job til at bestå finalerunden',
+    feat1_h:'Jobsøgning',feat1_p:'Ledige stillinger fra LinkedIn, Jobindex og mere — filtreret til din profil.',
+    feat2_h:'CV & Ansøgning',feat2_p:'AI-tilpassede tips og udkast til ansøgninger til den specifikke rolle.',
+    feat3_h:'Interviewforberedelse',feat3_p:'Rollespecifikke spørgsmål og svar med tips fra rekrutterere.',
+    feat4_h:'Case-træning',feat4_p:'Realistiske cases med trin-for-trin løsningsforslag.',
+    feat5_h:'AI Prøveinterview',feat5_p:'Øv dig ansigt til ansigt med en AI-rekrutterer tilpasset dit CV.',
+    how_label:'Sådan virker det',how_h:'Din komplette interviewproces',how_sub:'Seks trin fra profil til tilbud',
+    pip1:'Profil',pip1s:'Din baggrund',pip2:'Find job',pip2s:'Ledige stillinger',pip3:'CV & brev',pip3s:'Tilpas dine dokumenter',pip4:'1. interview',pip4s:'Spørgsmål & svar',pip5:'Caserunde',pip5s:'Case-rammer',pip6:'Prøveinterview',pip6s:'AI ansigt til ansigt',
+    ind_eyebrow:'BrancheGuide',ind_h:'Udforsk brancher',ind_sub:'Dyk ned i hver sektor — forretningsområder, typiske opgaver og nøglearbejdsgivere.',ind_select:'Vælg en branche',
+    contact_h:'Kontakt os',contact_sub:'Spørgsmål, feedback eller partnerskaber — vi hører gerne fra dig.',
+    profile_h:'Byg din profil',profile_sub:'Fortæl os om din baggrund, så finder vi de mest relevante stillinger til dig.',
+    academic_bg:'Akademisk baggrund',degree:'Uddannelsesniveau',field:'Studieretning',grad_year:'Dimissionsår',exp:'Arbejdserfaring',pos_type:'Stillingstype',
+    location_pref:'Lokationspræferencer',location_hint:'Vælg lande og specifikke byer. Du kan kombinere byer på tværs af lande.',
+    target_ind:'Målbranche',pref_roles:'Foretrukne roller',find_jobs:'Find matchende jobs →',
+    jobs_h:'Ledige stillinger til dig',industry:'Branche',fulltime:'Fuldtid',internship:'Praktik / Sommerstilling',location:'Sted',status:'Status',active:'Aktive',expired_ref:'Udløbne (reference)',
+    live_soon:'Live jobbsøgning kommer snart.',live_note:'Aktive opslag linker direkte til stillingen. Udløbne opslag bruges som referencedata.',
+    sorted:'Sorteret efter relevans',search:'Søg',search_ph:'Søg på titel, virksomhed eller nøgleord…',qs_title:'Typiske 1. rundes spørgsmål',
+    sarah_intro:"God morgen! Jeg er Sarah Mitchell, Senior Rekrutterer. Lad os starte — fortæl mig om dig selv og hvorfor du er interesseret i denne stilling.",
+    feedback_short:"Det var ret kortfattet — kan du uddybe? Brug STAR-metoden: giv mig en konkret situation, dine specifikke handlinger og et målbart resultat.",
+    feedback_vague:"Jeg sætter pris på dit svar, men jeg vil gerne have mere konkrete eksempler. Kan du give mig et specifikt eksempel fra din egen erfaring?",
+    feedback_good:"Godt svar — du havde klar struktur og konkrete detaljer. Lad mig udfordre dig lidt: ",
+    next_q_prefix:"Tak for det. Videre — ",
+    final_msg:"Fremragende — prøveinterviewet er færdigt! 🎉 I den fulde AI-drevne version ville jeg give dig detaljeret feedback på hvert svar. Tilslut en API-nøgle for at låse dette op.",
   }
-];
-
-/* ══════════════════════
-   RENDER INDUSTRIES
-══════════════════════ */
-let activeInd = 'finance';
-
-function renderIndNav(){
-  const nav = document.getElementById('ind-nav');
-  nav.innerHTML = INDUSTRIES.map(i=>`
-    <button class="ind-btn ${i.key===activeInd?'active':''}" onclick="selectInd('${i.key}')">
-      <span class="ind-ic">${i.ic}</span>${i.label}
-    </button>`).join('');
-  renderIndDetail(activeInd);
-}
-
-function selectInd(key){
-  activeInd = key;
-  document.querySelectorAll('.ind-btn').forEach(b=>b.classList.remove('active'));
-  document.querySelectorAll('.ind-btn').forEach(b=>{if(b.textContent.trim().includes(INDUSTRIES.find(i=>i.key===key).label)) b.classList.add('active');});
-  renderIndDetail(key);
-}
-
-function renderIndDetail(key){
-  const ind = INDUSTRIES.find(i=>i.key===key);
-  const main = document.getElementById('ind-main');
-  main.innerHTML = `
-    <div class="ind-detail">
-      <div class="ind-detail-header">
-        <div class="ind-detail-ic">${ind.ic}</div>
-        <div>
-          <h2>${ind.label}</h2>
-          <p>${ind.desc}</p>
-        </div>
-        <div class="ind-coming">🔒 Company data partnerships coming soon</div>
-      </div>
-      <div class="area-grid">
-        ${ind.areas.map((a,i)=>`
-          <div class="area-card" id="area-${key}-${i}" onclick="toggleArea('area-${key}-${i}')">
-            <div class="area-title">${a.name}<span class="chevron">▼</span></div>
-            <div class="area-sub">${a.desc}</div>
-            <div class="area-detail">
-              <h4>Typical tasks</h4>
-              <ul class="task-list">${a.tasks.map(t=>`<li>${t}</li>`).join('')}</ul>
-              <h4>Key employers in Scandinavia</h4>
-              <div class="company-pills">${a.companies.map(c=>`<span class="cpill">${c}</span>`).join('')}</div>
-              <div class="future-badge">🔮 Coming soon: recruiter insights, typical applicant profiles, and what hiring managers actually look for — sourced directly from partner companies.</div>
-            </div>
-          </div>`).join('')}
-      </div>
-    </div>`;
-}
-
-function toggleArea(id){
-  const card = document.getElementById(id);
-  card.classList.toggle('open');
-}
-
-/* ══════════════════════
-   INDUSTRY → ROLES (PROFILE)
-══════════════════════ */
-const INDUSTRY_ROLES = {
-  finance:{label:'Finance & Banking',groups:[{firm:'Investment Banking',roles:['M&A Analyst','Leveraged Finance','ECM / DCM Analyst','Restructuring','Debt Advisory']},{firm:'Corporate Finance',roles:['Corporate Finance Analyst','CFO Advisory','Treasury Analyst','FP&A Analyst','Investor Relations']},{firm:'Markets',roles:['Equity Sales & Trading','Fixed Income Analyst','Derivatives','Structuring','Equity Research']}]},
-  consulting:{label:'Consulting',groups:[{firm:'Strategy',roles:['Strategy Analyst','Corporate Strategy','Growth Strategy','Market Entry','Organisational Design']},{firm:'Deloitte',roles:['Technology Transformation','M&A / Valuation Advisory','Business Transformation','Risk Advisory','Finance Transformation']},{firm:'McKinsey / BCG / Bain',roles:['Business Analyst','Associate Consultant','Operations','Digital Transformation','Sustainability & ESG']},{firm:'PwC / EY',roles:['Management Consulting Analyst','People & Org','Deals Strategy','Supply Chain','Regulatory Strategy']}]},
-  audit:{label:'Audit & Accounting',groups:[{firm:'Big 4 Audit',roles:['External Audit Analyst','IT Audit','Sustainability Assurance']},{firm:'Advisory / Deals',roles:['Transaction Services','Forensic Accounting','Valuation','Due Diligence','Corporate Recovery']},{firm:'Tax',roles:['Corporate Tax','Transfer Pricing','VAT / Indirect Tax','International Tax','M&A Tax']}]},
-  pe:{label:'Private Equity & VC',groups:[{firm:'Private Equity',roles:['PE Analyst','Deal Sourcing','Portfolio Management','LBO Modelling','Value Creation']},{firm:'Venture Capital',roles:['VC Analyst','Startup Due Diligence','Portfolio Support']}]},
-  am:{label:'Asset Management',groups:[{firm:'Buy-side',roles:['Investment Analyst','Portfolio Management','Quantitative Research','Risk Management','ESG Integration']},{firm:'Wealth Management',roles:['Wealth Advisor Analyst','Client Portfolio Manager']}]},
-  re:{label:'Real Estate',groups:[{firm:'Real Estate',roles:['Real Estate Analyst','REIT Analysis','Property Valuation','Real Estate M&A','Development Finance']}]},
-  marketing:{label:'Marketing & Comms',groups:[{firm:'Brand & Strategy',roles:['Brand Manager','Market Strategy Analyst','Consumer Insights','Pricing Strategy']},{firm:'Digital',roles:['Digital Marketing Analyst','Performance Marketing','Growth Marketing','SEO/SEM Specialist']},{firm:'Communications',roles:['Communications Advisor','PR & Media Relations','Corporate Affairs']}]},
-  hr:{label:'HR & People',groups:[{firm:'Talent & Recruitment',roles:['Talent Acquisition Specialist','Campus Recruiter','Executive Search Analyst','Employer Branding']},{firm:'HR Business Partner',roles:['HRBP Analyst','Organisational Development','Change Management','HR Analytics']},{firm:'L&D / C&B',roles:['L&D Analyst','Compensation & Benefits Analyst','People Analytics','Diversity & Inclusion']}]},
-  tech:{label:'Technology',groups:[{firm:'Product & Strategy',roles:['Product Manager','Product Analyst','Business Development','Go-to-Market Strategy']},{firm:'Engineering & Data',roles:['Software Engineer','Data Analyst','Data Scientist','ML Engineer','Cloud Engineer']},{firm:'Tech Consulting',roles:['IT Consultant','ERP Implementation','Cybersecurity Analyst','Digital Transformation Analyst']}]},
-  energy:{label:'Energy & Sustainability',groups:[{firm:'Energy Finance',roles:['Energy Finance Analyst','Project Finance','Infrastructure Advisory','Commodity Trading Analyst']},{firm:'ESG & Sustainability',roles:['ESG Analyst','Sustainability Reporting','Climate Risk','Green Finance','Carbon Markets']},{firm:'Oil & Gas / Renewables',roles:['Corporate Development Analyst','Business Analyst (Equinor/Aker)','Renewables Project Manager']}]}
 };
-
-let selectedIndustries = new Set(['finance']);
-let selectedRoles = new Set();
-
-function toggleInd(btn, key){
-  btn.classList.toggle('on');
-  if(btn.classList.contains('on')) selectedIndustries.add(key);
-  else selectedIndustries.delete(key);
+let curLang = 'en';
+function t(key){return LANGS[curLang][key]||LANGS['en'][key]||key;}
+function applyLang(){
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const key=el.getAttribute('data-i18n');
+    if(LANGS[curLang][key]) el.innerHTML=LANGS[curLang][key];
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>{
+    const key=el.getAttribute('data-i18n-placeholder');
+    if(LANGS[curLang][key]) el.placeholder=LANGS[curLang][key];
+  });
+}
+function setLang(lang){
+  curLang=lang;
+  const L=LANGS[lang];
+  document.getElementById('lang-flag').textContent=L.flag;
+  document.getElementById('lang-label').textContent=L.label;
+  document.querySelectorAll('.lang-opt').forEach(o=>o.classList.remove('active'));
+  document.querySelectorAll('.lang-check').forEach(c=>c.textContent='');
+  const el=document.getElementById('lc-'+lang);
+  if(el){el.textContent='✓';}
+  document.querySelector('.lang-opt[onclick="setLang(\''+lang+'\')"]').classList.add('active');
+  document.getElementById('lang-dropdown').classList.remove('open');
+  document.getElementById('lang-btn').classList.remove('open');
+  applyLang();
+  renderCities();
   renderRoles();
 }
+function toggleLang(){
+  const dd=document.getElementById('lang-dropdown');
+  const btn=document.getElementById('lang-btn');
+  dd.classList.toggle('open');
+  btn.classList.toggle('open');
+}
+document.addEventListener('click',e=>{
+  if(!document.getElementById('lang-switcher').contains(e.target)){
+    document.getElementById('lang-dropdown').classList.remove('open');
+    document.getElementById('lang-btn').classList.remove('open');
+  }
+});
 
-function renderRoles(){
-  const container = document.getElementById('roles-container');
-  if(selectedIndustries.size === 0){ container.innerHTML = '<p style="font-size:13px;color:var(--text3)">Select an industry above to see relevant roles.</p>'; return; }
-  let html = '';
-  selectedIndustries.forEach(ind => {
-    const data = INDUSTRY_ROLES[ind];
-    if(!data) return;
-    html += `<div class="role-section"><h3>${data.label}</h3><div class="tag-grid">`;
-    data.groups.forEach(g => {
-      g.roles.forEach(r => {
-        const on = selectedRoles.has(r) ? 'on' : '';
-        html += `<button class="tg ${on}" onclick="toggleRole(this,'${r.replace(/'/g,"\\'")}')">${r}</button>`;
-      });
-    });
-    html += '</div></div>';
+/* ══ SMOOTH NAV ══ */
+function sv(id){
+  const cur=document.querySelector('.view.active');
+  if(cur&&cur.id!==id){
+    cur.style.transition='opacity .2s ease,transform .2s ease';
+    cur.style.opacity='0';cur.style.transform='translateY(-5px)';
+    setTimeout(()=>{cur.classList.remove('active');cur.style.display='none';cur.style.opacity='';cur.style.transform='';show(id);},180);
+  } else show(id);
+}
+function show(id){
+  const el=document.getElementById(id);
+  el.style.display='block';el.style.opacity='0';el.style.transform='translateY(8px)';
+  el.classList.add('active');
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    el.style.transition='opacity .32s ease,transform .32s ease';
+    el.style.opacity='1';el.style.transform='translateY(0)';
+  }));
+  window.scrollTo({top:0,behavior:'smooth'});
+  if(id==='v-industries') renderIndNav();
+}
+
+/* ══ CITIES ══ */
+const COUNTRIES = [
+  { code:'NO', flag:'🇳🇴', name:'Norway', cities:['Oslo','Bergen','Trondheim','Stavanger','Tromsø','Kristiansand','Drammen','Fredrikstad'] },
+  { code:'SE', flag:'🇸🇪', name:'Sweden', cities:['Stockholm','Gothenburg','Malmö','Uppsala','Linköping','Örebro','Västerås'] },
+  { code:'DK', flag:'🇩🇰', name:'Denmark', cities:['Copenhagen','Aarhus','Odense','Aalborg','Esbjerg','Herning'] },
+  { code:'GB', flag:'🇬🇧', name:'United Kingdom', cities:['London','Edinburgh','Manchester','Birmingham','Bristol'] },
+  { code:'DE', flag:'🇩🇪', name:'Germany', cities:['Frankfurt','Munich','Berlin','Hamburg','Düsseldorf','Stuttgart'] },
+  { code:'NL', flag:'🇳🇱', name:'Netherlands', cities:['Amsterdam','Rotterdam','The Hague','Utrecht','Eindhoven'] },
+];
+let selectedCountries = new Set(['NO']);
+let selectedCities = new Set(['Oslo']);
+
+function renderCities(){
+  const sel=document.getElementById('location-selector');
+  if(!sel) return;
+  sel.innerHTML='';
+  // Country toggles
+  const countryRow=document.createElement('div');
+  countryRow.className='tag-grid';countryRow.style.marginBottom='1rem';
+  COUNTRIES.forEach(c=>{
+    const btn=document.createElement('button');
+    btn.className='tg'+(selectedCountries.has(c.code)?' on':'');
+    btn.textContent=c.flag+' '+c.name;
+    btn.onclick=()=>{
+      if(selectedCountries.has(c.code)){
+        selectedCountries.delete(c.code);
+        c.cities.forEach(ci=>selectedCities.delete(ci));
+        btn.classList.remove('on');
+      } else {
+        selectedCountries.add(c.code);
+        btn.classList.add('on');
+      }
+      renderCityBlocks();
+    };
+    countryRow.appendChild(btn);
   });
-  container.innerHTML = html;
+  sel.appendChild(countryRow);
+  const cityDiv=document.createElement('div');
+  cityDiv.id='city-blocks';
+  sel.appendChild(cityDiv);
+  renderCityBlocks();
 }
 
-function toggleRole(btn, role){
-  btn.classList.toggle('on');
-  if(btn.classList.contains('on')) selectedRoles.add(role);
-  else selectedRoles.delete(role);
+function renderCityBlocks(){
+  const div=document.getElementById('city-blocks');
+  if(!div) return;
+  div.innerHTML='';
+  COUNTRIES.filter(c=>selectedCountries.has(c.code)).forEach(c=>{
+    const block=document.createElement('div');
+    block.className='country-block';
+    block.innerHTML=`<div class="country-header"><span class="country-flag">${c.flag}</span><span class="country-name">${c.name}</span></div>`;
+    const cityGrid=document.createElement('div');
+    cityGrid.className='city-grid';
+    // "All cities" button
+    const allBtn=document.createElement('button');
+    allBtn.className='city-all-btn';
+    allBtn.textContent='All cities';
+    allBtn.onclick=()=>{ c.cities.forEach(ci=>{selectedCities.add(ci);}); renderCityBlocks(); };
+    cityGrid.appendChild(allBtn);
+    c.cities.forEach(city=>{
+      const btn=document.createElement('button');
+      btn.className='city-btn'+(selectedCities.has(city)?' on':'');
+      btn.textContent=city;
+      btn.onclick=()=>{ btn.classList.toggle('on'); if(btn.classList.contains('on')) selectedCities.add(city); else selectedCities.delete(city); };
+      cityGrid.appendChild(btn);
+    });
+    block.appendChild(cityGrid);
+    div.appendChild(block);
+  });
+  // Update filter panel cities
+  const fc=document.getElementById('filter-cities');
+  if(fc){
+    fc.innerHTML='';
+    selectedCities.forEach(city=>{
+      fc.innerHTML+=`<label class="fc"><input type="checkbox" checked><span>${city}</span></label>`;
+    });
+    if(selectedCities.size===0) fc.innerHTML='<p style="font-size:12px;color:var(--text3);padding:4px 0;">No cities selected</p>';
+  }
 }
 
-/* ══════════════════════
-   JOBS DATA
-══════════════════════ */
-const JOBS = [
-  { logo:'🏦', title:'M&A Analyst — Investment Banking', co:'Goldman Sachs', loc:'Oslo', tags:['New','Full-time','M&A'], date:'2 days ago', expires:'30 Apr 2026', expired:false, role:'M&A', ind:'finance', link:'https://www.goldmansachs.com/careers/students/programs/emea/summer-analyst-program.html' },
-  { logo:'🏛️', title:'Corporate Finance Analyst', co:'DNB Markets', loc:'Oslo', tags:['New','Full-time','Corporate Finance'], date:'1 day ago', expires:'15 May 2026', expired:false, role:'Corporate Finance', ind:'finance', link:'https://www.finn.no/job/fulltime/search.html?q=corporate+finance+DNB&location=1.20001.20061' },
-  { logo:'📊', title:'Business Analyst', co:'McKinsey & Company', loc:'Oslo', tags:['Popular','Full-time','Strategy'], date:'3 days ago', expires:'1 May 2026', expired:false, role:'Strategy Consulting', ind:'consulting', link:'https://www.mckinsey.com/careers/search-jobs#?countries=Norway' },
-  { logo:'🔵', title:'Strategy Analyst', co:'Boston Consulting Group', loc:'Oslo', tags:['Full-time','Strategy'], date:'4 days ago', expires:'10 May 2026', expired:false, role:'Strategy Consulting', ind:'consulting', link:'https://careers.bcg.com/job-search?location=Oslo' },
-  { logo:'🔷', title:'Technology Transformation Analyst', co:'Deloitte Norway', loc:'Oslo', tags:['New','Full-time','Consulting'], date:'2 days ago', expires:'20 May 2026', expired:false, role:'Technology Transformation', ind:'consulting', link:'https://jobs.deloitte.no/' },
-  { logo:'🔷', title:'Transaction Services Analyst', co:'Deloitte Norway', loc:'Oslo', tags:['Full-time','Big 4','Deals'], date:'5 days ago', expires:'28 Apr 2026', expired:false, role:'Transaction Services', ind:'audit', link:'https://jobs.deloitte.no/' },
-  { logo:'📈', title:'Equity Research Analyst', co:'Pareto Securities', loc:'Oslo', tags:['Full-time','Equity Research'], date:'1 week ago', expires:'5 May 2026', expired:false, role:'Equity Research', ind:'finance', link:'https://www.finn.no/job/fulltime/search.html?q=equity+research+analyst+oslo' },
-  { logo:'🟡', title:'Audit Associate', co:'PwC Norway', loc:'Oslo', tags:['Full-time','Big 4'], date:'6 days ago', expires:'3 May 2026', expired:false, role:'External Audit', ind:'audit', link:'https://www.pwc.no/no/karriere.html' },
-  { logo:'🟢', title:'Valuation Advisory Analyst', co:'EY Norway', loc:'Oslo', tags:['New','Full-time','Valuation'], date:'2 days ago', expires:'18 May 2026', expired:false, role:'Valuation Advisory', ind:'audit', link:'https://www.ey.com/en_no/careers' },
-  { logo:'🏢', title:'ESG Analyst', co:'Storebrand', loc:'Oslo', tags:['Full-time','ESG'], date:'1 week ago', expires:'25 Apr 2026', expired:false, role:'ESG Analyst', ind:'energy', link:'https://www.finn.no/job/fulltime/search.html?q=ESG+analyst+storebrand' },
-  { logo:'⚡', title:'Energy Finance Analyst', co:'Equinor', loc:'Stavanger', tags:['Full-time','Energy'], date:'5 days ago', expires:'12 May 2026', expired:false, role:'Energy Finance Analyst', ind:'energy', link:'https://careers.equinor.com/' },
-  { logo:'🏦', title:'Summer Analyst — Investment Banking', co:'Nordea', loc:'Oslo', tags:['Internship','IBD'], date:'3 weeks ago', expires:'1 Apr 2026', expired:true, role:'M&A', ind:'finance', link:'https://www.nordea.com/en/careers' },
-  { logo:'🔵', title:'PE Analyst', co:'FSN Capital', loc:'Oslo', tags:['Full-time','Private Equity'], date:'2 weeks ago', expires:'15 Apr 2026', expired:true, role:'PE Analyst', ind:'pe', link:'https://www.finn.no/job/fulltime/search.html?q=private+equity+analyst+oslo' },
-  { logo:'📊', title:'Management Consultant Analyst', co:'Accenture Norway', loc:'Oslo', tags:['Full-time','Consulting'], date:'2 weeks ago', expires:'10 Apr 2026', expired:true, role:'Business Transformation', ind:'consulting', link:'https://www.accenture.com/no-en/careers' },
-  { logo:'🏛️', title:'FP&A Analyst', co:'Kongsberg Gruppen', loc:'Kongsberg', tags:['Full-time','Finance'], date:'3 weeks ago', expires:'5 Apr 2026', expired:true, role:'FP&A Analyst', ind:'finance', link:'https://www.finn.no/job/fulltime/search.html?q=FPA+analyst+norway' },
+/* ══ INDUSTRIES DATA ══ */
+const INDUSTRIES=[
+  {key:'finance',ic:'🏦',label:'Finance & Banking',desc:'Investment banking, capital markets, and corporate advisory.',areas:[
+    {name:'M&A / Investment Banking',desc:'Advisory on mergers, acquisitions and divestitures',tasks:['Building financial models (DCF, LBO, comparables)','Preparing pitch books and information memoranda','Running due diligence processes','Presenting to boards and management teams'],companies:['Goldman Sachs Oslo','Carnegie','ABG Sundal Collier','Nordea Investment Banking','Arctic Securities','Fearnley Securities']},
+    {name:'Corporate Finance & CFO Advisory',desc:'Strategic financial advice to corporates and CFOs',tasks:['Capital structure analysis','Refinancing and debt advisory','Working capital management','Board-level financial reporting','IPO and listing readiness'],companies:['DNB Markets','Danske Bank Corporate Finance','Handelsbanken Capital Markets','Pareto Securities']},
+    {name:'Equity Research',desc:'Covering listed companies and producing investment recommendations',tasks:['Financial modelling and forecasting','Writing research notes','Meeting company management','Presenting to portfolio managers','Monitoring sector news'],companies:['Pareto Securities','ABG Sundal Collier','DNB Markets','Arctic Securities','Nordea Equities']},
+    {name:'Capital Markets (ECM/DCM)',desc:'Structuring equity and debt issuances',tasks:['Structuring bond and equity issuances','Investor roadshows','Pricing and allocation decisions','Regulatory and prospectus work'],companies:['Nordea','DNB','SEB','Handelsbanken','Swedbank']}
+  ]},
+  {key:'consulting',ic:'📊',label:'Consulting',desc:'Strategy, management and technology consulting at top firms.',areas:[
+    {name:'Strategy Consulting',desc:'High-level strategic advice to C-suite clients',tasks:['Market sizing and competitive analysis','Business model design','Organic and inorganic growth strategy','Board-level presentations'],companies:['McKinsey Oslo','Boston Consulting Group','Bain & Company','Oliver Wyman','Roland Berger']},
+    {name:'Deloitte — Technology Transformation',desc:'Large-scale digital and IT transformation',tasks:['ERP strategy and implementation (SAP, Oracle)','Cloud migration','IT due diligence for M&A','Digital operating model design','Change management'],companies:['Deloitte Norway','Deloitte Sweden','Deloitte Denmark']},
+    {name:'Deloitte — M&A & Valuation Advisory',desc:'Transaction support, valuation and financial due diligence',tasks:['Financial due diligence','Business valuation (DCF, multiples)','Commercial due diligence','Post-merger integration','Restructuring advisory'],companies:['Deloitte Norway','Deloitte Sweden']},
+    {name:'McKinsey / BCG / Bain',desc:'Global strategy consulting',tasks:['Market entry strategy','Operations and cost transformation','Digital transformation','Sustainability strategy','Post-merger integration'],companies:['McKinsey Oslo','BCG Oslo','Bain Oslo','McKinsey Stockholm','BCG Stockholm']},
+    {name:'PwC & EY — Management Consulting',desc:'People, operations and finance advisory',tasks:['Organisational design','Supply chain optimisation','Finance transformation','Regulatory strategy','ESG and sustainability'],companies:['PwC Norway','EY Norway','PwC Sweden','EY Sweden']}
+  ]},
+  {key:'audit',ic:'📋',label:'Audit & Accounting',desc:'Assurance, advisory and tax at Big 4 and mid-tier firms.',areas:[
+    {name:'External Audit (Big 4)',desc:'Statutory audit of financial statements',tasks:['Testing financial statement assertions','Reviewing accounting policies','Assessing internal controls','Writing audit reports'],companies:['Deloitte Norway','PwC Norway','EY Norway','KPMG Norway','BDO Norway']},
+    {name:'Transaction Services / Deals',desc:'Financial due diligence and deal support',tasks:['Quality of earnings analysis','Working capital normalisation','Net debt analysis','Identifying financial risks'],companies:['Deloitte Deals','PwC Deals','EY Transaction Advisory','KPMG Deal Advisory']},
+    {name:'Tax Advisory',desc:'Corporate tax, transfer pricing and M&A tax',tasks:['Corporate tax compliance','Transfer pricing documentation','M&A tax structuring','VAT advisory','International tax'],companies:['PwC Tax','EY Tax','Deloitte Tax','KPMG Tax']}
+  ]},
+  {key:'pe',ic:'💼',label:'Private Equity & VC',desc:'Fund investment, portfolio management and venture financing.',areas:[
+    {name:'Private Equity — Buyout',desc:'Acquiring and growing established companies',tasks:['Deal sourcing and screening','Building LBO models','Conducting due diligence','Working with portfolio companies','Preparing exit processes'],companies:['FSN Capital','Herkules Capital','Summa Equity','Nordic Capital','EQT','HitecVision']},
+    {name:'Venture Capital',desc:'Early and growth-stage investment in startups',tasks:['Evaluating startups','Startup financial modelling','Supporting portfolio companies','Market landscape analysis'],companies:['Northzone','Alliance Venture','Firda','Investinor','Katapult']}
+  ]},
+  {key:'am',ic:'📈',label:'Asset Management',desc:'Managing investment portfolios for institutions and HNW clients.',areas:[
+    {name:'Investment Analysis (Buy-side)',desc:'Researching and recommending securities',tasks:['Fundamental equity and credit analysis','Portfolio construction','ESG integration','Quantitative modelling','Engaging with company IR'],companies:['Storebrand AM','DNB Asset Management','Holberg Fondene','NBIM']},
+    {name:'Wealth Management',desc:'Managing assets for HNW individuals and families',tasks:['Client portfolio construction','Financial planning','Alternative investment evaluation','Client reporting'],companies:['Formue','Carnegie Private Banking','DNB Private Banking','Nordea Private Banking']}
+  ]},
+  {key:'re',ic:'🏢',label:'Real Estate',desc:'Property investment, development finance and advisory.',areas:[
+    {name:'Real Estate Finance & Investment',desc:'Financing and investing in commercial and residential property',tasks:['Property valuation and financial modelling','Real estate M&A','Development project financing','REIT analysis'],companies:['Entra','Norwegian Property','Selvaag','UNION Norsk Næringsmegling','Cushman & Wakefield']}
+  ]},
+  {key:'marketing',ic:'📣',label:'Marketing & Comms',desc:'Brand strategy, digital marketing and corporate communications.',areas:[
+    {name:'Brand & Market Strategy',desc:'Building and managing brand positioning',tasks:['Brand positioning','Consumer research','Pricing strategy','Go-to-market planning'],companies:['Orkla','Telenor','Schibsted','Nordic Choice Hotels']},
+    {name:'Digital Marketing & Growth',desc:'Performance marketing and data-driven growth',tasks:['Paid media strategy','SEO / SEM','Marketing analytics','CRM and email automation','Growth hacking'],companies:['Finn.no','Komplett','Kolonial.no','Kahoot!']}
+  ]},
+  {key:'hr',ic:'👥',label:'HR & People',desc:'Talent acquisition, organisational development and people analytics.',areas:[
+    {name:'Talent Acquisition & Recruitment',desc:'Attracting and hiring top talent',tasks:['Designing sourcing strategies','Conducting structured interviews','Campus recruitment','Headhunting','Offer management'],companies:['Equinor','DNB','Telenor','All Big 4 firms']},
+    {name:'HR Business Partner (HRBP)',desc:'Strategic HR support to business units',tasks:['Workforce planning','Performance management','Change management','Leadership development'],companies:['Statnett','Kongsberg Gruppen','Statkraft','Schibsted']},
+    {name:'Learning & Development',desc:'Building capability and developing people',tasks:['Designing learning programmes','Leadership development','Onboarding design','Measuring learning effectiveness'],companies:['Accenture','Deloitte','DNB','Telenor','Equinor']}
+  ]},
+  {key:'tech',ic:'💻',label:'Technology',desc:'Product management, software engineering and data science.',areas:[
+    {name:'Product Management',desc:'Defining and shipping digital products',tasks:['Writing product specs','Prioritising roadmap','Analysing user data','A/B testing','OKR setting'],companies:['Kahoot!','Oda','Schibsted Tech','Visma']},
+    {name:'Data Science & Analytics',desc:'Turning data into business insights',tasks:['Building ML models','Data visualisation','A/B testing','Data engineering','Communicating insights'],companies:['Finn.no','Schibsted','DNB Tech','Telenor Analytics']}
+  ]},
+  {key:'energy',ic:'⚡',label:'Energy & Sustainability',desc:'Energy finance, ESG strategy and sustainability reporting.',areas:[
+    {name:'Energy Finance & Project Finance',desc:'Financing energy infrastructure',tasks:['Project finance modelling','Infrastructure advisory','Corporate development and M&A','Commodity trading analytics'],companies:['Equinor','Statkraft','Hafslund','Aker Clean Hydrogen','Scatec']},
+    {name:'ESG & Sustainability Strategy',desc:'Embedding sustainability into business strategy',tasks:['ESG materiality assessments','Sustainability reporting (CSRD, TCFD)','Carbon footprint analysis','Green finance','Stakeholder engagement'],companies:['Storebrand','DNB','Equinor','PwC ESG','Deloitte Sustainability','NBIM']}
+  ]}
 ];
 
+let activeInd='finance';
+function renderIndNav(){
+  const nav=document.getElementById('ind-nav');
+  nav.innerHTML=INDUSTRIES.map(i=>`<button class="ind-btn ${i.key===activeInd?'active':''}" onclick="selectInd('${i.key}')"><span style="font-size:16px">${i.ic}</span>${i.label}</button>`).join('');
+  renderIndDetail(activeInd);
+}
+function selectInd(key){
+  activeInd=key;
+  document.querySelectorAll('.ind-btn').forEach((b,idx)=>{b.classList.toggle('active',INDUSTRIES[idx].key===key);});
+  renderIndDetail(key);
+}
+function renderIndDetail(key){
+  const ind=INDUSTRIES.find(i=>i.key===key);
+  document.getElementById('ind-main').innerHTML=`<div class="ind-detail">
+    <div class="ind-detail-header"><div class="ind-detail-ic">${ind.ic}</div><div><h2>${ind.label}</h2><p>${ind.desc}</p></div><div class="ind-coming">🔒 Company data partnerships coming soon</div></div>
+    <div class="area-grid">${ind.areas.map((a,i)=>`<div class="area-card" id="a${key}${i}" onclick="toggleArea('a${key}${i}')">
+      <div class="area-title">${a.name}<span class="chev">▼</span></div>
+      <div class="area-sub">${a.desc}</div>
+      <div class="area-detail">
+        <h4>Typical tasks</h4><ul class="task-list">${a.tasks.map(t=>`<li>${t}</li>`).join('')}</ul>
+        <h4>Key employers in Scandinavia</h4><div class="company-pills">${a.companies.map(c=>`<span class="cpill">${c}</span>`).join('')}</div>
+        <div class="future-badge">🔮 Coming soon: recruiter insights, typical applicant profiles, and what hiring managers actually look for — sourced directly from partner companies.</div>
+      </div></div>`).join('')}</div></div>`;
+}
+function toggleArea(id){document.getElementById(id).classList.toggle('open');}
+
+/* ══ INDUSTRY ROLES ══ */
+const INDUSTRY_ROLES={
+  finance:{label:'Finance & Banking',groups:[{firm:'Investment Banking',roles:['M&A Analyst','Leveraged Finance','ECM / DCM Analyst','Restructuring','Debt Advisory']},{firm:'Corporate Finance',roles:['Corporate Finance Analyst','CFO Advisory','Treasury Analyst','FP&A Analyst','Investor Relations']},{firm:'Markets',roles:['Equity Sales & Trading','Fixed Income Analyst','Derivatives','Equity Research']}]},
+  consulting:{label:'Consulting',groups:[{firm:'Strategy',roles:['Strategy Analyst','Corporate Strategy','Growth Strategy','Market Entry']},{firm:'Deloitte',roles:['Technology Transformation','M&A / Valuation Advisory','Business Transformation','Risk Advisory','Finance Transformation']},{firm:'McKinsey / BCG / Bain',roles:['Business Analyst','Associate Consultant','Operations','Digital Transformation']},{firm:'PwC / EY',roles:['Management Consulting Analyst','People & Org','Deals Strategy','Supply Chain']}]},
+  audit:{label:'Audit & Accounting',groups:[{firm:'Big 4',roles:['External Audit Analyst','IT Audit','Sustainability Assurance']},{firm:'Advisory',roles:['Transaction Services','Forensic Accounting','Valuation','Due Diligence']},{firm:'Tax',roles:['Corporate Tax','Transfer Pricing','VAT Advisory','M&A Tax']}]},
+  pe:{label:'Private Equity & VC',groups:[{firm:'PE',roles:['PE Analyst','Deal Sourcing','Portfolio Management','LBO Modelling']},{firm:'VC',roles:['VC Analyst','Startup Due Diligence','Portfolio Support']}]},
+  am:{label:'Asset Management',groups:[{firm:'Buy-side',roles:['Investment Analyst','Portfolio Management','Quantitative Research','ESG Integration']},{firm:'Wealth',roles:['Wealth Advisor Analyst','Client Portfolio Manager']}]},
+  re:{label:'Real Estate',groups:[{firm:'Real Estate',roles:['Real Estate Analyst','Property Valuation','Real Estate M&A','Development Finance']}]},
+  marketing:{label:'Marketing & Comms',groups:[{firm:'Brand',roles:['Brand Manager','Market Strategy Analyst','Consumer Insights','Pricing Strategy']},{firm:'Digital',roles:['Digital Marketing Analyst','Performance Marketing','Growth Marketing','SEO/SEM']},{firm:'Comms',roles:['Communications Advisor','PR & Media Relations','Corporate Affairs']}]},
+  hr:{label:'HR & People',groups:[{firm:'Talent',roles:['Talent Acquisition Specialist','Campus Recruiter','Executive Search Analyst','Employer Branding']},{firm:'HRBP',roles:['HRBP Analyst','Organisational Development','Change Management','HR Analytics']},{firm:'L&D',roles:['L&D Analyst','Compensation & Benefits','People Analytics','Diversity & Inclusion']}]},
+  tech:{label:'Technology',groups:[{firm:'Product',roles:['Product Manager','Product Analyst','Business Development','Go-to-Market']},{firm:'Engineering',roles:['Software Engineer','Data Analyst','Data Scientist','ML Engineer','Cloud Engineer']},{firm:'Tech Consulting',roles:['IT Consultant','ERP Implementation','Cybersecurity Analyst']}]},
+  energy:{label:'Energy & Sustainability',groups:[{firm:'Energy Finance',roles:['Energy Finance Analyst','Project Finance','Infrastructure Advisory','Commodity Trading']},{firm:'ESG',roles:['ESG Analyst','Sustainability Reporting','Climate Risk','Green Finance']},{firm:'O&G / Renewables',roles:['Corporate Development Analyst','Business Analyst (Equinor/Aker)','Renewables PM']}]}
+};
+let selectedIndustries=new Set(['finance']);
+function toggleInd(btn,key){btn.classList.toggle('on');if(btn.classList.contains('on'))selectedIndustries.add(key);else selectedIndustries.delete(key);renderRoles();}
+function renderRoles(){
+  const c=document.getElementById('roles-container');
+  if(!c)return;
+  if(!selectedIndustries.size){c.innerHTML='<p style="font-size:13px;color:var(--text3)">Select an industry above to see relevant roles.</p>';return;}
+  let h='';
+  selectedIndustries.forEach(ind=>{const d=INDUSTRY_ROLES[ind];if(!d)return;h+=`<div class="role-section"><h3>${d.label}</h3><div class="tag-grid">${d.groups.map(g=>g.roles.map(r=>`<button class="tg" onclick="this.classList.toggle('on')">${r}</button>`).join('')).join('')}</div></div>`;});
+  c.innerHTML=h;
+}
+
+/* ══ JOBS ══ */
+const JOBS=[
+  {logo:'🏦',title:'M&A Analyst — Investment Banking',co:'Goldman Sachs',loc:'Oslo',tags:['New','Full-time','M&A'],date:'2 days ago',expires:'30 Apr 2026',expired:false,role:'M&A',ind:'finance',link:'https://www.goldmansachs.com/careers/students/programs/emea/summer-analyst-program.html'},
+  {logo:'🏛️',title:'Corporate Finance Analyst',co:'DNB Markets',loc:'Oslo',tags:['New','Full-time','Corporate Finance'],date:'1 day ago',expires:'15 May 2026',expired:false,role:'Corporate Finance',ind:'finance',link:'https://www.finn.no/job/fulltime/search.html?q=corporate+finance+DNB&location=1.20001.20061'},
+  {logo:'📊',title:'Business Analyst',co:'McKinsey & Company',loc:'Oslo',tags:['Popular','Full-time','Strategy'],date:'3 days ago',expires:'1 May 2026',expired:false,role:'Strategy Consulting',ind:'consulting',link:'https://www.mckinsey.com/careers/search-jobs#?countries=Norway'},
+  {logo:'🔵',title:'Strategy Analyst',co:'Boston Consulting Group',loc:'Stockholm',tags:['Full-time','Strategy'],date:'4 days ago',expires:'10 May 2026',expired:false,role:'Strategy Consulting',ind:'consulting',link:'https://careers.bcg.com/job-search?location=Stockholm'},
+  {logo:'🔷',title:'Technology Transformation Analyst',co:'Deloitte Norway',loc:'Oslo',tags:['New','Full-time','Consulting'],date:'2 days ago',expires:'20 May 2026',expired:false,role:'Technology Transformation',ind:'consulting',link:'https://jobs.deloitte.no/'},
+  {logo:'🔷',title:'Transaction Services Analyst',co:'Deloitte Denmark',loc:'Copenhagen',tags:['Full-time','Big 4','Deals'],date:'5 days ago',expires:'28 Apr 2026',expired:false,role:'Transaction Services',ind:'audit',link:'https://jobs.deloitte.dk/'},
+  {logo:'📈',title:'Equity Research Analyst',co:'Pareto Securities',loc:'Oslo',tags:['Full-time','Equity Research'],date:'1 week ago',expires:'5 May 2026',expired:false,role:'Equity Research',ind:'finance',link:'https://www.finn.no/job/fulltime/search.html?q=equity+research+analyst+oslo'},
+  {logo:'🟡',title:'Audit Associate',co:'PwC Norway',loc:'Bergen',tags:['Full-time','Big 4'],date:'6 days ago',expires:'3 May 2026',expired:false,role:'External Audit',ind:'audit',link:'https://www.pwc.no/no/karriere.html'},
+  {logo:'🟢',title:'Valuation Advisory Analyst',co:'EY Norway',loc:'Oslo',tags:['New','Full-time','Valuation'],date:'2 days ago',expires:'18 May 2026',expired:false,role:'Valuation Advisory',ind:'audit',link:'https://www.ey.com/en_no/careers'},
+  {logo:'🏢',title:'ESG Analyst',co:'Storebrand',loc:'Oslo',tags:['Full-time','ESG'],date:'1 week ago',expires:'25 Apr 2026',expired:false,role:'ESG Analyst',ind:'energy',link:'https://www.finn.no/job/fulltime/search.html?q=ESG+analyst+storebrand'},
+  {logo:'⚡',title:'Energy Finance Analyst',co:'Equinor',loc:'Stavanger',tags:['Full-time','Energy'],date:'5 days ago',expires:'12 May 2026',expired:false,role:'Energy Finance Analyst',ind:'energy',link:'https://careers.equinor.com/'},
+  {logo:'🏦',title:'Summer Analyst — Investment Banking',co:'Nordea',loc:'Oslo',tags:['Internship','IBD'],date:'3 weeks ago',expires:'1 Apr 2026',expired:true,role:'M&A',ind:'finance',link:'https://www.nordea.com/en/careers'},
+  {logo:'🔵',title:'PE Analyst',co:'FSN Capital',loc:'Oslo',tags:['Full-time','Private Equity'],date:'2 weeks ago',expires:'15 Apr 2026',expired:true,role:'PE Analyst',ind:'pe',link:'https://www.finn.no/job/fulltime/search.html?q=private+equity+analyst+oslo'},
+  {logo:'📊',title:'Management Consultant Analyst',co:'Accenture Norway',loc:'Oslo',tags:['Full-time','Consulting'],date:'2 weeks ago',expires:'10 Apr 2026',expired:true,role:'Business Transformation',ind:'consulting',link:'https://www.accenture.com/no-en/careers'},
+  {logo:'🏛️',title:'FP&A Analyst',co:'Kongsberg Gruppen',loc:'Kongsberg',tags:['Full-time','Finance'],date:'3 weeks ago',expires:'5 Apr 2026',expired:true,role:'FP&A Analyst',ind:'finance',link:'https://www.finn.no/job/fulltime/search.html?q=FPA+analyst+norway'},
+];
 function renderJobs(){
-  const list = document.getElementById('job-list');
-  list.innerHTML = '';
-  JOBS.forEach(j => {
-    const expTag = j.expired
-      ? `<span class="jtag exp">Expired ${j.expires}</span>`
-      : `<span style="font-size:11px;color:var(--green);font-weight:500;">Closes ${j.expires}</span>`;
-    const viewBtn = j.expired
-      ? `<span style="font-size:10px;color:#a33;font-weight:500;">Expired — used as reference data</span>`
-      : `<a class="view-btn" href="${j.link}" target="_blank" onclick="event.stopPropagation()">View posting ↗</a>`;
-    list.innerHTML += `
-    <div class="job-card ${j.expired?'':''}">
+  const list=document.getElementById('job-list');
+  if(!list)return;
+  list.innerHTML='';
+  JOBS.forEach(j=>{
+    const status=j.expired?`<span style="font-size:10px;color:#a33;font-weight:500;">Expired ${j.expires}</span>`:`<span style="font-size:11px;color:var(--green);font-weight:500;">Closes ${j.expires}</span>`;
+    const viewBtn=j.expired?`<span style="font-size:10px;color:#a33;">Expired — reference data</span>`:`<a class="view-btn" href="${j.link}" target="_blank" onclick="event.stopPropagation()">View posting ↗</a>`;
+    list.innerHTML+=`<div class="job-card">
       <div class="jl">${j.logo}</div>
-      <div class="ji">
-        <div class="jt" style="${j.expired?'color:var(--text3)':''}">${j.title}</div>
-        <div class="jc">${j.co} · ${j.loc}, Norway</div>
-        <div class="jm">${j.tags.map(t=>`<span class="jtag ${t==='New'?'new':t==='Popular'?'hot':''}">${t}</span>`).join('')}${j.expired?'<span class="jtag exp">Expired</span>':''}</div>
-      </div>
-      <div class="ja">
-        <span class="jdate">${j.date}</span>
-        ${expTag}
-        <button class="prep-btn" onclick="openPrep('${j.co}','${j.title}','${j.logo}','${j.co} · ${j.loc}','${j.role}','${j.ind}','${j.link}')">Prepare →</button>
-        ${viewBtn}
-      </div>
+      <div class="ji"><div class="jt" style="${j.expired?'color:var(--text3)':''}">${j.title}</div><div class="jc">${j.co} · ${j.loc}</div>
+      <div class="jm">${j.tags.map(t=>`<span class="jtag ${t==='New'?'new':t==='Popular'?'hot':''}">${t}</span>`).join('')}${j.expired?'<span class="jtag exp">Expired</span>':''}</div></div>
+      <div class="ja"><span class="jdate">${j.date}</span>${status}<button class="prep-btn" onclick="openPrep('${j.co}','${j.title}','${j.logo}','${j.co} · ${j.loc}','${j.role}','${j.ind}','${j.link}')">Prepare →</button>${viewBtn}</div>
     </div>`;
   });
 }
 
-/* ══════════════════════
-   JOB PREP CONTENT
-══════════════════════ */
-const JC = {
+/* ══ PREP CONTENT ══ */
+const JC={
   'M&A':{
-    cvTips:['Quantify everything — deal sizes, team sizes, financial outcomes','Highlight DCF, LBO and comparable company modelling experience','Include any M&A coursework, case competitions or investment presentations','Show Excel / Bloomberg / Capital IQ proficiency explicitly','1 page max — recruiters spend 30 seconds on average'],
-    cvRec:['Strong academic record from a target university (BI, NHH, CBS, SSE)','Prior investment banking, PE or corporate finance internship','Analytical roles showing quantitative rigour','Leadership in finance societies or case competitions','CFA Level 1 is a strong differentiator'],
-    qs:[{q:'Walk me through a DCF.',a:'Project unlevered free cash flows, discount at WACC, add terminal value (Gordon Growth or exit multiple). Know each driver — revenue growth, margins, capex, change in working capital.'},{q:'EV vs Equity Value?',a:'EV = market cap + net debt. Equity Value belongs to shareholders only. EV is capital-structure neutral — use it when comparing companies with different leverage.'},{q:'Why do companies merge?',a:'Cost and revenue synergies, market share, geographic expansion, financial benefits (tax shields, cheaper debt), or eliminating a competitor.'},{q:'What is accretion/dilution?',a:'Whether EPS increases (accretive) or decreases (dilutive) post-acquisition. Driven by price, financing mix, and synergy realisation speed.'},{q:'Walk me through an LBO.',a:'PE fund buys company using ~60-70% debt. Over 5 years, value created through debt paydown, EBITDA growth, exit multiple expansion. Target IRR typically 20%+.'}],
-    case:{title:'Acquisition of NorTech AS',tag:'M&A Case',body:'A PE fund is evaluating the acquisition of NorTech AS for NOK 500m. EBITDA is NOK 80m growing at 10% p.a. with stable margins and strong recurring revenue.',task:'Task: Is the price justified? What synergies do you see? What are your top due diligence priorities?',hint:'💡 Start with EV/EBITDA (500/80 = 6.25x). Compare to sector (tech typically 6–10x). Discuss growth premium, synergy potential, management, key risks.'},
-    letter:"Dear Hiring Manager,\n\nI am writing to express my strong interest in the M&A Analyst position. As a Master's student in Finance graduating this year, I have built a strong foundation in financial modelling, valuation and deal analysis.\n\n[Connect a Claude or GPT-4 API key to generate a fully personalised version based on your CV]\n\nThank you for considering my application.\n\nBest regards,\n[Your name]",
-    mockQs:["Good morning! I'm Sarah Mitchell, Senior Recruiter. Tell me about yourself and why you're interested in investment banking.","Why M&A specifically, rather than other areas like sales & trading or asset management?","Walk me through how you would value a company using a DCF.","Tell me about a time you worked under significant pressure and delivered a high-quality output.","Why this firm specifically? What do you know about our recent Nordic M&A activity?"]
+    cvTips:['Quantify everything — deal sizes, team sizes, outcomes','Highlight DCF, LBO and comparable company modelling','Include M&A coursework, case competitions or investment presentations','Show Excel / Bloomberg / Capital IQ proficiency','1 page max — recruiters spend 30 seconds on average'],
+    cvRec:['Strong academic record (BI, NHH, CBS, SSE target schools)','Prior IB, PE or corporate finance internship','Finance society leadership or case competition finalist','Analytical rigour evident throughout','CFA Level 1 is a strong differentiator'],
+    qs:[{q:'Walk me through a DCF.',a:'Project unlevered free cash flows, discount at WACC, add terminal value. Know each driver — revenue growth, margins, capex, change in working capital.'},{q:'EV vs Equity Value?',a:'EV = market cap + net debt. Equity Value belongs to shareholders. EV is capital-structure neutral — use for cross-company comparison.'},{q:'Why do companies merge?',a:'Cost/revenue synergies, market share, geographic expansion, financial benefits, or eliminating a competitor.'},{q:'What is accretion/dilution?',a:'Whether EPS increases (accretive) or decreases (dilutive) post-acquisition. Driven by price, financing mix, and synergy realisation.'},{q:'Walk me through an LBO.',a:'PE fund buys with ~60-70% debt. Value created through debt paydown, EBITDA growth, multiple expansion over 5 years. Target IRR 20%+.'}],
+    case:{title:'Acquisition of NorTech AS',tag:'M&A Case',body:'A PE fund evaluates NorTech AS at NOK 500m. EBITDA is NOK 80m, growing 10% p.a. with strong recurring revenue.',task:'Task: Is the price justified? What synergies do you see? Top due diligence priorities?',hint:'💡 EV/EBITDA = 6.25x. Compare to sector (tech 6–10x). Discuss growth premium, synergy potential, key risks.'},
+    letter:"Dear Hiring Manager,\n\nI am writing to express my strong interest in the M&A Analyst position. As a Finance Master's student graduating this year, I have built a solid foundation in financial modelling, valuation and deal analysis.\n\n[Connect a Claude or GPT-4 API key to generate a fully personalised version based on your CV]\n\nThank you for considering my application.\n\nBest regards,\n[Your name]",
+    mockQs:["Tell me about yourself and why you're interested in investment banking.","Why M&A specifically, rather than sales & trading or asset management?","Walk me through how you would value a company using a DCF.","Tell me about a time you worked under significant time pressure and delivered a high-quality output.","Why this firm specifically? What do you know about our recent Nordic deal activity?"]
   },
   'Strategy Consulting':{
-    cvTips:['Lead with impact — show results, not just activities','Include any case competition experience','Show structured thinking in how you describe each role','Consulting firms look for: leadership, analytical ability, client-facing skills','Include GPA if it is strong'],
-    cvRec:['Top academic record from a recognised school','Case competition finalist or winner','Leadership role in student society, sports, or organisation','Any internship showing analytical thinking','Demonstrated intellectual curiosity — broad interests are a plus'],
-    qs:[{q:'Why consulting over industry?',a:'Show you want breadth of experience, steep learning curve, exposure to senior decision-makers, and the problem-solving culture — not just the salary.'},{q:'Solve a complex problem with limited data.',a:'Use STAR. Show structured approach: what did you know, what did you assume, how did you structure your analysis, what was the outcome?'},{q:'What is a market sizing question?',a:'Estimates market revenue potential. Start demand-side (population × penetration × spend) or supply-side (competitors × share). Show structure and sanity-check.'},{q:'Why this firm?',a:"Reference the firm's methodology, a recent project, culture, or someone you've spoken to. Generic answers are immediately spotted."},{q:'How do you structure a profitability problem?',a:'Revenue = Volume × Price. Cost = Fixed + Variable. Segment each and look for the anomaly. Benchmark against competitors or prior periods.'}],
-    case:{title:'Norwegian Grocery Profitability',tag:'Strategy Case',body:'MatBudsjett, a Norwegian discount grocery chain, has seen EBIT margins fall from 4% to 1.5% over 3 years despite growing revenue.',task:'Task: Diagnose the profitability problem and recommend 3 concrete actions.',hint:'💡 Structure: Revenue side (pricing, volume, mix) vs Cost side (COGS, labour, SG&A). Compare to Rema/Kiwi benchmarks. Look for mix shift or labour cost inflation.'},
-    letter:"Dear Hiring Manager,\n\nI am applying for the Strategy Analyst role. My passion for structured problem-solving and delivering strategic insight makes this an ideal fit.\n\n[Connect API key to personalise]\n\nBest regards,\n[Your name]",
-    mockQs:["Hello! I'm Sarah Mitchell. Tell me about yourself and why you want to work in strategy consulting.","Your client is a Norwegian hotel chain with occupancy down 15% over 2 years. What are your first three questions?","Tell me about a time you had to work in a team where there was disagreement. How did you handle it?","Why this firm over McKinsey / BCG / Bain? What specifically appeals to you?","What's a business or strategic challenge in Norway right now that you find interesting — and why?"]
+    cvTips:['Lead with impact — show results, not just activities','Include case competition experience prominently','Show structured thinking in how you describe each role','GPA matters — include it if strong','Keep to 1 page; every word must earn its place'],
+    cvRec:['Top academic record from a recognised school','Case competition finalist or winner','Leadership role in student society or organisation','Intellectual curiosity — broad interests are a plus','Demonstrated analytical thinking even outside finance'],
+    qs:[{q:'Why consulting over industry?',a:'Show you want breadth, steep learning, exposure to senior leaders, and problem-solving culture — not just the salary.'},{q:'How do you structure a profitability problem?',a:'Revenue = Volume × Price. Cost = Fixed + Variable. Segment each and find the anomaly. Benchmark against competitors or prior periods.'},{q:'What is a market sizing question?',a:'Estimates market revenue potential. Use demand-side (population × penetration × spend) or supply-side approach. Show structure and sanity-check.'},{q:'Why this firm?',a:"Reference the firm's methodology, a recent project, culture, or someone you've spoken to. Generic answers are immediately spotted."},{q:'Tell me about a time you influenced people who disagreed with you.',a:'Use STAR. Show empathy, data-driven reasoning, and that you brought people along rather than steamrolled them.'}],
+    case:{title:'Norwegian Grocery Profitability',tag:'Strategy Case',body:'MatBudsjett, a Norwegian discount grocery chain, has seen EBIT margins fall from 4% to 1.5% over 3 years despite growing revenue.',task:'Task: Diagnose the profitability problem and recommend 3 concrete actions.',hint:'💡 Revenue side (pricing, volume, mix) vs Cost side (COGS, labour, SG&A). Compare to Rema/Kiwi. Look for mix shift or labour/logistics cost inflation.'},
+    letter:"Dear Hiring Manager,\n\nI am applying for the Strategy Analyst position. My passion for structured problem-solving and strategic insight makes this an ideal fit.\n\n[Connect API key to personalise based on your CV]\n\nBest regards,\n[Your name]",
+    mockQs:["Tell me about yourself and why you want to work in strategy consulting.","Your client is a Norwegian hotel chain with occupancy down 15% over 2 years. What are your first three questions?","Walk me through how you would size the Norwegian private tutoring market.","Tell me about a time there was disagreement in your team. How did you handle it?","Why this firm over McKinsey / BCG / Bain?"]
   },
   'Technology Transformation':{
-    cvTips:['Highlight technology implementation or digital transformation projects','Show both business AND technical understanding','Include experience with ERP, cloud, data or AI projects if relevant','Show project management or change management exposure','Consulting firms want structured thinkers — show MECE-style reasoning'],
-    cvRec:['Finance or business background with a technology affinity','Coursework or certifications in digital topics (cloud, agile, data)','Any consulting internship, even outside tech','Strong communication skills — you will present to C-suite clients','Intellectual curiosity and comfort with ambiguity'],
-    qs:[{q:'What is a technology transformation?',a:'A fundamental overhaul of how a company uses technology — from legacy to modern. Done to reduce costs, improve agility, enable AI/data, or meet regulatory requirements.'},{q:'How do you structure a technology due diligence?',a:'Assess IT architecture, system debt, cyber posture, data quality, licensing costs, and integration risk. Key question: what will it cost to modernise?'},{q:'What is ERP and when should a company replace it?',a:'Enterprise Resource Planning (SAP, Oracle) integrates finance, HR, procurement and ops. Replace when systems are too fragmented or business needs have outgrown the platform.'},{q:'How do you manage change in a transformation?',a:'Early stakeholder engagement, clear communication, training, pilot programmes, and measuring adoption. The tech is usually easier than the people change.'},{q:'Why do technology transformations fail?',a:'Scope creep, poor executive sponsorship, underestimating change management, poor data migration, not defining success metrics upfront.'}],
-    case:{title:'ERP Replacement at NorRetail',tag:'Tech Transformation Case',body:'NorRetail, a Scandinavian retailer with 300 stores, runs on a 15-year-old SAP system. IT costs are 3x industry average and the system cannot support e-commerce integration.',task:'Task: Should they replace the ERP? How would you structure the business case and transformation roadmap?',hint:'💡 Frame: current cost vs future cost, strategic value of new capabilities, risk of delay vs risk of transformation. Structure: Assess → Design → Build → Deploy.'},
-    letter:"Dear Hiring Manager,\n\nI am applying for the Technology Transformation Analyst role. My background in Finance and interest in digital transformation make this an ideal fit.\n\n[Connect API key to personalise]\n\nBest regards,\n[Your name]",
-    mockQs:["Hi! I'm Sarah Mitchell. Tell me about yourself and what draws you to technology consulting.","What do you think is the hardest part of a technology transformation project — and why?","Walk me through how you would build a business case for replacing a company's core IT system.","Tell me about a time you had to influence people who disagreed with your approach.","Where do you see AI having the biggest impact on business transformation in the next 3 years?"]
+    cvTips:['Highlight technology implementation or digital transformation projects','Show both business AND technical understanding','Include ERP, cloud, data or AI project experience','Show project management or change management exposure','Demonstrate MECE-style structured thinking'],
+    cvRec:['Finance or business background with technology affinity','Certifications in digital topics (cloud, agile, data)','Consulting internship experience','Strong communication skills for C-suite presentations','Comfort with ambiguity and fast-changing scope'],
+    qs:[{q:'What is a technology transformation?',a:'A fundamental overhaul of how a company uses technology — from legacy to modern. Done to reduce costs, improve agility, enable AI/data, or meet regulatory requirements.'},{q:'How do you structure a tech due diligence?',a:'Assess IT architecture, system debt, cyber posture, data quality, licensing costs, and integration risk. Key question: what will modernisation cost and how long?'},{q:'What is ERP and when should a company replace it?',a:'Enterprise Resource Planning (SAP, Oracle) integrates finance, HR and ops. Replace when systems are fragmented, costs are high, or needs have outgrown the platform.'},{q:'How do you manage change in a transformation?',a:'Early stakeholder engagement, clear communication, training, pilots, and measuring adoption. The tech is usually easier than the people change.'},{q:'Why do technology transformations fail?',a:'Scope creep, poor executive sponsorship, underestimating change management, poor data migration, not defining success metrics upfront.'}],
+    case:{title:'ERP Replacement at NorRetail',tag:'Tech Transformation Case',body:'NorRetail, a 300-store Scandinavian retailer, runs on a 15-year-old SAP system. IT costs are 3x industry average and the system cannot support e-commerce.',task:'Task: Should they replace the ERP? How would you structure the business case and roadmap?',hint:'💡 Frame: current cost vs future cost, strategic value of new capabilities, risk of delay vs risk of transformation. Structure: Assess → Design → Build → Deploy.'},
+    letter:"Dear Hiring Manager,\n\nI am applying for the Technology Transformation Analyst role. My Finance background and interest in digital transformation make this an ideal fit.\n\n[Connect API key to personalise]\n\nBest regards,\n[Your name]",
+    mockQs:["Tell me about yourself and what draws you to technology consulting.","What do you think is the hardest part of a technology transformation — and why?","How would you build a business case for replacing a company's core IT system?","Tell me about a time you had to influence people who disagreed with your approach.","Where do you see AI having the biggest impact on business transformation in the next 3 years?"]
   }
 };
-const DEF = {
+const DEF={
   cvTips:['Quantify your impact with numbers wherever possible','Mirror keywords from the job description','Keep to 1 page — tight, action-oriented language','Proofread meticulously — one typo can end an application','Lead with your strongest, most relevant experience'],
-  cvRec:['Relevant academic background for the role','Internship or project experience in the field','Leadership or initiative outside the classroom','Strong GPA or relevant coursework listed clearly','Clean, professional formatting'],
-  qs:[{q:'Tell me about yourself.',a:"60–90 seconds: Degree → key experience → why this role. Practise until it's natural."},{q:'Why this company?',a:"Show research. Reference specific news, strategy, or culture. Generic answers fail."},{q:"Greatest strength?",a:"One strength relevant to the role, backed by a STAR example."},{q:"Challenging situation?",a:"STAR: Situation, Task, Action, Result. Focus on YOUR actions and measurable outcomes."},{q:"Five-year plan?",a:"Show ambition, link to the company's trajectory, be realistic about the career path."}],
-  case:{title:'General Case Framework',tag:'Case Tips',body:'Most cases require structured analysis and a clear, justified recommendation.',task:'1) Clarify the question. 2) Structure MECE. 3) State hypothesis early. 4) Analyse systematically. 5) Clear recommendation.',hint:"💡 Think out loud. The interviewer wants your process, not just the answer."},
+  cvRec:['Relevant academic background','Internship or project experience','Leadership or initiative outside the classroom','Clean, professional formatting','Tailor to each specific role'],
+  qs:[{q:'Tell me about yourself.',a:"60–90 seconds: Degree → key experience → why this role."},{q:'Why this company?',a:"Show research. Reference specific news, strategy, or culture."},{q:"Greatest strength?",a:"One strength relevant to the role, backed by a STAR example."},{q:"Challenging situation?",a:"STAR: Situation, Task, Action, Result — focus on YOUR actions and measurable outcomes."},{q:"Five-year plan?",a:"Show ambition, link to the company, be realistic about the career path."}],
+  case:{title:'General Case Framework',tag:'Case Tips',body:'Most cases require structured analysis and a clear recommendation.',task:'1) Clarify 2) Structure MECE 3) Hypothesis early 4) Analyse 5) Clear recommendation.',hint:"💡 Think out loud — the interviewer wants to see your process."},
   letter:"Dear Hiring Manager,\n\nI am writing to apply for this position.\n\n[Connect API key to generate a personalised version based on your CV]\n\nBest regards,\n[Your name]",
-  mockQs:["Hi! I'm Sarah Mitchell. Tell me about yourself and why you're applying for this role.","Tell me about a time you worked in a team under pressure. What was your role and outcome?","What has been your most challenging experience, and what did you learn?","Why this company specifically?","Do you have any questions for me?"]
+  mockQs:["Tell me about yourself and why you're applying for this role.","Tell me about a time you worked in a team under pressure.","What has been your most challenging experience, and what did you learn?","Why this company specifically?","Do you have any questions for me?"]
 };
 
-let CJ = {};
-let qIdx = 0;
-
-function openPrep(co, title, logo, sub, role, ind, link){
-  CJ = {company:co, title, logo, sub, role, ind, link};
-  document.getElementById('ph').textContent = 'Prepare for ' + title;
-  document.getElementById('ps').textContent = sub;
-  const linkHtml = link ? `<a class="jbi-link" href="${link}" target="_blank">View posting ↗</a>` : '';
-  document.getElementById('job-banner').innerHTML = `<div class="jbl">${logo}</div><div class="jbi"><h2>${title}</h2><p>${sub}</p><div class="jbt"><span class="jtag">${role}</span><span class="jtag">${ind}</span></div></div>${linkHtml}`;
-  const c = JC[role] || DEF;
-  document.getElementById('cv-tips').innerHTML = c.cvTips.map(t=>`<li>${t}</li>`).join('');
-  document.getElementById('cv-rec').innerHTML = c.cvRec.map(t=>`<li>${t}</li>`).join('');
-  document.getElementById('letter-box').textContent = c.letter;
-  document.getElementById('role-badge').textContent = role;
-  document.getElementById('q-list').innerHTML = c.qs.map(q=>`<div class="q-card"><strong>${q.q}</strong><div class="q-hint">${q.a}</div></div>`).join('');
-  const ca = c.case;
-  document.getElementById('case-box').innerHTML = `<div class="ctag">${ca.tag}</div><h3>${ca.title}</h3><p class="cbody">${ca.body}</p><p class="ctask">${ca.task}</p><div class="chint">${ca.hint}</div>`;
+let CJ={};let qIdx=0;
+function openPrep(co,title,logo,sub,role,ind,link){
+  CJ={company:co,title,logo,sub,role,ind,link};
+  document.getElementById('ph').textContent='Prepare for '+title;
+  document.getElementById('ps').textContent=sub;
+  const lk=link?`<a class="jbi-link" href="${link}" target="_blank">View posting ↗</a>`:'';
+  document.getElementById('job-banner').innerHTML=`<div class="jbl">${logo}</div><div class="jbi"><h2>${title}</h2><p>${sub}</p><div class="jbt"><span class="jtag">${role}</span></div></div>${lk}`;
+  const c=JC[role]||DEF;
+  document.getElementById('cv-tips').innerHTML=c.cvTips.map(t=>`<li>${t}</li>`).join('');
+  document.getElementById('cv-rec').innerHTML=c.cvRec.map(t=>`<li>${t}</li>`).join('');
+  document.getElementById('letter-box').textContent=c.letter;
+  document.getElementById('role-badge').textContent=role;
+  document.getElementById('q-list').innerHTML=c.qs.map(q=>`<div class="q-card"><strong>${q.q}</strong><div class="q-hint">${q.a}</div></div>`).join('');
+  const ca=c.case;
+  document.getElementById('case-box').innerHTML=`<div class="ctag">${ca.tag}</div><h3>${ca.title}</h3><p class="cbody">${ca.body}</p><p class="ctask">${ca.task}</p><div class="chint">${ca.hint}</div>`;
   document.querySelectorAll('.ptab').forEach(t=>t.classList.remove('active'));
   document.querySelectorAll('.pc').forEach(t=>t.classList.remove('active'));
   document.querySelector('.ptab').classList.add('active');
   document.getElementById('t-cv').classList.add('active');
   sv('v-prep');
 }
-
-function stab(el, id){
+function stab(el,id){
   document.querySelectorAll('.ptab').forEach(t=>t.classList.remove('active'));
   document.querySelectorAll('.pc').forEach(t=>t.classList.remove('active'));
-  el.classList.add('active');
-  document.getElementById(id).classList.add('active');
+  el.classList.add('active');document.getElementById(id).classList.add('active');
+}
+function cvUp(input){if(input.files.length)document.querySelector('.upload-area p').textContent='✅ '+input.files[0].name+' uploaded';}
+
+/* ══ MOCK INTERVIEW — SMART RESPONSES ══ */
+const SHORT_THRESHOLD = 30; // chars
+const VAGUE_WORDS = ['good','nice','interesting','important','great','fine','okay','many','various','things','stuff','something','everything'];
+
+function analyseAnswer(text){
+  const words=text.trim().split(/\s+/).length;
+  const lower=text.toLowerCase();
+  const isShort=text.trim().length<SHORT_THRESHOLD||words<8;
+  const hasSTAR=/situation|task|action|result|when i|i had|i was|i did|we had|worked on|led|managed|achieved/i.test(lower);
+  const isVague=VAGUE_WORDS.filter(w=>lower.includes(w)).length>=2&&!hasSTAR;
+  const hasNumbers=/\d+/.test(text);
+  return{isShort,isVague,hasSTAR,hasNumbers,words};
 }
 
-function cvUp(input){ if(input.files.length) document.querySelector('.upload-area p').textContent = '✅ ' + input.files[0].name + ' uploaded'; }
+function getFollowUp(text, questionText){
+  const a=analyseAnswer(text);
+  const L=LANGS[curLang];
+  if(a.isShort) return L.feedback_short;
+  if(a.isVague) return L.feedback_vague;
+  // Contextual follow-ups based on what the question was about
+  const q=questionText.toLowerCase();
+  if(a.hasSTAR&&!a.hasNumbers) return "Good structure! One thing — can you quantify the outcome? What was the actual impact in numbers?";
+  if(/dcf|valuation|model/i.test(q)&&!/wacc|terminal|cash flow/i.test(text)) return "Good start. Can you walk me through the discount rate you'd use and how you'd calculate terminal value?";
+  if(/yourself|background/i.test(q)) return "Thanks — can you be more specific about why this particular role and firm? What specifically draws you here rather than a competitor?";
+  if(/pressure|challenge|difficult/i.test(q)&&!a.hasSTAR) return "Can you structure that more concretely? Tell me specifically what YOU did — what actions did you personally take?";
+  if(/why.*consulting|why.*banking|why.*finance/i.test(q)) return "Interesting — but I'd push you to be more specific. Can you give me a concrete moment or experience that confirmed this was the right path for you?";
+  // Generic good follow-up
+  const followUps=["Interesting. How would you approach that differently if you had to do it again?","And what did you learn from that experience that you'd apply in this role?","Can you give me another example that shows a different side of that skill?","How did stakeholders react to that outcome?"];
+  return L.feedback_good + followUps[qIdx % followUps.length];
+}
 
 function setupIV(){
-  const c = JC[CJ.role] || DEF;
-  qIdx = 0;
-  document.getElementById('iv-co').textContent = CJ.company || 'Company';
-  document.getElementById('iv-label').textContent = (CJ.title || 'Role') + ' · ' + (CJ.company || '');
-  document.getElementById('chat-area').innerHTML = '';
-  document.getElementById('score-n').textContent = '—';
-  document.getElementById('score-bars').innerHTML = '';
-  document.getElementById('prog-list').innerHTML = c.mockQs.map((q,i)=>`<div class="prog-item"><div class="prog-ic ${i===0?'act':'todo'}">${i===0?'▶':'○'}</div><span class="prog-txt">Question ${i+1}</span></div>`).join('');
-  setTimeout(()=>addMsg('ai', c.mockQs[0]), 700);
+  const c=JC[CJ.role]||DEF;
+  qIdx=0;
+  document.getElementById('iv-co').textContent=CJ.company||'Company';
+  document.getElementById('iv-label').textContent=(CJ.title||'Role')+' · '+(CJ.company||'');
+  document.getElementById('chat-area').innerHTML='';
+  document.getElementById('score-n').textContent='—';
+  document.getElementById('score-bars').innerHTML='';
+  document.getElementById('prog-list').innerHTML=c.mockQs.map((q,i)=>`<div class="prog-item"><div class="prog-ic ${i===0?'act':'todo'}">${i===0?'▶':'○'}</div><span class="prog-txt">Q${i+1}: ${q.substring(0,30)}…</span></div>`).join('');
+  setTimeout(()=>addMsg('ai',t('sarah_intro')),600);
 }
 
-function addMsg(role, text){
-  const a = document.getElementById('chat-area');
-  const t = new Date().toLocaleTimeString('en',{hour:'2-digit',minute:'2-digit'});
-  a.innerHTML += `<div class="msg ${role}"><div class="mavatar">${role==='ai'?'👩‍💼':'👤'}</div><div><div class="mbubble">${text}</div><div class="mtime">${t}</div></div></div>`;
-  a.scrollTop = a.scrollHeight;
+function addMsg(role,text,type=''){
+  const a=document.getElementById('chat-area');
+  const ts=new Date().toLocaleTimeString('en',{hour:'2-digit',minute:'2-digit'});
+  a.innerHTML+=`<div class="msg ${role} ${type}"><div class="mavatar">${role==='ai'?'👩‍💼':'👤'}</div><div><div class="mbubble">${text}</div><div class="mtime">${ts}</div></div></div>`;
+  a.scrollTop=a.scrollHeight;
 }
+
+function showTyping(){
+  const a=document.getElementById('chat-area');
+  a.innerHTML+=`<div class="msg ai" id="typ"><div class="mavatar">👩‍💼</div><div class="typing"><div class="tdot"></div><div class="tdot"></div><div class="tdot"></div></div></div>`;
+  a.scrollTop=a.scrollHeight;
+}
+function removeTyping(){const t=document.getElementById('typ');if(t)t.remove();}
+
+let pendingNextQ=false;
+let lastQuestion='';
 
 function send(){
-  const inp = document.getElementById('chat-input');
-  const txt = inp.value.trim();
-  if(!txt) return;
-  addMsg('user', txt);
-  inp.value = '';
-  const c = JC[CJ.role] || DEF;
-  qIdx++;
-  document.querySelectorAll('.prog-item').forEach((item,i)=>{
-    const ic = item.querySelector('.prog-ic');
-    if(i < qIdx){ic.className='prog-ic done';ic.textContent='✓';}
-    else if(i === qIdx && qIdx < c.mockQs.length){ic.className='prog-ic act';ic.textContent='▶';}
-    else{ic.className='prog-ic todo';ic.textContent='○';}
-  });
-  const area = document.getElementById('chat-area');
-  area.innerHTML += `<div class="msg ai" id="typ"><div class="mavatar">👩‍💼</div><div class="typing"><div class="tdot"></div><div class="tdot"></div><div class="tdot"></div></div></div>`;
-  area.scrollTop = area.scrollHeight;
+  const inp=document.getElementById('chat-input');
+  const txt=inp.value.trim();if(!txt)return;
+  addMsg('user',txt);
+  inp.value='';
+  const c=JC[CJ.role]||DEF;
+  const currentQ=pendingNextQ?'':(qIdx===0?t('sarah_intro'):c.mockQs[qIdx-1]||'');
+  const followUp=getFollowUp(txt, lastQuestion);
+  const analysis=analyseAnswer(txt);
+  showTyping();
   setTimeout(()=>{
-    const t = document.getElementById('typ'); if(t) t.remove();
-    if(qIdx < c.mockQs.length){ addMsg('ai', c.mockQs[qIdx]); }
-    else {
-      addMsg('ai', "Excellent — that wraps up our mock interview! 🎉 You completed all " + c.mockQs.length + " questions. In the full AI-powered version, I would give you detailed feedback, a score, and specific improvement tips per answer. Connect a Claude or GPT-4 API key to unlock this.");
-      document.getElementById('score-n').textContent = '7.4';
+    removeTyping();
+    // Give feedback on the answer
+    addMsg('ai',followUp,'feedback');
+    // If answer was good enough, move to next question after a beat
+    if(!analysis.isShort&&!analysis.isVague){
       setTimeout(()=>{
-        document.getElementById('score-bars').innerHTML = ['Clarity:80','Structure:72','Technical:65','Confidence:78'].map(s=>{
-          const [l,v] = s.split(':');
-          return `<div class="sbar-row"><span class="sbar-lbl">${l}</span><div class="sbar-track"><div class="sbar-fill" style="width:0%"></div></div></div>`;
-        }).join('');
+        qIdx++;
+        updateProgress(qIdx,c.mockQs.length);
+        showTyping();
         setTimeout(()=>{
-          document.querySelectorAll('.sbar-fill').forEach((bar,i)=>{
-            const vals = [80,72,65,78];
-            bar.style.width = vals[i] + '%';
-          });
-        }, 100);
-      }, 300);
+          removeTyping();
+          if(qIdx<c.mockQs.length){
+            const nextQ=c.mockQs[qIdx];
+            lastQuestion=nextQ;
+            addMsg('ai',t('next_q_prefix')+nextQ);
+          } else {
+            addMsg('ai',t('final_msg'));
+            showScore();
+          }
+        },1500);
+      },2000);
     }
-  }, 1800);
+    // If short/vague, stay on same question — wait for better answer
+    else{ pendingNextQ=false; }
+  },1600);
 }
 
-/* INIT */
+function updateProgress(current,total){
+  document.querySelectorAll('.prog-item').forEach((item,i)=>{
+    const ic=item.querySelector('.prog-ic');
+    if(i<current){ic.className='prog-ic done';ic.textContent='✓';}
+    else if(i===current&&current<total){ic.className='prog-ic act';ic.textContent='▶';}
+    else{ic.className='prog-ic todo';ic.textContent='○';}
+  });
+}
+
+function showScore(){
+  document.getElementById('score-n').textContent='7.4';
+  setTimeout(()=>{
+    document.getElementById('score-bars').innerHTML=['Clarity:80','Structure:72','Technical:65','Confidence:78'].map(s=>{
+      const[l,v]=s.split(':');
+      return`<div class="sbar-row"><span class="sbar-lbl">${l}</span><div class="sbar-track"><div class="sbar-fill" style="width:0%"></div></div></div>`;
+    }).join('');
+    setTimeout(()=>{document.querySelectorAll('.sbar-fill').forEach((b,i)=>{b.style.width=[80,72,65,78][i]+'%';});},100);
+  },400);
+}
+
+function toggleTips(){
+  const p=document.getElementById('tips-panel');
+  p.classList.toggle('open');
+  document.querySelector('.tips-toggle').textContent=p.classList.contains('open')?'▲ Hide answer tips':'💡 Show answer tips & STAR method';
+}
+
+/* ══ INIT ══ */
+renderCities();
 renderRoles();
 renderJobs();
+// Set first question
+setTimeout(()=>{ const c=JC['M&A']||DEF; lastQuestion=c.mockQs[0]; },100);
 </script>
 </body>
 </html>
