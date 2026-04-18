@@ -1,296 +1,587 @@
 <!DOCTYPE html>
-<html lang="no">
+<html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>CareerPrep — Forbered deg til drømmejobben</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --navy: #0a1628;
-      --navy-mid: #0d1f3c;
-      --navy-light: #1e3a5f;
-      --blue: #1a56a0;
-      --blue-bright: #4a9eff;
-      --blue-pale: #e8f2ff;
-      --text-dark: #0d1f3c;
-      --text-mid: #4a6a8a;
-      --text-light: #7a9bc0;
-      --border: #d0dae8;
-      --bg: #f4f6f9;
-      --white: #ffffff;
-    }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', 'Segoe UI', Arial, sans-serif; background: var(--bg); color: var(--text-dark); line-height: 1.6; }
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>CareerPrep — Land Your Dream Job</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{--navy:#08142a;--navy2:#0d1f3c;--navy3:#162d4e;--navy4:#1e3a5f;--blue:#1a56a0;--blue2:#2368b8;--accent:#4a9eff;--text:#0d1f3c;--text2:#3a5570;--text3:#6a8aaa;--border:#cdd8e8;--bg:#f2f5f9;--white:#fff;--green:#1a9e5a;--green-bg:#e8f7ef;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;}
+nav{background:var(--navy);height:62px;display:flex;align-items:center;justify-content:space-between;padding:0 3rem;position:sticky;top:0;z-index:200;border-bottom:1px solid rgba(255,255,255,0.05);}
+.logo{display:flex;align-items:baseline;gap:4px;cursor:pointer;}
+.logo-main{font-family:'DM Serif Display',serif;font-size:22px;color:#fff;}
+.logo-main span{color:var(--accent);}
+.logo-tag{font-size:10px;color:var(--text3);letter-spacing:2px;text-transform:uppercase;font-weight:400;}
+.nav-r{display:flex;align-items:center;gap:1.5rem;}
+.nav-r a{color:#8aaac8;font-size:13px;text-decoration:none;cursor:pointer;transition:color .2s;}
+.nav-r a:hover{color:#fff;}
+.nav-pill{background:var(--blue);color:#fff!important;padding:7px 18px;border-radius:100px;font-weight:500!important;}
+.nav-pill:hover{background:var(--blue2)!important;}
+.view{display:none;}
+.view.active{display:block;}
+#v-landing{display:block;}
 
-    nav { background: var(--navy); padding: 0 3rem; display: flex; align-items: center; justify-content: space-between; height: 60px; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(255,255,255,0.06); }
-    .logo { color: #fff; font-size: 18px; font-weight: 700; letter-spacing: 0.3px; text-decoration: none; cursor: pointer; }
-    .logo span { color: var(--blue-bright); }
-    .logo small { font-size: 10px; font-weight: 400; color: var(--text-light); display: block; letter-spacing: 1.5px; text-transform: uppercase; margin-top: -2px; }
-    .nav-links { display: flex; gap: 2rem; align-items: center; }
-    .nav-links a { color: #a0b0c8; font-size: 13px; text-decoration: none; font-weight: 400; transition: color 0.2s; cursor: pointer; }
-    .nav-links a:hover { color: #fff; }
-    .nav-cta { background: var(--blue); color: #fff !important; padding: 7px 18px; border-radius: 6px; font-weight: 500 !important; }
-    .nav-cta:hover { background: #154887 !important; }
+/* LANDING */
+.hero{background:var(--navy2);padding:6rem 2rem 5rem;text-align:center;border-bottom:1px solid var(--navy4);position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 700px 350px at 50% 0%,rgba(26,86,160,.18),transparent 70%);pointer-events:none;}
+.eyebrow{display:inline-flex;align-items:center;gap:6px;background:rgba(74,158,255,.1);border:1px solid rgba(74,158,255,.2);color:var(--accent);font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;padding:5px 14px;border-radius:100px;margin-bottom:1.8rem;}
+.eyebrow::before{content:'';width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.4;}}
+.hero h1{font-family:'DM Serif Display',serif;font-size:52px;color:#fff;line-height:1.1;margin-bottom:1.2rem;max-width:680px;margin-left:auto;margin-right:auto;}
+.hero h1 em{color:var(--accent);font-style:normal;}
+.hero-sub{color:var(--text3);font-size:16px;max-width:460px;margin:0 auto 3rem;font-weight:300;line-height:1.75;}
+.hero-cta{display:inline-flex;align-items:center;gap:8px;background:var(--blue);color:#fff;border:none;padding:15px 36px;border-radius:100px;font-size:15px;font-weight:500;cursor:pointer;transition:all .2s;font-family:inherit;}
+.hero-cta:hover{background:var(--blue2);transform:translateY(-2px);}
+.hero-note{color:var(--text3);font-size:12px;margin-top:1rem;}
+.stats-row{display:flex;justify-content:center;gap:4rem;padding:2.5rem 2rem;background:var(--navy);border-bottom:1px solid var(--navy4);}
+.stat-n{font-family:'DM Serif Display',serif;font-size:30px;color:#fff;text-align:center;}
+.stat-l{font-size:11px;color:var(--text3);letter-spacing:1px;text-transform:uppercase;text-align:center;margin-top:2px;}
+.features{max-width:960px;margin:0 auto;padding:5rem 2rem;}
+.f-label{text-align:center;font-size:11px;color:var(--text3);font-weight:500;letter-spacing:2px;text-transform:uppercase;margin-bottom:.5rem;}
+.f-h{text-align:center;font-family:'DM Serif Display',serif;font-size:30px;color:var(--text);margin-bottom:.75rem;}
+.f-sub{text-align:center;font-size:14px;color:var(--text2);margin-bottom:3rem;}
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:18px;}
+.feat-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.6rem 1.3rem;transition:all .25s;}
+.feat-card:hover{border-color:var(--accent);transform:translateY(-3px);}
+.feat-ic{width:44px;height:44px;background:#e8f2ff;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:1rem;}
+.feat-card h3{font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px;}
+.feat-card p{font-size:13px;color:var(--text2);line-height:1.6;}
+.how-section{background:var(--navy2);padding:5rem 2rem;border-top:1px solid var(--navy4);}
+.how-inner{max-width:860px;margin:0 auto;text-align:center;}
+.how-inner .f-h,.pip-sub{color:#fff;}
+.how-inner .f-sub{color:var(--text3);}
+.pip-steps{display:flex;align-items:flex-start;justify-content:center;gap:0;margin-top:3rem;flex-wrap:wrap;}
+.pip-s{flex:1;min-width:110px;max-width:150px;text-align:center;position:relative;}
+.pip-s::after{content:'';position:absolute;top:21px;left:60%;width:80%;height:1px;background:var(--navy4);}
+.pip-s:last-child::after{display:none;}
+.pip-num{width:42px;height:42px;border-radius:50%;background:var(--navy3);border:1px solid var(--navy4);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:var(--accent);margin:0 auto 8px;position:relative;z-index:1;}
+.pip-title{font-size:12px;font-weight:500;color:#fff;margin-bottom:2px;}
+.pip-sub{font-size:11px;color:var(--text3);}
 
-    .step-bar { background: var(--navy); padding: 0 3rem; display: flex; align-items: center; justify-content: center; gap: 0; height: 52px; border-bottom: 1px solid var(--navy-light); }
-    .step { display: flex; align-items: center; gap: 8px; font-size: 12px; color: #4a6a8a; font-weight: 500; }
-    .step.active { color: var(--blue-bright); }
-    .step.done { color: #2ecc71; }
-    .step-num { width: 24px; height: 24px; border-radius: 50%; border: 1.5px solid currentColor; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; }
-    .step-div { width: 40px; height: 1px; background: var(--navy-light); margin: 0 8px; }
+/* PAGE HERO */
+.page-hero{background:var(--navy2);padding:3rem 2rem 2.5rem;border-bottom:1px solid var(--navy4);}
+.page-hero-in{max-width:780px;margin:0 auto;}
+.back{display:inline-flex;align-items:center;gap:5px;color:var(--text3);font-size:13px;cursor:pointer;margin-bottom:1.5rem;transition:color .2s;background:none;border:none;font-family:inherit;}
+.back:hover{color:var(--accent);}
+.page-hero h1{font-family:'DM Serif Display',serif;font-size:30px;color:#fff;margin-bottom:.3rem;}
+.page-hero p{color:var(--text3);font-size:14px;}
 
-    .page { display: none; }
-    .page.active { display: block; }
+/* PROFILE */
+.form-wrap{max-width:780px;margin:2.5rem auto;padding:0 2rem 4rem;}
+.form-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.8rem;margin-bottom:1.5rem;}
+.form-card h2{font-size:15px;font-weight:600;color:var(--text);margin-bottom:1.2rem;padding-bottom:.75rem;border-bottom:1px solid var(--border);}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:.9rem;}
+.fg{display:flex;flex-direction:column;gap:5px;}
+.fg label{font-size:11px;font-weight:600;color:var(--text2);letter-spacing:.5px;text-transform:uppercase;}
+.fg select,.fg input{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px 12px;font-size:14px;color:var(--text);font-family:inherit;outline:none;transition:border-color .2s;}
+.fg select:focus,.fg input:focus{border-color:var(--accent);}
+.tag-grid{display:flex;flex-wrap:wrap;gap:8px;}
+.tg{background:var(--bg);border:1px solid var(--border);border-radius:100px;padding:6px 14px;font-size:13px;cursor:pointer;transition:all .2s;font-family:inherit;color:var(--text2);}
+.tg:hover{border-color:var(--accent);color:var(--accent);}
+.tg.on{background:var(--blue);border-color:var(--blue);color:#fff;}
+.submit-btn{width:100%;background:var(--blue);color:#fff;border:none;padding:14px;border-radius:10px;font-size:15px;font-weight:600;cursor:pointer;transition:all .2s;font-family:inherit;}
+.submit-btn:hover{background:var(--blue2);transform:translateY(-1px);}
 
-    .hero { background: var(--navy-mid); padding: 5rem 3rem 4rem; text-align: center; border-bottom: 1px solid var(--navy-light); }
-    .hero-badge { display: inline-block; background: rgba(74,158,255,0.12); color: var(--blue-bright); font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; padding: 5px 14px; border-radius: 20px; border: 1px solid rgba(74,158,255,0.25); margin-bottom: 1.5rem; }
-    .hero h1 { color: #fff; font-size: 42px; font-weight: 700; line-height: 1.15; margin-bottom: 1rem; max-width: 640px; margin-left: auto; margin-right: auto; }
-    .hero h1 em { color: var(--blue-bright); font-style: normal; }
-    .hero p { color: var(--text-light); font-size: 16px; max-width: 520px; margin: 0 auto 2.5rem; font-weight: 300; line-height: 1.7; }
-    .hero-stats { display: flex; justify-content: center; gap: 3rem; margin-bottom: 2.5rem; }
-    .stat { text-align: center; }
-    .stat-num { color: #fff; font-size: 26px; font-weight: 700; display: block; }
-    .stat-label { color: var(--text-light); font-size: 12px; }
-    .hero-btn { background: var(--blue); color: #fff; border: none; padding: 14px 36px; border-radius: 8px; font-size: 15px; font-weight: 600; cursor: pointer; transition: all 0.2s; font-family: inherit; }
-    .hero-btn:hover { background: #154887; transform: translateY(-1px); }
+/* JOBS */
+.results-layout{display:grid;grid-template-columns:250px 1fr;min-height:80vh;}
+.filter-panel{background:var(--white);border-right:1px solid var(--border);padding:1.5rem;position:sticky;top:62px;height:calc(100vh - 62px);overflow-y:auto;}
+.fp-h{font-size:11px;font-weight:600;color:var(--text2);letter-spacing:1px;text-transform:uppercase;margin:1.2rem 0 .6rem;}
+.fp-h:first-child{margin-top:0;}
+.fc{display:flex;align-items:center;gap:8px;padding:4px 0;cursor:pointer;}
+.fc input{accent-color:var(--blue);}
+.fc span{font-size:13px;color:var(--text2);}
+.fc-n{margin-left:auto;font-size:11px;color:var(--text3);background:var(--bg);padding:1px 7px;border-radius:100px;}
+.jobs-panel{padding:1.5rem 2rem;}
+.portal-note{background:var(--navy2);border-radius:10px;padding:.9rem 1.2rem;margin-bottom:1.5rem;font-size:13px;color:var(--text3);}
+.portal-note strong{color:var(--accent);}
+.jobs-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.2rem;}
+.jobs-top h2{font-size:17px;font-weight:600;color:var(--text);}
+.jobs-top span{font-size:13px;color:var(--text3);}
+.search-bar{display:flex;gap:10px;margin-bottom:1.5rem;}
+.search-bar input{flex:1;background:var(--white);border:1px solid var(--border);border-radius:8px;padding:10px 14px;font-size:14px;font-family:inherit;outline:none;}
+.search-bar input:focus{border-color:var(--accent);}
+.search-bar button{background:var(--blue);color:#fff;border:none;padding:10px 20px;border-radius:8px;font-size:14px;cursor:pointer;font-family:inherit;font-weight:500;}
+.job-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.3rem;margin-bottom:12px;cursor:pointer;transition:all .2s;display:flex;gap:14px;}
+.job-card:hover{border-color:var(--accent);box-shadow:0 4px 16px rgba(26,86,160,.07);}
+.jl{width:44px;height:44px;border-radius:10px;background:var(--bg);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.ji{flex:1;}
+.jt{font-size:15px;font-weight:600;color:var(--text);margin-bottom:2px;}
+.jc{font-size:13px;color:var(--text2);margin-bottom:6px;}
+.jm{display:flex;flex-wrap:wrap;gap:6px;}
+.jtag{font-size:11px;color:var(--text2);background:var(--bg);border:1px solid var(--border);padding:2px 9px;border-radius:100px;}
+.jtag.new{background:var(--green-bg);border-color:#a8e8c8;color:var(--green);}
+.jtag.hot{background:#fff3e0;border-color:#ffd08a;color:#a06010;}
+.ja{display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex-shrink:0;}
+.jdate{font-size:11px;color:var(--text3);}
+.prep-btn{background:var(--blue);color:#fff;border:none;padding:7px 14px;border-radius:6px;font-size:12px;font-weight:500;cursor:pointer;white-space:nowrap;font-family:inherit;transition:background .2s;}
+.prep-btn:hover{background:var(--blue2);}
 
-    .features { max-width: 900px; margin: 0 auto; padding: 4rem 2rem; }
-    .features-label { text-align: center; font-size: 12px; color: var(--text-mid); font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 0.5rem; }
-    .features-title { text-align: center; font-size: 22px; font-weight: 700; color: var(--text-dark); margin-bottom: 3rem; }
-    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 20px; }
-    .feature-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; transition: all 0.2s; }
-    .feature-card:hover { border-color: var(--blue-bright); transform: translateY(-2px); }
-    .feature-icon { width: 44px; height: 44px; background: var(--blue-pale); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; margin-bottom: 1rem; }
-    .feature-card h3 { font-size: 15px; font-weight: 600; color: var(--text-dark); margin-bottom: 6px; }
-    .feature-card p { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+/* PREP */
+.prep-layout{max-width:940px;margin:0 auto;padding:2rem 2rem 4rem;}
+.job-banner{background:var(--white);border:1px solid var(--border);border-radius:13px;padding:1.2rem 1.4rem;display:flex;align-items:center;gap:14px;margin-bottom:2rem;}
+.jbl{width:50px;height:50px;border-radius:11px;background:var(--bg);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:22px;}
+.jbi h2{font-size:16px;font-weight:600;color:var(--text);margin-bottom:2px;}
+.jbi p{font-size:13px;color:var(--text2);}
+.jbt{display:flex;gap:6px;margin-top:4px;}
+.pipeline-nav{display:flex;gap:0;background:var(--white);border:1px solid var(--border);border-radius:12px;padding:5px;margin-bottom:2rem;overflow-x:auto;}
+.ptab{flex:1;min-width:90px;padding:9px 8px;border-radius:8px;border:none;background:transparent;font-size:13px;font-weight:500;color:var(--text2);cursor:pointer;transition:all .2s;font-family:inherit;text-align:center;white-space:nowrap;}
+.ptab:hover{color:var(--text);}
+.ptab.active{background:var(--blue);color:#fff;}
+.pc{display:none;}
+.pc.active{display:block;}
+.cv-sec{background:var(--white);border:1px solid var(--border);border-radius:13px;padding:1.5rem;margin-bottom:1.2rem;}
+.cv-sec h3{font-size:15px;font-weight:600;color:var(--text);margin-bottom:1rem;display:flex;align-items:center;gap:8px;}
+.tip-list{list-style:none;}
+.tip-list li{padding:7px 0;border-bottom:1px solid var(--bg);font-size:14px;color:var(--text2);display:flex;gap:10px;line-height:1.55;}
+.tip-list li:last-child{border-bottom:none;}
+.tip-list li::before{content:'→';color:var(--blue);font-weight:600;flex-shrink:0;}
+.letter-box{background:var(--bg);border:1px solid var(--border);border-radius:9px;padding:1.2rem;font-size:13px;color:var(--text2);line-height:1.8;min-height:260px;white-space:pre-wrap;}
+.gen-btn{display:inline-flex;align-items:center;gap:6px;background:var(--blue);color:#fff;border:none;padding:10px 20px;border-radius:8px;font-size:14px;font-weight:500;cursor:pointer;font-family:inherit;margin-top:1rem;transition:background .2s;}
+.gen-btn:hover{background:var(--blue2);}
+.ai-badge{background:rgba(74,158,255,.12);border:1px solid rgba(74,158,255,.25);color:var(--accent);font-size:10px;padding:2px 8px;border-radius:100px;font-weight:600;letter-spacing:.5px;}
+.q-card{background:var(--white);border:1px solid var(--border);border-left:3px solid var(--blue);border-radius:0 10px 10px 0;padding:1rem 1.2rem;margin-bottom:10px;}
+.q-card strong{display:block;font-size:14px;font-weight:600;color:var(--text);margin-bottom:5px;}
+.q-hint{font-size:13px;color:var(--text2);background:var(--bg);padding:7px 10px;border-radius:6px;line-height:1.6;}
+.q-hint::before{content:"💡 Tip: ";font-weight:600;color:var(--blue);}
+.case-dark{background:var(--navy2);border-radius:13px;padding:1.5rem;color:#fff;margin-bottom:1.2rem;}
+.case-dark h3{font-size:16px;font-weight:600;margin-bottom:.75rem;}
+.case-dark .cbody{color:#8aaac8;font-size:14px;line-height:1.7;margin-bottom:.5rem;}
+.case-dark .ctask{color:#fff;font-weight:500;margin-top:.75rem;font-size:14px;}
+.case-dark .chint{background:rgba(74,158,255,.1);border:1px solid rgba(74,158,255,.2);border-radius:8px;padding:10px 14px;margin-top:1rem;font-size:13px;color:var(--accent);}
+.ctag{background:rgba(74,158,255,.2);color:var(--accent);font-size:11px;padding:2px 10px;border-radius:100px;font-weight:600;display:inline-block;margin-bottom:1rem;}
+.upload-area{background:var(--bg);border:2px dashed var(--border);border-radius:10px;padding:2rem;text-align:center;cursor:pointer;transition:border-color .2s;margin-bottom:1rem;}
+.upload-area:hover{border-color:var(--accent);}
+.upload-area input{display:none;}
+.upload-area p{font-size:13px;color:var(--text3);margin-top:5px;}
+.upload-lbl{font-size:13px;font-weight:500;color:var(--blue);cursor:pointer;}
+.badge{display:inline-block;background:#e8f2ff;color:var(--blue);font-size:11px;padding:3px 10px;border-radius:100px;font-weight:600;}
 
-    .section { max-width: 900px; margin: 0 auto; padding: 2rem 2rem 3rem; }
-    .section-label { font-size: 12px; color: var(--text-mid); font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 0.75rem; }
-    .section-title { font-size: 22px; font-weight: 700; color: var(--text-dark); margin-bottom: 0.5rem; }
-    .section-sub { font-size: 14px; color: var(--text-mid); margin-bottom: 2rem; }
+/* MOCK INTERVIEW */
+.iv-bar{background:var(--navy2);padding:.75rem 2rem;border-bottom:1px solid var(--navy4);display:flex;align-items:center;justify-content:space-between;}
+.live-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(46,204,113,.12);border:1px solid rgba(46,204,113,.25);color:#2ecc71;font-size:11px;padding:3px 10px;border-radius:100px;font-weight:600;}
+.live-badge::before{content:'';width:5px;height:5px;background:#2ecc71;border-radius:50%;animation:pulse 1.5s infinite;}
+.iv-layout{display:grid;grid-template-columns:1fr 340px;height:calc(100vh - 110px);}
+.iv-main{display:flex;flex-direction:column;padding:1.5rem 2rem;overflow:hidden;}
+.iv-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;flex-shrink:0;}
+.iv-hdr h2{font-size:17px;font-weight:600;color:var(--text);}
+.interviewer-card{background:var(--navy2);border-radius:12px;padding:1.3rem;flex-shrink:0;margin-bottom:1rem;display:flex;align-items:center;gap:14px;}
+.iv-avatar{width:52px;height:52px;border-radius:50%;background:var(--navy4);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;position:relative;}
+.iv-avatar::after{content:'';position:absolute;bottom:2px;right:2px;width:11px;height:11px;background:#2ecc71;border-radius:50%;border:2px solid var(--navy2);}
+.iv-info h3{font-size:15px;font-weight:600;color:#fff;}
+.iv-info p{font-size:12px;color:var(--text3);}
+.chat-area{flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:10px;padding-right:4px;margin-bottom:.75rem;}
+.msg{max-width:78%;display:flex;gap:9px;align-items:flex-start;}
+.msg.ai{align-self:flex-start;}
+.msg.user{align-self:flex-end;flex-direction:row-reverse;}
+.mavatar{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;background:var(--navy4);}
+.msg.user .mavatar{background:var(--blue);}
+.mbubble{padding:10px 13px;border-radius:12px;font-size:14px;line-height:1.6;}
+.msg.ai .mbubble{background:var(--white);border:1px solid var(--border);color:var(--text);border-top-left-radius:2px;}
+.msg.user .mbubble{background:var(--blue);color:#fff;border-top-right-radius:2px;}
+.mtime{font-size:10px;color:var(--text3);margin-top:3px;}
+.msg.ai .mtime{text-align:left;}
+.msg.user .mtime{text-align:right;}
+.typing{display:flex;gap:4px;padding:12px 14px;background:var(--white);border:1px solid var(--border);border-radius:12px;border-top-left-radius:2px;align-self:flex-start;width:56px;}
+.tdot{width:5px;height:5px;background:var(--text3);border-radius:50%;animation:bounce .8s infinite;}
+.tdot:nth-child(2){animation-delay:.15s;}
+.tdot:nth-child(3){animation-delay:.3s;}
+@keyframes bounce{0%,60%,100%{transform:translateY(0);}30%{transform:translateY(-5px);}}
+.chat-inp{display:flex;gap:8px;flex-shrink:0;}
+.chat-inp input{flex:1;background:var(--white);border:1px solid var(--border);border-radius:9px;padding:11px 13px;font-size:14px;font-family:inherit;outline:none;transition:border-color .2s;}
+.chat-inp input:focus{border-color:var(--accent);}
+.send-btn{background:var(--blue);color:#fff;border:none;padding:11px 17px;border-radius:9px;font-size:14px;cursor:pointer;font-family:inherit;font-weight:500;transition:background .2s;}
+.send-btn:hover{background:var(--blue2);}
+.iv-sidebar{background:var(--white);border-left:1px solid var(--border);padding:1.5rem;overflow-y:auto;}
+.ss h3{font-size:11px;font-weight:600;color:var(--text2);letter-spacing:1px;text-transform:uppercase;margin-bottom:.75rem;margin-top:1.2rem;}
+.ss h3:first-child{margin-top:0;}
+.prog-item{display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid var(--bg);}
+.prog-item:last-child{border-bottom:none;}
+.prog-ic{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;}
+.prog-ic.done{background:var(--green-bg);color:var(--green);}
+.prog-ic.act{background:var(--blue);color:#fff;}
+.prog-ic.todo{background:var(--bg);color:var(--text3);border:1px solid var(--border);}
+.prog-txt{font-size:13px;color:var(--text2);}
+.score-card{background:var(--bg);border-radius:10px;padding:1rem;text-align:center;}
+.score-n{font-family:'DM Serif Display',serif;font-size:36px;color:var(--blue);}
+.score-l{font-size:12px;color:var(--text3);}
+.sbar-row{display:flex;align-items:center;gap:8px;margin-bottom:4px;}
+.sbar-lbl{font-size:11px;color:var(--text2);width:72px;text-align:right;flex-shrink:0;}
+.sbar-track{flex:1;background:var(--border);border-radius:4px;height:4px;}
+.sbar-fill{height:4px;border-radius:4px;background:var(--blue);}
 
-    .industry-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-bottom: 2rem; }
-    .industry-card { background: var(--white); border: 1.5px solid var(--border); border-radius: 12px; padding: 1.4rem 1.2rem; cursor: pointer; transition: all 0.2s; display: flex; align-items: flex-start; gap: 14px; }
-    .industry-card:hover { border-color: var(--blue-bright); transform: translateY(-1px); }
-    .industry-card.selected { border: 2px solid var(--blue); background: #f0f6ff; }
-    .ind-icon { font-size: 26px; flex-shrink: 0; margin-top: 2px; }
-    .ind-title { font-size: 15px; font-weight: 600; color: var(--text-dark); margin-bottom: 3px; }
-    .ind-sub { font-size: 12px; color: var(--text-mid); }
-    .ind-count { font-size: 11px; color: var(--blue); font-weight: 600; margin-top: 4px; }
-
-    .spec-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-bottom: 2rem; }
-    .spec-card { background: var(--white); border: 1.5px solid var(--border); border-radius: 10px; padding: 1rem; cursor: pointer; transition: all 0.2s; text-align: center; }
-    .spec-card:hover { border-color: var(--blue-bright); }
-    .spec-card.selected { border: 2px solid var(--blue); background: #f0f6ff; }
-    .spec-card span { font-size: 13px; font-weight: 500; color: var(--text-dark); }
-
-    .prep-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 2rem; }
-    .prep-card { background: var(--white); border: 1.5px solid var(--border); border-radius: 12px; padding: 1.5rem 1.2rem; cursor: pointer; transition: all 0.2s; text-align: center; }
-    .prep-card:hover { border-color: var(--blue-bright); transform: translateY(-2px); }
-    .prep-icon { font-size: 28px; margin-bottom: 10px; }
-    .prep-title { font-size: 14px; font-weight: 600; color: var(--text-dark); margin-bottom: 4px; }
-    .prep-sub { font-size: 12px; color: var(--text-mid); }
-
-    .content-section { margin-top: 2rem; }
-    .content-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
-    .content-header h2 { font-size: 18px; font-weight: 700; color: var(--text-dark); }
-    .tag { display: inline-block; background: var(--blue-pale); color: var(--blue); font-size: 11px; padding: 3px 10px; border-radius: 20px; font-weight: 600; }
-
-    .q-list { list-style: none; }
-    .q-item { background: var(--white); border: 1px solid var(--border); border-left: 3px solid var(--blue); border-radius: 0 10px 10px 0; padding: 1.1rem 1.3rem; margin-bottom: 10px; }
-    .q-item strong { display: block; font-size: 14px; font-weight: 600; color: var(--text-dark); margin-bottom: 6px; }
-    .q-item .answer { font-size: 13px; color: var(--text-mid); line-height: 1.6; background: var(--bg); padding: 8px 10px; border-radius: 6px; }
-    .q-item .answer::before { content: "💡 Tips: "; font-weight: 600; color: var(--blue); }
-
-    .tips-box { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; font-size: 14px; line-height: 1.8; }
-    .tips-box h3 { font-size: 16px; font-weight: 700; margin-bottom: 1rem; color: var(--text-dark); }
-    .tips-box ul { padding-left: 1.2rem; }
-    .tips-box li { margin-bottom: 8px; color: var(--text-mid); }
-
-    .case-box { background: var(--navy-mid); border-radius: 12px; padding: 1.5rem; color: #fff; font-size: 14px; line-height: 1.8; margin-bottom: 1rem; }
-    .case-box h3 { font-size: 16px; font-weight: 700; margin-bottom: 0.75rem; }
-    .case-tag { background: rgba(74,158,255,0.2); color: var(--blue-bright); font-size: 11px; padding: 3px 10px; border-radius: 20px; font-weight: 600; display: inline-block; margin-bottom: 1rem; }
-    .case-body { color: #a0b8d0; margin-bottom: 0.5rem; }
-    .case-task { color: #fff; margin-top: 0.75rem; font-weight: 500; }
-    .case-hint { background: rgba(74,158,255,0.1); border: 1px solid rgba(74,158,255,0.2); border-radius: 8px; padding: 10px 14px; margin-top: 1rem; font-size: 13px; color: var(--blue-bright); }
-
-    .btn { background: var(--blue); color: #fff; border: none; padding: 11px 26px; border-radius: 8px; font-size: 14px; cursor: pointer; font-weight: 600; transition: all 0.2s; font-family: inherit; }
-    .btn:hover { background: #154887; transform: translateY(-1px); }
-    .btn:disabled { opacity: 0.35; cursor: not-allowed; transform: none; }
-    .btn-ghost { background: transparent; border: 1.5px solid var(--border); color: var(--text-mid); padding: 11px 22px; border-radius: 8px; font-size: 14px; cursor: pointer; margin-right: 10px; transition: all 0.2s; font-family: inherit; }
-    .btn-ghost:hover { border-color: var(--blue); color: var(--blue); }
-    .btn-row { display: flex; justify-content: flex-end; align-items: center; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
-
-    footer { background: var(--navy); padding: 2.5rem 3rem; margin-top: 4rem; border-top: 1px solid var(--navy-light); }
-    .footer-inner { max-width: 900px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-    .footer-logo { color: #fff; font-size: 16px; font-weight: 700; }
-    .footer-logo span { color: var(--blue-bright); }
-    .footer-text { color: var(--text-light); font-size: 12px; }
-
-    .hidden { display: none !important; }
-  </style>
+footer{background:var(--navy);padding:2.5rem 3rem;border-top:1px solid var(--navy4);}
+.fi{max-width:960px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;}
+.fl{font-family:'DM Serif Display',serif;font-size:18px;color:#fff;}
+.fl span{color:var(--accent);}
+.flinks{display:flex;gap:1.5rem;}
+.flinks a{color:var(--text3);font-size:12px;text-decoration:none;cursor:pointer;}
+.fcopy{color:var(--text3);font-size:12px;}
+</style>
 </head>
 <body>
 
 <nav>
-  <div class="logo" onclick="showLanding()">Career<span>Prep</span><small>For Students</small></div>
-  <div class="nav-links">
-    <a onclick="startFlow()">Kom i gang</a>
-    <a>Om plattformen</a>
-    <a class="nav-cta" onclick="startFlow()">Start nå →</a>
+  <div class="logo" onclick="sv('v-landing')">
+    <span class="logo-main">Career<span>Prep</span></span>
+    <span class="logo-tag">Beta</span>
+  </div>
+  <div class="nav-r">
+    <a onclick="sv('v-profile')">Find Jobs</a>
+    <a>Resources</a>
+    <a class="nav-pill" onclick="sv('v-profile')">Get Started →</a>
   </div>
 </nav>
 
-<div class="step-bar hidden" id="step-bar">
-  <div class="step active" id="s1"><div class="step-num">1</div>&nbsp;Bransje</div>
-  <div class="step-div"></div>
-  <div class="step" id="s2"><div class="step-num">2</div>&nbsp;Spesialisering</div>
-  <div class="step-div"></div>
-  <div class="step" id="s3"><div class="step-num">3</div>&nbsp;Forberedelse</div>
-</div>
-
-<div id="landing">
+<!-- LANDING -->
+<div id="v-landing" class="view active">
   <div class="hero">
-    <div class="hero-badge">Karriereverktøy for studenter</div>
-    <h1>Forbered deg til<br><em>drømmejobben</em></h1>
-    <p>Skreddersydde intervjuspørsmål, case-øvelser og søknadstips basert på din bransje og stilling.</p>
-    <div class="hero-stats">
-      <div class="stat"><span class="stat-num">6+</span><span class="stat-label">Bransjer</span></div>
-      <div class="stat"><span class="stat-num">30+</span><span class="stat-label">Spesialiseringer</span></div>
-      <div class="stat"><span class="stat-num">100+</span><span class="stat-label">Intervjuspørsmål</span></div>
-    </div>
-    <button class="hero-btn" onclick="startFlow()">Kom i gang gratis →</button>
+    <div class="eyebrow">AI-powered career platform</div>
+    <h1>Land your<br><em>dream job</em></h1>
+    <p class="hero-sub">Find open positions, tailor your application, and practice with an AI interviewer — all in one place.</p>
+    <button class="hero-cta" onclick="sv('v-profile')">Build your profile →</button>
+    <p class="hero-note">Free to use · No account required</p>
+  </div>
+  <div class="stats-row">
+    <div><div class="stat-n">6+</div><div class="stat-l">Industries</div></div>
+    <div><div class="stat-n">30+</div><div class="stat-l">Specialisations</div></div>
+    <div><div class="stat-n">100+</div><div class="stat-l">Interview questions</div></div>
+    <div><div class="stat-n">AI</div><div class="stat-l">Mock interviews</div></div>
   </div>
   <div class="features">
-    <div class="features-label">Hva får du</div>
-    <div class="features-title">Alt du trenger for å lykkes i intervjuprosessen</div>
-    <div class="features-grid">
-      <div class="feature-card"><div class="feature-icon">🎯</div><h3>Intervjuspørsmål</h3><p>Vanlige spørsmål med konkrete svartips tilpasset din spesialisering.</p></div>
-      <div class="feature-card"><div class="feature-icon">🧩</div><h3>Case-øvelser</h3><p>Realistiske cases med steg-for-steg løsningsforslag fra bransjen.</p></div>
-      <div class="feature-card"><div class="feature-icon">✉️</div><h3>Søknadsskriving</h3><p>Konkrete tips til hvordan du skriver en søknad som skiller seg ut.</p></div>
-      <div class="feature-card"><div class="feature-icon">📄</div><h3>CV-tips</h3><p>Lær hva rekrutterere ser etter i din bransje og hva du bør fremheve.</p></div>
+    <div class="f-label">What you get</div>
+    <div class="f-h">Everything you need to succeed</div>
+    <p class="f-sub">From finding the right job to acing the final round</p>
+    <div class="feat-grid">
+      <div class="feat-card"><div class="feat-ic">🔍</div><h3>Live Job Search</h3><p>Relevant openings across LinkedIn, Finn.no and more — filtered for your profile.</p></div>
+      <div class="feat-card"><div class="feat-ic">📄</div><h3>CV & Cover Letter</h3><p>Tailored tips and AI-generated drafts based on the specific role.</p></div>
+      <div class="feat-card"><div class="feat-ic">🎯</div><h3>Interview Prep</h3><p>Role-specific questions with answer tips from industry recruiters.</p></div>
+      <div class="feat-card"><div class="feat-ic">🧩</div><h3>Case Training</h3><p>Realistic cases with step-by-step solution frameworks.</p></div>
+      <div class="feat-card"><div class="feat-ic">🤖</div><h3>AI Mock Interview</h3><p>Practice with an AI recruiter that reads your CV and asks personalised questions.</p></div>
+    </div>
+  </div>
+  <div class="how-section">
+    <div class="how-inner">
+      <div class="f-label" style="color:var(--text3)">How it works</div>
+      <div class="f-h">Your complete interview pipeline</div>
+      <p class="f-sub">Follow the steps — from finding the job to getting the offer</p>
+      <div class="pip-steps">
+        <div class="pip-s"><div class="pip-num">1</div><div class="pip-title">Profile</div><div class="pip-sub">Your background</div></div>
+        <div class="pip-s"><div class="pip-num">2</div><div class="pip-title">Find Jobs</div><div class="pip-sub">Live openings</div></div>
+        <div class="pip-s"><div class="pip-num">3</div><div class="pip-title">CV & Letter</div><div class="pip-sub">Tailor your docs</div></div>
+        <div class="pip-s"><div class="pip-num">4</div><div class="pip-title">1st Interview</div><div class="pip-sub">Q&A prep</div></div>
+        <div class="pip-s"><div class="pip-num">5</div><div class="pip-title">Case Round</div><div class="pip-sub">Case frameworks</div></div>
+        <div class="pip-s"><div class="pip-num">6</div><div class="pip-title">Mock Interview</div><div class="pip-sub">AI face-to-face</div></div>
+      </div>
+    </div>
+  </div>
+  <footer><div class="fi"><div class="fl">Career<span>Prep</span></div><div class="flinks"><a>About</a><a>Privacy</a><a>Contact</a></div><div class="fcopy">Built for students · 2025</div></div></footer>
+</div>
+
+<!-- PROFILE -->
+<div id="v-profile" class="view">
+  <div class="page-hero"><div class="page-hero-in">
+    <button class="back" onclick="sv('v-landing')">← Back</button>
+    <h1>Build your profile</h1>
+    <p>Tell us about your background and we'll find the most relevant open positions for you.</p>
+  </div></div>
+  <div class="form-wrap">
+    <div class="form-card">
+      <h2>Academic Background</h2>
+      <div class="form-row">
+        <div class="fg"><label>Degree level</label><select><option>Bachelor's</option><option selected>Master's</option><option>MBA</option><option>PhD</option></select></div>
+        <div class="fg"><label>Field of study</label><select><option selected>Finance</option><option>Economics</option><option>Business Administration</option><option>Accounting</option><option>Marketing</option><option>Computer Science</option><option>Engineering</option><option>Law</option></select></div>
+      </div>
+      <div class="form-row">
+        <div class="fg"><label>Graduation year</label><select><option>Currently enrolled</option><option selected>2025 (this year)</option><option>2024</option><option>2023</option><option>2022 or earlier</option></select></div>
+        <div class="fg"><label>Years of experience</label><select><option selected>0 – internships only</option><option>1–2 years</option><option>3–4 years</option><option>5+ years</option></select></div>
+      </div>
+    </div>
+    <div class="form-card">
+      <h2>Target Industry</h2>
+      <div class="tag-grid">
+        <button class="tg on" onclick="this.classList.toggle('on')">Finance & Banking</button>
+        <button class="tg" onclick="this.classList.toggle('on')">Consulting</button>
+        <button class="tg" onclick="this.classList.toggle('on')">Audit & Accounting</button>
+        <button class="tg" onclick="this.classList.toggle('on')">Marketing</button>
+        <button class="tg" onclick="this.classList.toggle('on')">HR & People</button>
+        <button class="tg" onclick="this.classList.toggle('on')">Technology</button>
+        <button class="tg" onclick="this.classList.toggle('on')">Private Equity</button>
+        <button class="tg" onclick="this.classList.toggle('on')">Real Estate</button>
+      </div>
+    </div>
+    <div class="form-card">
+      <h2>Preferred Roles</h2>
+      <div class="tag-grid">
+        <button class="tg on" onclick="this.classList.toggle('on')">M&A / Investment Banking</button>
+        <button class="tg on" onclick="this.classList.toggle('on')">Corporate Finance</button>
+        <button class="tg" onclick="this.classList.toggle('on')">Equity Research</button>
+        <button class="tg" onclick="this.classList.toggle('on')">Strategy Consulting</button>
+        <button class="tg" onclick="this.classList.toggle('on')">Audit (Big 4)</button>
+        <button class="tg" onclick="this.classList.toggle('on')">CFO Advisory</button>
+        <button class="tg" onclick="this.classList.toggle('on')">Private Equity</button>
+        <button class="tg" onclick="this.classList.toggle('on')">Treasury</button>
+      </div>
+    </div>
+    <div class="form-card">
+      <h2>Location Preference</h2>
+      <div class="form-row">
+        <div class="fg"><label>Country</label><select><option selected>Norway</option><option>Sweden</option><option>Denmark</option><option>United Kingdom</option><option>Germany</option><option>Netherlands</option></select></div>
+        <div class="fg"><label>Job type</label><select><option selected>Full-time</option><option>Internship / Summer analyst</option><option>Both</option></select></div>
+      </div>
+    </div>
+    <button class="submit-btn" onclick="sv('v-jobs')">Find matching jobs →</button>
+  </div>
+</div>
+
+<!-- JOBS -->
+<div id="v-jobs" class="view">
+  <div class="page-hero"><div class="page-hero-in">
+    <button class="back" onclick="sv('v-profile')">← Back to profile</button>
+    <h1>Open positions for you</h1>
+    <p>Based on your profile — Finance · Master's · Norway · Full-time</p>
+  </div></div>
+  <div class="results-layout">
+    <div class="filter-panel">
+      <div class="fp-h">Industry</div>
+      <label class="fc"><input type="checkbox" checked><span>Finance & Banking</span><span class="fc-n">12</span></label>
+      <label class="fc"><input type="checkbox" checked><span>Consulting</span><span class="fc-n">8</span></label>
+      <label class="fc"><input type="checkbox"><span>Audit & Accounting</span><span class="fc-n">6</span></label>
+      <label class="fc"><input type="checkbox"><span>Technology</span><span class="fc-n">4</span></label>
+      <div class="fp-h">Role type</div>
+      <label class="fc"><input type="checkbox" checked><span>Full-time analyst</span></label>
+      <label class="fc"><input type="checkbox" checked><span>Associate</span></label>
+      <label class="fc"><input type="checkbox"><span>Summer internship</span></label>
+      <div class="fp-h">Location</div>
+      <label class="fc"><input type="checkbox" checked><span>Oslo</span></label>
+      <label class="fc"><input type="checkbox"><span>Bergen</span></label>
+      <label class="fc"><input type="checkbox"><span>Stockholm</span></label>
+      <label class="fc"><input type="checkbox"><span>London</span></label>
+      <div class="fp-h">Posted</div>
+      <label class="fc"><input type="checkbox" checked><span>Last 7 days</span></label>
+      <label class="fc"><input type="checkbox"><span>Last 30 days</span></label>
+    </div>
+    <div class="jobs-panel">
+      <div class="portal-note">⚡ <strong>Live job search coming soon.</strong> These are sample listings. We'll connect LinkedIn, Finn.no, and 10+ portals filtered by your exact profile.</div>
+      <div class="jobs-top"><h2>20 matching positions</h2><span>Sorted by relevance</span></div>
+      <div class="search-bar"><input type="text" placeholder="Search by title, company or keyword…"><button>Search</button></div>
+      <div class="job-card" onclick="openPrep('Goldman Sachs','M&A Analyst','🏦','Goldman Sachs · Oslo','M&A','Finance')">
+        <div class="jl">🏦</div><div class="ji"><div class="jt">M&A Analyst — Investment Banking</div><div class="jc">Goldman Sachs · Oslo, Norway</div><div class="jm"><span class="jtag new">New</span><span class="jtag">Full-time</span><span class="jtag">M&A</span></div></div>
+        <div class="ja"><span class="jdate">2 days ago</span><button class="prep-btn" onclick="event.stopPropagation();openPrep('Goldman Sachs','M&A Analyst','🏦','Goldman Sachs · Oslo','M&A','Finance')">Prepare →</button></div>
+      </div>
+      <div class="job-card" onclick="openPrep('McKinsey','Business Analyst','📊','McKinsey & Company · Oslo','Strategy Consulting','Consulting')">
+        <div class="jl">📊</div><div class="ji"><div class="jt">Business Analyst</div><div class="jc">McKinsey & Company · Oslo, Norway</div><div class="jm"><span class="jtag hot">Popular</span><span class="jtag">Full-time</span><span class="jtag">Consulting</span></div></div>
+        <div class="ja"><span class="jdate">3 days ago</span><button class="prep-btn" onclick="event.stopPropagation();openPrep('McKinsey','Business Analyst','📊','McKinsey & Company · Oslo','Strategy Consulting','Consulting')">Prepare →</button></div>
+      </div>
+      <div class="job-card" onclick="openPrep('DNB','Corporate Finance Analyst','🏛️','DNB Markets · Oslo','Corporate Finance','Finance')">
+        <div class="jl">🏛️</div><div class="ji"><div class="jt">Corporate Finance Analyst</div><div class="jc">DNB Markets · Oslo, Norway</div><div class="jm"><span class="jtag new">New</span><span class="jtag">Full-time</span><span class="jtag">Corporate Finance</span></div></div>
+        <div class="ja"><span class="jdate">1 day ago</span><button class="prep-btn" onclick="event.stopPropagation();openPrep('DNB','Corporate Finance Analyst','🏛️','DNB Markets · Oslo','Corporate Finance','Finance')">Prepare →</button></div>
+      </div>
+      <div class="job-card" onclick="openPrep('Deloitte','Transaction Services Analyst','🔷','Deloitte Norway · Oslo','Transaction Services','Audit')">
+        <div class="jl">🔷</div><div class="ji"><div class="jt">Transaction Services Analyst</div><div class="jc">Deloitte Norway · Oslo, Norway</div><div class="jm"><span class="jtag">Full-time</span><span class="jtag">Big 4</span><span class="jtag">Due Diligence</span></div></div>
+        <div class="ja"><span class="jdate">5 days ago</span><button class="prep-btn" onclick="event.stopPropagation();openPrep('Deloitte','Transaction Services Analyst','🔷','Deloitte Norway · Oslo','Transaction Services','Audit')">Prepare →</button></div>
+      </div>
+      <div class="job-card" onclick="openPrep('Pareto','Equity Research Analyst','📈','Pareto Securities · Oslo','Equity Research','Finance')">
+        <div class="jl">📈</div><div class="ji"><div class="jt">Equity Research Analyst</div><div class="jc">Pareto Securities · Oslo, Norway</div><div class="jm"><span class="jtag">Full-time</span><span class="jtag">Equity Research</span></div></div>
+        <div class="ja"><span class="jdate">1 week ago</span><button class="prep-btn" onclick="event.stopPropagation();openPrep('Pareto','Equity Research Analyst','📈','Pareto Securities · Oslo','Equity Research','Finance')">Prepare →</button></div>
+      </div>
     </div>
   </div>
 </div>
 
-<div id="step1" class="page">
-  <div class="section">
-    <div class="section-label">Steg 1 av 3</div>
-    <div class="section-title">Velg din bransje</div>
-    <div class="section-sub">Vi tilpasser innholdet basert på bransjen du søker jobb i.</div>
-    <div class="industry-grid" id="industry-grid">
-      <div class="industry-card" onclick="selectIndustry(this,'finance')"><div class="ind-icon">🏦</div><div><div class="ind-title">Finans & Banking</div><div class="ind-sub">Investeringsbank, kapitalmarkeder</div><div class="ind-count">7 spesialiseringer</div></div></div>
-      <div class="industry-card" onclick="selectIndustry(this,'consulting')"><div class="ind-icon">📊</div><div><div class="ind-title">Konsulent</div><div class="ind-sub">Strategy, management, tech</div><div class="ind-count">6 spesialiseringer</div></div></div>
-      <div class="industry-card" onclick="selectIndustry(this,'accounting')"><div class="ind-icon">📋</div><div><div class="ind-title">Revisjon & Regnskap</div><div class="ind-sub">Big 4, forensics, tax</div><div class="ind-count">5 spesialiseringer</div></div></div>
-      <div class="industry-card" onclick="selectIndustry(this,'marketing')"><div class="ind-icon">📣</div><div><div class="ind-title">Markedsføring</div><div class="ind-sub">Brand, digital, strategi</div><div class="ind-count">5 spesialiseringer</div></div></div>
-      <div class="industry-card" onclick="selectIndustry(this,'hr')"><div class="ind-icon">👥</div><div><div class="ind-title">HR & People</div><div class="ind-sub">Talent, HRBP, recruitment</div><div class="ind-count">5 spesialiseringer</div></div></div>
-      <div class="industry-card" onclick="selectIndustry(this,'tech')"><div class="ind-icon">💻</div><div><div class="ind-title">Teknologi</div><div class="ind-sub">Product, engineering, data</div><div class="ind-count">5 spesialiseringer</div></div></div>
+<!-- PREP -->
+<div id="v-prep" class="view">
+  <div class="page-hero"><div class="page-hero-in">
+    <button class="back" onclick="sv('v-jobs')">← Back to jobs</button>
+    <h1 id="ph">Prepare for your application</h1>
+    <p id="ps">Work through each step of the process below</p>
+  </div></div>
+  <div class="prep-layout">
+    <div class="job-banner" id="job-banner"></div>
+    <div class="pipeline-nav">
+      <button class="ptab active" onclick="stab(this,'t-cv')">📄 CV Tips</button>
+      <button class="ptab" onclick="stab(this,'t-letter')">✉️ Cover Letter</button>
+      <button class="ptab" onclick="stab(this,'t-interview')">🎯 1st Interview</button>
+      <button class="ptab" onclick="stab(this,'t-case')">🧩 Case Round</button>
+      <button class="ptab" onclick="stab(this,'t-mock')">🤖 Mock Interview</button>
     </div>
-    <div class="btn-row">
-      <button class="btn-ghost" onclick="showLanding()">← Tilbake</button>
-      <button class="btn" id="next1" disabled onclick="goToStep2()">Neste →</button>
+    <div id="t-cv" class="pc active">
+      <div class="cv-sec"><h3>📄 CV Tips for this Role <span class="ai-badge">Tailored</span></h3><ul class="tip-list" id="cv-tips"></ul></div>
+      <div class="cv-sec"><h3>🔍 What recruiters look for</h3><ul class="tip-list" id="cv-rec"></ul></div>
+    </div>
+    <div id="t-letter" class="pc">
+      <div class="cv-sec">
+        <h3>✉️ Cover Letter <span class="ai-badge">AI placeholder</span></h3>
+        <p style="font-size:13px;color:var(--text2);margin-bottom:1rem;">When connected to an AI model, this generates a personalised cover letter based on your CV and the job description.</p>
+        <div class="letter-box" id="letter-box"></div>
+        <button class="gen-btn">🤖 Generate with AI — connect API key to activate</button>
+      </div>
+    </div>
+    <div id="t-interview" class="pc">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;"><h2 style="font-size:16px;font-weight:600;">Common first-round questions</h2><span class="badge" id="role-badge"></span></div>
+      <div id="q-list"></div>
+    </div>
+    <div id="t-case" class="pc">
+      <div class="case-dark" id="case-box"></div>
+      <div class="cv-sec"><h3>📐 Case frameworks to know</h3><ul class="tip-list"><li>MECE — Mutually Exclusive, Collectively Exhaustive structuring</li><li>Profitability framework — Revenue vs Cost breakdown</li><li>Market entry — Size, competition, feasibility, financials</li><li>DCF / valuation — Essential for finance roles</li><li>Issue trees — Break the problem into branches before diving in</li></ul></div>
+    </div>
+    <div id="t-mock" class="pc">
+      <div class="cv-sec">
+        <h3>🤖 AI Mock Interview <span class="ai-badge">Placeholder</span></h3>
+        <p style="font-size:13px;color:var(--text2);margin-bottom:1rem;">Upload your CV and the AI interviewer will ask questions tailored to your exact background — just like a real recruiter would. Connect an API key (Claude or GPT-4) to activate full AI responses.</p>
+        <div class="upload-area" onclick="document.getElementById('cv-file').click()">
+          <div style="font-size:28px;margin-bottom:6px;">📄</div>
+          <label class="upload-lbl">Click to upload your CV</label>
+          <p>PDF or Word · max 5MB</p>
+          <input type="file" id="cv-file" accept=".pdf,.doc,.docx" onchange="cvUp(this)">
+        </div>
+        <button class="gen-btn" onclick="sv('v-interview');setupIV()">🤖 Start AI Mock Interview →</button>
+      </div>
     </div>
   </div>
 </div>
 
-<div id="step2" class="page">
-  <div class="section">
-    <div class="section-label">Steg 2 av 3</div>
-    <div class="section-title" id="spec-title">Velg spesialisering</div>
-    <div class="section-sub">Velg den rollen som passer best til stillingen du søker.</div>
-    <div class="spec-grid" id="spec-grid"></div>
-    <div class="btn-row">
-      <button class="btn-ghost" onclick="goBack(1)">← Tilbake</button>
-      <button class="btn" id="next2" disabled onclick="goToStep3()">Neste →</button>
+<!-- MOCK INTERVIEW -->
+<div id="v-interview" class="view">
+  <div class="iv-bar">
+    <button class="back" style="margin-bottom:0" onclick="sv('v-prep')">← Back to prep</button>
+    <span style="font-size:13px;color:var(--text3)" id="iv-label"></span>
+    <span class="live-badge">Live session</span>
+  </div>
+  <div class="iv-layout">
+    <div class="iv-main">
+      <div class="iv-hdr"><h2>Mock Interview</h2><span class="ai-badge">Connect API key for full AI responses</span></div>
+      <div class="interviewer-card">
+        <div class="iv-avatar">👩‍💼</div>
+        <div class="iv-info">
+          <h3>Sarah Mitchell</h3>
+          <p>Senior Recruiter · <span id="iv-co"></span></p>
+          <span class="live-badge" style="margin-top:4px;display:inline-flex;">Active</span>
+        </div>
+      </div>
+      <div class="chat-area" id="chat-area"></div>
+      <div class="chat-inp">
+        <input type="text" id="chat-input" placeholder="Type your answer…" onkeydown="if(event.key==='Enter')send()">
+        <button class="send-btn" onclick="send()">Send</button>
+      </div>
+    </div>
+    <div class="iv-sidebar ss">
+      <h3>Progress</h3>
+      <div id="prog-list"></div>
+      <h3>Performance</h3>
+      <div class="score-card"><div class="score-n" id="score-n">—</div><div class="score-l">Overall score</div><div id="score-bars" style="margin-top:.75rem;"></div></div>
+      <h3>Tips</h3>
+      <ul class="tip-list" style="font-size:12px;"><li>Use the STAR method for behavioural questions</li><li>Keep answers under 90 seconds</li><li>Quantify your impact with numbers</li></ul>
     </div>
   </div>
 </div>
-
-<div id="step3" class="page">
-  <div class="section">
-    <div class="section-label">Steg 3 av 3</div>
-    <div class="section-title" id="prep-title">Hva vil du øve på?</div>
-    <div class="section-sub" id="prep-sub"></div>
-    <div class="prep-grid">
-      <div class="prep-card" onclick="showContent('questions')"><div class="prep-icon">🎯</div><div class="prep-title">Intervjuspørsmål</div><div class="prep-sub">Vanlige spørsmål med svartips</div></div>
-      <div class="prep-card" onclick="showContent('case')"><div class="prep-icon">🧩</div><div class="prep-title">Case-øvelse</div><div class="prep-sub">Realistisk case med løsning</div></div>
-      <div class="prep-card" onclick="showContent('soeknad')"><div class="prep-icon">✉️</div><div class="prep-title">Søknadsskriving</div><div class="prep-sub">Skreddersydde søknadstips</div></div>
-      <div class="prep-card" onclick="showContent('cv')"><div class="prep-icon">📄</div><div class="prep-title">CV-tips</div><div class="prep-sub">Hva rekrutterere ser etter</div></div>
-    </div>
-    <div id="content-area"></div>
-    <div class="btn-row">
-      <button class="btn-ghost" onclick="goBack(2)">← Tilbake</button>
-    </div>
-  </div>
-</div>
-
-<footer>
-  <div class="footer-inner">
-    <div class="footer-logo">Career<span>Prep</span></div>
-    <div class="footer-text">Laget for norske studenter · 2025</div>
-  </div>
-</footer>
 
 <script>
-const industries = {
-  finance:{label:'Finans & Banking',specs:['M&A','Corporate Finance','CFO Advisory','Equity Research','Private Equity','Capital Markets','Treasury']},
-  consulting:{label:'Konsulent',specs:['Strategy Consulting','Management Consulting','Tech Consulting','Operations','Due Diligence','Restructuring']},
-  accounting:{label:'Revisjon & Regnskap',specs:['Revisjon (Big 4)','Forensic Accounting','Tax Advisory','Risk & Compliance','Transaction Services']},
-  marketing:{label:'Markedsføring',specs:['Brand Management','Digital Marketing','Growth Marketing','Market Strategy','Communications']},
-  hr:{label:'HR & People',specs:['Talent Acquisition','HRBP','Compensation & Benefits','L&D','People Analytics']},
-  tech:{label:'Teknologi',specs:['Product Management','Software Engineering','Data Science','UX/Design','Cybersecurity']}
-};
-const content = {
+const JC={
   'M&A':{
-    questions:[
-      {q:'Walk me through a DCF.',a:'Beregn frie kontantstrømmer, diskonter med WACC, legg til terminalverdi. Vis at du forstår hvert steg og hvilke forutsetninger som driver verdien.'},
-      {q:'Hva er forskjellen på EV og Equity Value?',a:'EV = markedsverdi av egenkapital + netto gjeld. Equity Value er verdien til aksjonærene alene.'},
-      {q:'Hvorfor fusjonerer to selskaper?',a:'Synergier (kostnad/inntekt), markedsandeler, diversifisering, finansielle fordeler eller eliminering av konkurrent.'},
-      {q:'Hva er accretion/dilution i en oppkjøpsanalyse?',a:'Om EPS til kjøper øker (accretive) eller minker (dilutive) etter oppkjøpet. Avhenger av pris, finansiering og synergier.'},
-      {q:'Forklar LBO-modellen kort.',a:'PE-fond kjøper selskap med mye gjeld (~60-70%), betaler ned over 5 år, selger med gevinst. Avkastning drives av vekst, marginforbedring og gjeldsnedbetaling.'}
-    ],
-    case:{title:'Oppkjøp av NorTech AS',tag:'M&A Case',body:'Et PE-fond vurderer å kjøpe NorTech AS for 500 MNOK. Selskapet har EBITDA på 80 MNOK og vokser 10% per år.',task:'Oppgave: Vurder om prisen er fornuftig. Hvilke synergier ser du? Hva ville vært dine due diligence-prioriteringer?',hint:'💡 Start med EV/EBITDA (500/80 = 6,25x). Sammenlign med bransjenorm (typisk 6-10x). Vurder vekstpremie og risiko.'},
-    soeknad:{title:'Søknadstips for M&A',points:['Fremhev kvantitative resultater — tall selger','Vis forståelse for dealflyt fra pitch til closing','Nevn relevant kursarbeid: corporate finance, verdsettelse, finansregnskap','Beskriv eventuelle modellerings- eller analyseprosjekter konkret','Avslutt med en sterk begrunnelse for hvorfor akkurat dette selskapet']},
-    cv:{title:'CV-tips for M&A',points:['Legg finanskurs og relevante prosjekter øverst','Fremhev Excel- og modelleringserfaring eksplisitt','Inkluder investeringscase-presentasjoner eller konkurranser','CFA Level 1 er et sterkt signal','Maks 1 side — kortfattet og presist']}
+    cvTips:['Quantify everything — deal sizes, team sizes, outcomes','Highlight financial modelling: DCF, LBO, comparable companies','Include any M&A coursework, competitions or investment case presentations','Show Excel / Bloomberg / Capital IQ proficiency explicitly','Keep to 1 page — recruiters spend 30 seconds on average'],
+    cvRec:['Strong academic record from a target university','Prior investment banking, PE or corporate finance experience','Analytical internships showing quantitative rigour','Leadership in finance societies or case competitions','CFA Level 1 signals motivation'],
+    qs:[{q:'Walk me through a DCF.',a:'Project free cash flows, discount at WACC, add terminal value. Know each driver — revenue growth, margins, capex, working capital changes.'},{q:'EV vs Equity Value?',a:'EV = market cap + net debt. Equity Value belongs to shareholders. EV is capital-structure neutral — use it when comparing companies.'},{q:'Why do companies merge?',a:'Cost/revenue synergies, market share, diversification, financial benefits, or eliminating a competitor.'},{q:'What is accretion/dilution?',a:"Whether EPS increases (accretive) or decreases (dilutive) post-acquisition. Driven by price, financing mix, and synergy realisation."},{q:'Walk me through an LBO.',a:'PE fund acquires with ~60-70% debt. Over 5 years, value created through debt paydown, EBITDA growth, multiple expansion. Targets 20%+ IRR.'}],
+    case:{title:'Acquisition of NorTech AS',tag:'M&A Case',body:'A PE fund is evaluating the acquisition of NorTech AS for NOK 500m. EBITDA is NOK 80m, growing at 10% per year with stable margins.',task:'Task: Is the price justified? What synergies do you see? What would your due diligence priorities be?',hint:'💡 Start with EV/EBITDA (500/80 = 6.25x). Compare to sector (typically 6–10x for tech). Discuss growth premium, synergy potential, key risks.'},
+    letter:"Dear Hiring Manager,\n\nI am writing to express my strong interest in the M&A Analyst position at Goldman Sachs. As a Master's student in Finance graduating this year, I have developed a solid foundation in financial modelling, valuation, and deal analysis.\n\n[Connect an AI API key to generate a personalised version based on your CV]\n\nI am particularly drawn to Goldman Sachs's leading position in Nordic M&A and the opportunity to work on complex cross-border transactions.\n\nThank you for considering my application.\n\nBest regards,\n[Your name]",
+    mockQs:["Good morning! I'm Sarah Mitchell, Senior Recruiter at Goldman Sachs. Let's start with the classic: tell me about yourself and why you're interested in investment banking.","Great background. Why M&A specifically, rather than sales & trading or asset management?","Let's test your technical knowledge. Walk me through how you would value a company using a DCF.","Tell me about a time you worked under significant time pressure and had to deliver a high-quality output.","Why Goldman Sachs specifically? What do you know about our recent deals in the Nordic region?"]
   },
   'Corporate Finance':{
-    questions:[
-      {q:'Hva er de tre viktigste finansielle rapportene?',a:'Resultatregnskap, balanse og kontantstrømoppstilling — og sammenhengen mellom dem er avgjørende å forstå.'},
-      {q:'Hva er WACC?',a:'Weighted Average Cost of Capital = vektet snitt av kostnad for egenkapital (CAPM) og gjeld (etter skatt).'},
-      {q:'Forklar optimal kapitalstruktur.',a:'Balansen mellom gjeld og egenkapital som minimerer WACC og maksimerer selskapets verdi.'},
-      {q:'Hva er NPV og IRR?',a:'NPV er absolutt verdiskaping i kroner. IRR er prosentavkastning. NPV er teorimessig overlegen, men IRR er lettere å kommunisere.'},
-      {q:'Hva er working capital?',a:'Omløpsmidler minus kortsiktig gjeld. Kritisk for likviditet og finansieringsbehov.'}
-    ],
-    case:{title:'Kapitalstruktur for NorEnergy',tag:'Corporate Finance Case',body:'NorEnergy vurderer å ta opp 200 MNOK i lån for et vindkraftprosjekt med forventet IRR på 12%. WACC er 9%.',task:'Oppgave: Bør de gjennomføre prosjektet? Hva er effekten på kapitalstrukturen?',hint:'💡 IRR (12%) > WACC (9%) = verdiskapende. Vurder gjeldskapasitet og kredittvurdering.'},
-    soeknad:{title:'Søknadstips for Corporate Finance',points:['Vis forståelse for hele verdikjeden fra kapitalinnhenting til investering','Nevn konkrete modellerings- eller analyseprosjekter','Fremhev analytiske verktøy: Excel, Python, Bloomberg','Vis at du kan kommunisere kompleks finansiell info til ikke-finansielle beslutningstakere']},
-    cv:{title:'CV-tips for Corporate Finance',points:['Fremhev kurs i corporate finance, verdsettelse og finansregnskap','CFA Level 1 er et sterkt signal','Beskriv analyseprosjekter med konkrete tall','Inkluder internship-erfaringer med ansvar og resultater']}
+    cvTips:['Highlight financial analysis projects with concrete outcomes','Show experience with reporting, budgeting or forecasting','Excel modelling skills are essential — mention them explicitly','Include relevant internships in finance, consulting or accounting','CFA Level 1 is a strong differentiator'],
+    cvRec:['Solid accounting and finance fundamentals','Experience in FP&A or financial modelling','Understanding of capital structure decisions','Clear communication — CFOs need analysts who explain numbers simply','Attention to detail — one error in a model costs credibility'],
+    qs:[{q:'How do the three financial statements connect?',a:'Net income from the P&L flows to retained earnings on the balance sheet and to CFO in the cash flow statement. Changes in balance sheet accounts flow to the cash flow statement.'},{q:'What is WACC?',a:'Weighted Average Cost of Capital = (E/V × Re) + (D/V × Rd × (1-T)). Blends cost of equity (CAPM) and after-tax cost of debt.'},{q:'Explain optimal capital structure.',a:'The mix of debt and equity that minimises WACC and maximises firm value. Depends on industry stability, asset tangibility, and tax benefits of debt.'},{q:'NPV vs IRR — which do you prefer?',a:'NPV is absolute value creation in currency. IRR is the discount rate that makes NPV = 0. NPV is theoretically superior; IRR is easier to communicate to management.'},{q:'What is working capital?',a:'Current assets minus current liabilities. Poor WC management can bankrupt a profitable company — cash flow ≠ profit.'}],
+    case:{title:'Capital Structure Decision — NorEnergy',tag:'Corporate Finance Case',body:'NorEnergy is considering raising NOK 200m in debt to fund a wind farm with projected IRR of 12%. Current WACC is 9% and leverage is low.',task:'Task: Should they proceed? What is the impact on capital structure and credit rating?',hint:'💡 IRR (12%) > WACC (9%) = value-creating. Discuss debt capacity, interest coverage ratio, covenant risk, and rating implications.'},
+    letter:"Dear Hiring Manager,\n\nI am applying for the Corporate Finance Analyst position. My background in Finance and passion for capital allocation makes this role an ideal fit.\n\n[Connect an AI API key to generate a personalised version based on your CV]\n\nThank you for your consideration.\n\nBest regards,\n[Your name]",
+    mockQs:["Hello! I'm Sarah Mitchell, and I'll be interviewing you today for the Corporate Finance Analyst role. Tell me about yourself and what draws you to corporate finance.","Walk me through how the three financial statements connect to each other.","If a company has strong net income but is running out of cash, what might be happening?","Tell me about a time you had to analyse a complex problem and present findings to others.","Where do you see yourself in 3 years, and how does this role fit that path?"]
   }
 };
-const def = {
-  questions:[
-    {q:'Fortell om deg selv.',a:'Vær konsis — 60-90 sekunder. Utdanning → relevant erfaring → hvorfor denne stillingen.'},
-    {q:'Hvorfor denne bransjen og dette selskapet?',a:'Vis genuin interesse og bransjekunnskap. Koble til egne erfaringer og verdier.'},
-    {q:'Hva er din største styrke?',a:'Velg én styrke relevant for rollen og støtt med et konkret STAR-eksempel.'},
-    {q:'Beskriv en situasjon der du løste et vanskelig problem.',a:'Bruk STAR-metoden: Situasjon, Oppgave, Handling, Resultat.'},
-    {q:'Hva vet du om selskapet?',a:'Forbered deg grundig — strategi, nyheter, konkurrenter og kultur.'}
-  ],
-  case:{title:'Generelt case-rammeverk',tag:'Case Tips',body:'De fleste cases handler om å strukturere et problem, analysere data og gi en klar anbefaling.',task:'Fremgangsmåte: 1) Klargjør oppgaven 2) Strukturer analysen (MECE) 3) Presenter hypotese tidlig 4) Gå gjennom data systematisk 5) Konkluder med klar anbefaling.',hint:'💡 Vis tydelig struktur og tenk høyt. Intervjueren vil se prosessen din, ikke bare svaret.'},
-  soeknad:{title:'Generelle søknadstips',points:['Åpningsavsnitt: hvorfor du og hvorfor dette selskapet — vær spesifikk','Midtdel: 2-3 konkrete eksempler med tall','Avslutning: hva du kan bidra med fremover','Tilpass alltid til stillingsbeskrivelsen','Hold det til maks én side']},
-  cv:{title:'Generelle CV-tips',points:['Hold deg til 1 side for student/junior','Bruk handlingsorientert språk: "Ledet", "Analyserte", "Økte med X%"','Kvantifiser der mulig','Tilpass CV til hver stilling','Ha alltid oppdatert LinkedIn']}
+const DEF={
+  cvTips:['Quantify your impact with numbers wherever possible','Mirror keywords from the job description','Keep to 1 page — tight, action-oriented language','Proofread meticulously — one typo can end an application','Lead with your strongest, most relevant experience'],
+  cvRec:['Relevant academic background for the role','Internship or project experience in the field','Leadership or initiative outside the classroom','Strong GPA or relevant coursework listed clearly','Clean, professional formatting'],
+  qs:[{q:'Tell me about yourself.',a:"Keep it to 60–90 seconds. Degree → key experience → why this role. Practise this until it's natural."},{q:'Why this company?',a:"Show research. Reference specific news, strategy, culture, or deals. Generic answers fail."},{q:"What is your greatest strength?",a:"One strength relevant to the role, backed by a specific STAR example."},{q:"Describe a challenging situation and how you handled it.",a:"STAR method: Situation, Task, Action, Result. Focus on YOUR actions and measurable outcome."},{q:"Where do you see yourself in 5 years?",a:"Show ambition and link to the company. Avoid vagueness."}],
+  case:{title:'General Case Framework',tag:'Case Tips',body:'Most cases involve a business problem requiring structured analysis and a clear recommendation.',task:'Approach: 1) Clarify the question 2) Structure MECE 3) State hypothesis early 4) Analyse systematically 5) Give a clear justified recommendation.',hint:"💡 Think out loud. The interviewer wants your process, not just the answer. Silence is bad — narrate your thinking."},
+  letter:"Dear Hiring Manager,\n\nI am writing to apply for this position.\n\n[Connect an AI API key to generate a personalised cover letter based on your CV and the job description]\n\nThank you for your consideration.\n\nBest regards,\n[Your name]",
+  mockQs:["Hi! I'm Sarah Mitchell, and I'll be interviewing you today. Tell me about yourself and why you're applying for this role.","Tell me about a time when you had to work in a team under pressure. What was your role and outcome?","What has been your most challenging academic or professional experience, and what did you learn?","Why this company specifically? What do you know about us?","Do you have any questions for me about the role or the company?"]
 };
 
-let selInd=null, selSpec=null;
+let CJ={company:'Goldman Sachs',title:'M&A Analyst',logo:'🏦',sub:'Goldman Sachs · Oslo',role:'M&A'};
+let qIdx=0;
 
-function showLanding(){document.getElementById('landing').style.display='block';['step1','step2','step3'].forEach(id=>document.getElementById(id).classList.remove('active'));document.getElementById('step-bar').classList.add('hidden');}
-function startFlow(){document.getElementById('landing').style.display='none';document.getElementById('step-bar').classList.remove('hidden');document.getElementById('step1').classList.add('active');document.getElementById('s1').className='step active';document.getElementById('s2').className='step';document.getElementById('s3').className='step';window.scrollTo(0,0);}
-function selectIndustry(el,key){document.querySelectorAll('#industry-grid .industry-card').forEach(c=>c.classList.remove('selected'));el.classList.add('selected');selInd=key;document.getElementById('next1').disabled=false;}
-function goToStep2(){document.getElementById('step1').classList.remove('active');document.getElementById('step2').classList.add('active');document.getElementById('s1').className='step done';document.getElementById('s2').className='step active';document.getElementById('spec-title').textContent=industries[selInd].label+' — velg spesialisering';const g=document.getElementById('spec-grid');g.innerHTML='';industries[selInd].specs.forEach(s=>{g.innerHTML+=`<div class="spec-card" onclick="selectSpec(this,'${s}')"><span>${s}</span></div>`;});selSpec=null;document.getElementById('next2').disabled=true;window.scrollTo(0,0);}
-function selectSpec(el,name){document.querySelectorAll('#spec-grid .spec-card').forEach(c=>c.classList.remove('selected'));el.classList.add('selected');selSpec=name;document.getElementById('next2').disabled=false;}
-function goToStep3(){document.getElementById('step2').classList.remove('active');document.getElementById('step3').classList.add('active');document.getElementById('s2').className='step done';document.getElementById('s3').className='step active';document.getElementById('prep-title').textContent=selSpec;document.getElementById('prep-sub').textContent='Velg hva du vil forberede deg på for en '+selSpec+'-stilling.';document.getElementById('content-area').innerHTML='';window.scrollTo(0,0);}
-function showContent(type){const c=content[selSpec]||def;let h='<div class="content-section">';if(type==='questions'){const qs=c.questions||def.questions;h+=`<div class="content-header"><h2>Intervjuspørsmål</h2><span class="tag">${selSpec}</span></div><ul class="q-list">`;qs.forEach(q=>{h+=`<li class="q-item"><strong>${q.q}</strong><div class="answer">${q.a}</div></li>`;});h+='</ul>';}else if(type==='case'){const ca=c.case||def.case;h+=`<div class="content-header"><h2>Case-øvelse</h2><span class="tag">${selSpec}</span></div><div class="case-box"><div class="case-tag">${ca.tag}</div><h3>${ca.title}</h3><p class="case-body">${ca.body}</p><p class="case-task">${ca.task}</p><div class="case-hint">${ca.hint}</div></div>`;}else if(type==='soeknad'){const so=c.soeknad||def.soeknad;h+=`<div class="content-header"><h2>Søknadstips</h2><span class="tag">${selSpec}</span></div><div class="tips-box"><h3>${so.title}</h3><ul>${so.points.map(p=>`<li>${p}</li>`).join('')}</ul></div>`;}else if(type==='cv'){const cv=c.cv||def.cv;h+=`<div class="content-header"><h2>CV-tips</h2><span class="tag">${selSpec}</span></div><div class="tips-box"><h3>${cv.title}</h3><ul>${cv.points.map(p=>`<li>${p}</li>`).join('')}</ul></div>`;}h+='</div>';document.getElementById('content-area').innerHTML=h;}
-function goBack(step){if(step===1){document.getElementById('step1').classList.add('active');document.getElementById('step2').classList.remove('active');document.getElementById('s1').className='step active';document.getElementById('s2').className='step';}if(step===2){document.getElementById('step2').classList.add('active');document.getElementById('step3').classList.remove('active');document.getElementById('s2').className='step active';document.getElementById('s3').className='step';}window.scrollTo(0,0);}
+function sv(id){
+  document.querySelectorAll('.view').forEach(v=>{v.classList.remove('active');v.style.display='none';});
+  const el=document.getElementById(id);el.style.display='block';el.classList.add('active');window.scrollTo(0,0);
+}
+
+function openPrep(co,title,logo,sub,role,ind){
+  CJ={company:co,title,logo,sub,role,ind};
+  document.getElementById('ph').textContent='Prepare for '+title;
+  document.getElementById('ps').textContent=sub;
+  document.getElementById('job-banner').innerHTML=`<div class="jbl">${logo}</div><div class="jbi"><h2>${title}</h2><p>${sub}</p><div class="jbt"><span class="jtag">${role}</span><span class="jtag">${ind}</span></div></div>`;
+  const c=JC[role]||DEF;
+  document.getElementById('cv-tips').innerHTML=c.cvTips.map(t=>`<li>${t}</li>`).join('');
+  document.getElementById('cv-rec').innerHTML=c.cvRec.map(t=>`<li>${t}</li>`).join('');
+  document.getElementById('letter-box').textContent=c.letter;
+  document.getElementById('role-badge').textContent=role;
+  document.getElementById('q-list').innerHTML=c.qs.map(q=>`<div class="q-card"><strong>${q.q}</strong><div class="q-hint">${q.a}</div></div>`).join('');
+  const ca=c.case;
+  document.getElementById('case-box').innerHTML=`<div class="ctag">${ca.tag}</div><h3>${ca.title}</h3><p class="cbody">${ca.body}</p><p class="ctask">${ca.task}</p><div class="chint">${ca.hint}</div>`;
+  document.querySelectorAll('.ptab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.pc').forEach(t=>t.classList.remove('active'));
+  document.querySelector('.ptab').classList.add('active');
+  document.getElementById('t-cv').classList.add('active');
+  sv('v-prep');
+}
+
+function stab(el,id){
+  document.querySelectorAll('.ptab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.pc').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');document.getElementById(id).classList.add('active');
+}
+
+function cvUp(input){if(input.files.length)document.querySelector('.upload-area p').textContent='✅ '+input.files[0].name+' uploaded';}
+
+function setupIV(){
+  const c=JC[CJ.role]||DEF;
+  qIdx=0;
+  document.getElementById('iv-co').textContent=CJ.company;
+  document.getElementById('iv-label').textContent=CJ.title+' · '+CJ.company;
+  document.getElementById('chat-area').innerHTML='';
+  document.getElementById('score-n').textContent='—';
+  document.getElementById('score-bars').innerHTML='';
+  document.getElementById('prog-list').innerHTML=c.mockQs.map((q,i)=>`<div class="prog-item"><div class="prog-ic ${i===0?'act':'todo'}">${i===0?'▶':'○'}</div><span class="prog-txt">Question ${i+1}</span></div>`).join('');
+  setTimeout(()=>addMsg('ai',c.mockQs[0]),700);
+}
+
+function addMsg(role,text){
+  const a=document.getElementById('chat-area');
+  const t=new Date().toLocaleTimeString('en',{hour:'2-digit',minute:'2-digit'});
+  a.innerHTML+=`<div class="msg ${role}"><div class="mavatar">${role==='ai'?'👩‍💼':'👤'}</div><div><div class="mbubble">${text}</div><div class="mtime">${t}</div></div></div>`;
+  a.scrollTop=a.scrollHeight;
+}
+
+function send(){
+  const inp=document.getElementById('chat-input');
+  const txt=inp.value.trim();if(!txt)return;
+  addMsg('user',txt);inp.value='';
+  const c=JC[CJ.role]||DEF;
+  qIdx++;
+  const items=document.querySelectorAll('.prog-item');
+  items.forEach((item,i)=>{const ic=item.querySelector('.prog-ic');if(i<qIdx){ic.className='prog-ic done';ic.textContent='✓';}else if(i===qIdx&&qIdx<c.mockQs.length){ic.className='prog-ic act';ic.textContent='▶';}else{ic.className='prog-ic todo';ic.textContent='○';}});
+  const area=document.getElementById('chat-area');
+  area.innerHTML+=`<div class="msg ai" id="typ"><div class="mavatar">👩‍💼</div><div class="typing"><div class="tdot"></div><div class="tdot"></div><div class="tdot"></div></div></div>`;
+  area.scrollTop=area.scrollHeight;
+  setTimeout(()=>{
+    const t=document.getElementById('typ');if(t)t.remove();
+    if(qIdx<c.mockQs.length){addMsg('ai',c.mockQs[qIdx]);}
+    else{
+      addMsg('ai',"That concludes our mock interview — well done for completing all questions! 🎉 In the full AI-powered version, I would now give you detailed feedback on each answer, a performance score, and specific tips to improve. Connect an API key in settings to unlock this.");
+      document.getElementById('score-n').textContent='7.4';
+      document.getElementById('score-bars').innerHTML=['Clarity:80','Structure:72','Technical:65','Confidence:78'].map(s=>{const[l,v]=s.split(':');return`<div class="sbar-row"><span class="sbar-lbl">${l}</span><div class="sbar-track"><div class="sbar-fill" style="width:${v}%"></div></div></div>`;}).join('');
+    }
+  },1800);
+}
 </script>
 </body>
 </html>
