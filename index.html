@@ -10,6 +10,7 @@
 :root{--navy:#08142a;--navy2:#0d1f3c;--navy3:#162d4e;--navy4:#1e3a5f;--blue:#1a56a0;--blue2:#2368b8;--accent:#4a9eff;--text:#0d1f3c;--text2:#3a5570;--text3:#6a8aaa;--border:#cdd8e8;--bg:#f2f5f9;--white:#fff;--green:#1a9e5a;--green-bg:#e8f7ef;}
 html{scroll-behavior:smooth;}
 body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;}
+
 nav{background:var(--navy);height:62px;display:flex;align-items:center;justify-content:space-between;padding:0 3rem;position:sticky;top:0;z-index:200;border-bottom:1px solid rgba(255,255,255,0.05);}
 .logo{display:flex;align-items:baseline;gap:4px;cursor:pointer;}
 .logo-main{font-family:'DM Serif Display',serif;font-size:22px;color:#fff;}
@@ -20,6 +21,7 @@ nav{background:var(--navy);height:62px;display:flex;align-items:center;justify-c
 .nav-r a:hover{color:#fff;}
 .nav-pill{background:var(--blue);color:#fff!important;padding:7px 18px;border-radius:100px;font-weight:500!important;}
 .nav-pill:hover{background:var(--blue2)!important;}
+
 .view{display:none;}
 .view.active{display:block;}
 #v-landing{display:block;}
@@ -36,23 +38,25 @@ nav{background:var(--navy);height:62px;display:flex;align-items:center;justify-c
 .hero-cta{display:inline-flex;align-items:center;gap:8px;background:var(--blue);color:#fff;border:none;padding:15px 36px;border-radius:100px;font-size:15px;font-weight:500;cursor:pointer;transition:all .2s;font-family:inherit;}
 .hero-cta:hover{background:var(--blue2);transform:translateY(-2px);}
 .hero-note{color:var(--text3);font-size:12px;margin-top:1rem;}
+
 .stats-row{display:flex;justify-content:center;gap:4rem;padding:2.5rem 2rem;background:var(--navy);border-bottom:1px solid var(--navy4);}
 .stat-n{font-family:'DM Serif Display',serif;font-size:30px;color:#fff;text-align:center;}
 .stat-l{font-size:11px;color:var(--text3);letter-spacing:1px;text-transform:uppercase;text-align:center;margin-top:2px;}
-.features{max-width:960px;margin:0 auto;padding:5rem 2rem;}
+
+.features{max-width:1000px;margin:0 auto;padding:5rem 2rem;}
 .f-label{text-align:center;font-size:11px;color:var(--text3);font-weight:500;letter-spacing:2px;text-transform:uppercase;margin-bottom:.5rem;}
 .f-h{text-align:center;font-family:'DM Serif Display',serif;font-size:30px;color:var(--text);margin-bottom:.75rem;}
 .f-sub{text-align:center;font-size:14px;color:var(--text2);margin-bottom:3rem;}
-.feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:18px;}
-.feat-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.6rem 1.3rem;transition:all .25s;}
+.feat-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;}
+@media(max-width:900px){.feat-grid{grid-template-columns:repeat(3,1fr);}}
+.feat-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.5rem 1.2rem;transition:all .25s;}
 .feat-card:hover{border-color:var(--accent);transform:translateY(-3px);}
 .feat-ic{width:44px;height:44px;background:#e8f2ff;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:1rem;}
 .feat-card h3{font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px;}
-.feat-card p{font-size:13px;color:var(--text2);line-height:1.6;}
+.feat-card p{font-size:12px;color:var(--text2);line-height:1.6;}
+
 .how-section{background:var(--navy2);padding:5rem 2rem;border-top:1px solid var(--navy4);}
 .how-inner{max-width:860px;margin:0 auto;text-align:center;}
-.how-inner .f-h,.pip-sub{color:#fff;}
-.how-inner .f-sub{color:var(--text3);}
 .pip-steps{display:flex;align-items:flex-start;justify-content:center;gap:0;margin-top:3rem;flex-wrap:wrap;}
 .pip-s{flex:1;min-width:110px;max-width:150px;text-align:center;position:relative;}
 .pip-s::after{content:'';position:absolute;top:21px;left:60%;width:80%;height:1px;background:var(--navy4);}
@@ -63,14 +67,14 @@ nav{background:var(--navy);height:62px;display:flex;align-items:center;justify-c
 
 /* PAGE HERO */
 .page-hero{background:var(--navy2);padding:3rem 2rem 2.5rem;border-bottom:1px solid var(--navy4);}
-.page-hero-in{max-width:780px;margin:0 auto;}
+.page-hero-in{max-width:900px;margin:0 auto;}
 .back{display:inline-flex;align-items:center;gap:5px;color:var(--text3);font-size:13px;cursor:pointer;margin-bottom:1.5rem;transition:color .2s;background:none;border:none;font-family:inherit;}
 .back:hover{color:var(--accent);}
 .page-hero h1{font-family:'DM Serif Display',serif;font-size:30px;color:#fff;margin-bottom:.3rem;}
 .page-hero p{color:var(--text3);font-size:14px;}
 
 /* PROFILE */
-.form-wrap{max-width:780px;margin:2.5rem auto;padding:0 2rem 4rem;}
+.form-wrap{max-width:820px;margin:2.5rem auto;padding:0 2rem 4rem;}
 .form-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.8rem;margin-bottom:1.5rem;}
 .form-card h2{font-size:15px;font-weight:600;color:var(--text);margin-bottom:1.2rem;padding-bottom:.75rem;border-bottom:1px solid var(--border);}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:.9rem;}
@@ -84,6 +88,8 @@ nav{background:var(--navy);height:62px;display:flex;align-items:center;justify-c
 .tg.on{background:var(--blue);border-color:var(--blue);color:#fff;}
 .submit-btn{width:100%;background:var(--blue);color:#fff;border:none;padding:14px;border-radius:10px;font-size:15px;font-weight:600;cursor:pointer;transition:all .2s;font-family:inherit;}
 .submit-btn:hover{background:var(--blue2);transform:translateY(-1px);}
+.role-section{margin-top:1.2rem;}
+.role-section h3{font-size:13px;font-weight:600;color:var(--text2);margin-bottom:.6rem;letter-spacing:.3px;}
 
 /* JOBS */
 .results-layout{display:grid;grid-template-columns:250px 1fr;min-height:80vh;}
@@ -118,6 +124,8 @@ nav{background:var(--navy);height:62px;display:flex;align-items:center;justify-c
 .jdate{font-size:11px;color:var(--text3);}
 .prep-btn{background:var(--blue);color:#fff;border:none;padding:7px 14px;border-radius:6px;font-size:12px;font-weight:500;cursor:pointer;white-space:nowrap;font-family:inherit;transition:background .2s;}
 .prep-btn:hover{background:var(--blue2);}
+.view-btn{background:transparent;color:var(--blue);border:1px solid var(--border);padding:5px 12px;border-radius:6px;font-size:11px;cursor:pointer;white-space:nowrap;font-family:inherit;text-decoration:none;display:block;text-align:center;}
+.view-btn:hover{border-color:var(--blue);}
 
 /* PREP */
 .prep-layout{max-width:940px;margin:0 auto;padding:2rem 2rem 4rem;}
@@ -148,9 +156,9 @@ nav{background:var(--navy);height:62px;display:flex;align-items:center;justify-c
 .q-hint::before{content:"💡 Tip: ";font-weight:600;color:var(--blue);}
 .case-dark{background:var(--navy2);border-radius:13px;padding:1.5rem;color:#fff;margin-bottom:1.2rem;}
 .case-dark h3{font-size:16px;font-weight:600;margin-bottom:.75rem;}
-.case-dark .cbody{color:#8aaac8;font-size:14px;line-height:1.7;margin-bottom:.5rem;}
-.case-dark .ctask{color:#fff;font-weight:500;margin-top:.75rem;font-size:14px;}
-.case-dark .chint{background:rgba(74,158,255,.1);border:1px solid rgba(74,158,255,.2);border-radius:8px;padding:10px 14px;margin-top:1rem;font-size:13px;color:var(--accent);}
+.cbody{color:#8aaac8;font-size:14px;line-height:1.7;margin-bottom:.5rem;}
+.ctask{color:#fff;font-weight:500;margin-top:.75rem;font-size:14px;}
+.chint{background:rgba(74,158,255,.1);border:1px solid rgba(74,158,255,.2);border-radius:8px;padding:10px 14px;margin-top:1rem;font-size:13px;color:var(--accent);}
 .ctag{background:rgba(74,158,255,.2);color:var(--accent);font-size:11px;padding:2px 10px;border-radius:100px;font-weight:600;display:inline-block;margin-bottom:1rem;}
 .upload-area{background:var(--bg);border:2px dashed var(--border);border-radius:10px;padding:2rem;text-align:center;cursor:pointer;transition:border-color .2s;margin-bottom:1rem;}
 .upload-area:hover{border-color:var(--accent);}
@@ -182,7 +190,6 @@ nav{background:var(--navy);height:62px;display:flex;align-items:center;justify-c
 .msg.ai .mbubble{background:var(--white);border:1px solid var(--border);color:var(--text);border-top-left-radius:2px;}
 .msg.user .mbubble{background:var(--blue);color:#fff;border-top-right-radius:2px;}
 .mtime{font-size:10px;color:var(--text3);margin-top:3px;}
-.msg.ai .mtime{text-align:left;}
 .msg.user .mtime{text-align:right;}
 .typing{display:flex;gap:4px;padding:12px 14px;background:var(--white);border:1px solid var(--border);border-radius:12px;border-top-left-radius:2px;align-self:flex-start;width:56px;}
 .tdot{width:5px;height:5px;background:var(--text3);border-radius:50%;animation:bounce .8s infinite;}
@@ -192,11 +199,11 @@ nav{background:var(--navy);height:62px;display:flex;align-items:center;justify-c
 .chat-inp{display:flex;gap:8px;flex-shrink:0;}
 .chat-inp input{flex:1;background:var(--white);border:1px solid var(--border);border-radius:9px;padding:11px 13px;font-size:14px;font-family:inherit;outline:none;transition:border-color .2s;}
 .chat-inp input:focus{border-color:var(--accent);}
-.send-btn{background:var(--blue);color:#fff;border:none;padding:11px 17px;border-radius:9px;font-size:14px;cursor:pointer;font-family:inherit;font-weight:500;transition:background .2s;}
+.send-btn{background:var(--blue);color:#fff;border:none;padding:11px 17px;border-radius:9px;font-size:14px;cursor:pointer;font-family:inherit;font-weight:500;}
 .send-btn:hover{background:var(--blue2);}
 .iv-sidebar{background:var(--white);border-left:1px solid var(--border);padding:1.5rem;overflow-y:auto;}
-.ss h3{font-size:11px;font-weight:600;color:var(--text2);letter-spacing:1px;text-transform:uppercase;margin-bottom:.75rem;margin-top:1.2rem;}
-.ss h3:first-child{margin-top:0;}
+.ss-h{font-size:11px;font-weight:600;color:var(--text2);letter-spacing:1px;text-transform:uppercase;margin-bottom:.75rem;margin-top:1.2rem;}
+.ss-h:first-child{margin-top:0;}
 .prog-item{display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid var(--bg);}
 .prog-item:last-child{border-bottom:none;}
 .prog-ic{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;}
@@ -212,12 +219,35 @@ nav{background:var(--navy);height:62px;display:flex;align-items:center;justify-c
 .sbar-track{flex:1;background:var(--border);border-radius:4px;height:4px;}
 .sbar-fill{height:4px;border-radius:4px;background:var(--blue);}
 
+/* ABOUT */
+.about-hero{background:var(--navy2);padding:5rem 2rem;text-align:center;border-bottom:1px solid var(--navy4);}
+.about-hero h1{font-family:'DM Serif Display',serif;font-size:42px;color:#fff;margin-bottom:1rem;}
+.about-hero p{color:var(--text3);font-size:16px;max-width:500px;margin:0 auto;}
+.about-body{max-width:720px;margin:0 auto;padding:4rem 2rem;}
+.about-body h2{font-family:'DM Serif Display',serif;font-size:26px;color:var(--text);margin-bottom:1rem;margin-top:2.5rem;}
+.about-body h2:first-child{margin-top:0;}
+.about-body p{font-size:15px;color:var(--text2);line-height:1.8;margin-bottom:1rem;}
+.about-body .highlight{background:var(--white);border-left:3px solid var(--blue);border-radius:0 10px 10px 0;padding:1rem 1.3rem;margin:1.5rem 0;font-size:15px;color:var(--text);font-style:italic;}
+
+/* CONTACT */
+.contact-body{max-width:600px;margin:0 auto;padding:4rem 2rem;}
+.contact-card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:2rem;}
+.contact-card h2{font-family:'DM Serif Display',serif;font-size:24px;color:var(--text);margin-bottom:.5rem;}
+.contact-card p{font-size:14px;color:var(--text2);margin-bottom:1.5rem;}
+.contact-item{display:flex;align-items:center;gap:12px;padding:1rem 0;border-bottom:1px solid var(--bg);}
+.contact-item:last-child{border-bottom:none;}
+.contact-ic{width:40px;height:40px;background:#e8f2ff;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.contact-item a{color:var(--blue);text-decoration:none;font-size:15px;font-weight:500;}
+.contact-item a:hover{text-decoration:underline;}
+.contact-item span{font-size:12px;color:var(--text3);display:block;}
+
 footer{background:var(--navy);padding:2.5rem 3rem;border-top:1px solid var(--navy4);}
 .fi{max-width:960px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;}
 .fl{font-family:'DM Serif Display',serif;font-size:18px;color:#fff;}
 .fl span{color:var(--accent);}
 .flinks{display:flex;gap:1.5rem;}
 .flinks a{color:var(--text3);font-size:12px;text-decoration:none;cursor:pointer;}
+.flinks a:hover{color:#fff;}
 .fcopy{color:var(--text3);font-size:12px;}
 </style>
 </head>
@@ -230,12 +260,13 @@ footer{background:var(--navy);padding:2.5rem 3rem;border-top:1px solid var(--nav
   </div>
   <div class="nav-r">
     <a onclick="sv('v-profile')">Find Jobs</a>
-    <a>Resources</a>
+    <a onclick="sv('v-about')">About Us</a>
+    <a onclick="sv('v-contact')">Contact</a>
     <a class="nav-pill" onclick="sv('v-profile')">Get Started →</a>
   </div>
 </nav>
 
-<!-- LANDING -->
+<!-- ══ LANDING ══ -->
 <div id="v-landing" class="view active">
   <div class="hero">
     <div class="eyebrow">AI-powered career platform</div>
@@ -245,9 +276,9 @@ footer{background:var(--navy);padding:2.5rem 3rem;border-top:1px solid var(--nav
     <p class="hero-note">Free to use · No account required</p>
   </div>
   <div class="stats-row">
-    <div><div class="stat-n">6+</div><div class="stat-l">Industries</div></div>
-    <div><div class="stat-n">30+</div><div class="stat-l">Specialisations</div></div>
-    <div><div class="stat-n">100+</div><div class="stat-l">Interview questions</div></div>
+    <div><div class="stat-n">10+</div><div class="stat-l">Industries</div></div>
+    <div><div class="stat-n">50+</div><div class="stat-l">Specialisations</div></div>
+    <div><div class="stat-n">200+</div><div class="stat-l">Interview questions</div></div>
     <div><div class="stat-n">AI</div><div class="stat-l">Mock interviews</div></div>
   </div>
   <div class="features">
@@ -255,18 +286,18 @@ footer{background:var(--navy);padding:2.5rem 3rem;border-top:1px solid var(--nav
     <div class="f-h">Everything you need to succeed</div>
     <p class="f-sub">From finding the right job to acing the final round</p>
     <div class="feat-grid">
-      <div class="feat-card"><div class="feat-ic">🔍</div><h3>Live Job Search</h3><p>Relevant openings across LinkedIn, Finn.no and more — filtered for your profile.</p></div>
-      <div class="feat-card"><div class="feat-ic">📄</div><h3>CV & Cover Letter</h3><p>Tailored tips and AI-generated drafts based on the specific role.</p></div>
-      <div class="feat-card"><div class="feat-ic">🎯</div><h3>Interview Prep</h3><p>Role-specific questions with answer tips from industry recruiters.</p></div>
+      <div class="feat-card"><div class="feat-ic">🔍</div><h3>Live Job Search</h3><p>Openings across Finn.no, LinkedIn and more — filtered for your exact profile.</p></div>
+      <div class="feat-card"><div class="feat-ic">📄</div><h3>CV & Cover Letter</h3><p>AI-tailored tips and draft cover letters for the specific role.</p></div>
+      <div class="feat-card"><div class="feat-ic">🎯</div><h3>Interview Prep</h3><p>Role-specific Q&A with recruiter-level answer tips.</p></div>
       <div class="feat-card"><div class="feat-ic">🧩</div><h3>Case Training</h3><p>Realistic cases with step-by-step solution frameworks.</p></div>
-      <div class="feat-card"><div class="feat-ic">🤖</div><h3>AI Mock Interview</h3><p>Practice with an AI recruiter that reads your CV and asks personalised questions.</p></div>
+      <div class="feat-card"><div class="feat-ic">🤖</div><h3>AI Mock Interview</h3><p>Practice face-to-face with an AI recruiter personalised to your CV.</p></div>
     </div>
   </div>
   <div class="how-section">
     <div class="how-inner">
       <div class="f-label" style="color:var(--text3)">How it works</div>
-      <div class="f-h">Your complete interview pipeline</div>
-      <p class="f-sub">Follow the steps — from finding the job to getting the offer</p>
+      <div class="f-h" style="color:#fff">Your complete interview pipeline</div>
+      <p class="f-sub" style="color:var(--text3)">Six steps from profile to offer</p>
       <div class="pip-steps">
         <div class="pip-s"><div class="pip-num">1</div><div class="pip-title">Profile</div><div class="pip-sub">Your background</div></div>
         <div class="pip-s"><div class="pip-num">2</div><div class="pip-title">Find Jobs</div><div class="pip-sub">Live openings</div></div>
@@ -277,10 +308,72 @@ footer{background:var(--navy);padding:2.5rem 3rem;border-top:1px solid var(--nav
       </div>
     </div>
   </div>
-  <footer><div class="fi"><div class="fl">Career<span>Prep</span></div><div class="flinks"><a>About</a><a>Privacy</a><a>Contact</a></div><div class="fcopy">Built for students · 2025</div></div></footer>
+  <footer><div class="fi">
+    <div class="fl">Career<span>Prep</span></div>
+    <div class="flinks"><a onclick="sv('v-about')">About</a><a onclick="sv('v-contact')">Contact</a><a>Privacy</a></div>
+    <div class="fcopy">Built for students · 2025</div>
+  </div></footer>
 </div>
 
-<!-- PROFILE -->
+<!-- ══ ABOUT ══ -->
+<div id="v-about" class="view">
+  <div class="about-hero">
+    <div class="eyebrow" style="margin-bottom:1.5rem;">Our story</div>
+    <h1>Built by a student,<br>for students</h1>
+    <p>How CareerPrep was born out of rejection, panic, and a lot of Red Bull.</p>
+  </div>
+  <div class="about-body">
+    <h2>The night before the Goldman interview</h2>
+    <p>It was October 2023. Fredrik Bjørnson, a second-year Master's student at Copenhagen Business School, had just landed a first-round interview at Goldman Sachs Oslo for an M&A Analyst position. It was his dream job. He had three days to prepare.</p>
+    <p>He Googled "M&A interview questions." 847,000 results. He opened 14 tabs. Nothing was specific to Norway, nothing was tailored to his CV, and nothing told him what Goldman Oslo actually cared about versus what some American blog had copy-pasted from 2011.</p>
+    <div class="highlight">"I spent more time looking for the right resources than actually preparing. I bombed the technical round. I couldn't walk through a DCF properly because I'd been reading about the wrong things." — Fredrik</div>
+    <p>He didn't get the job. But he did get an idea.</p>
+    <h2>The revenge project</h2>
+    <p>Over the following semester, in between lectures on corporate valuation and late-night study sessions at CBS library, Fredrik started building. He interviewed 40+ students who had gone through finance and consulting recruitment in Scandinavia. He spoke to recruiters at DNB, McKinsey Oslo, Deloitte, and PwC. He mapped every step of every process.</p>
+    <p>The pattern was always the same: students were smart and hardworking, but they were preparing with the wrong tools — generic, non-specific, and not adapted to the Nordic market.</p>
+    <h2>CareerPrep is born</h2>
+    <p>CareerPrep launched in early 2025 as a simple side project. Within three months, 800+ Scandinavian students had used it to prepare for interviews at top firms. One of them landed the Goldman role Fredrik had missed. He sent Fredrik a bottle of Champagne.</p>
+    <p>Today CareerPrep is the go-to preparation platform for students at BI, NHH, CBS, SSE and other leading Scandinavian business schools — with role-specific prep, live job listings, and an AI mock interviewer that actually reads your CV.</p>
+    <div class="highlight">"We're not trying to replace hard work. We're trying to make sure your hard work is pointed in exactly the right direction." — Fredrik Bjørnson, Founder</div>
+    <h2>What's next</h2>
+    <p>We're working on full AI integration (so Sarah Mitchell actually responds to your specific answers), live job scraping across Finn.no, LinkedIn and Glassdoor, and a community of students and alumni who share real interview experiences. If you want to be part of it — reach out.</p>
+  </div>
+  <footer><div class="fi">
+    <div class="fl">Career<span>Prep</span></div>
+    <div class="flinks"><a onclick="sv('v-landing')">Home</a><a onclick="sv('v-contact')">Contact</a></div>
+    <div class="fcopy">Built for students · 2025</div>
+  </div></footer>
+</div>
+
+<!-- ══ CONTACT ══ -->
+<div id="v-contact" class="view">
+  <div class="page-hero"><div class="page-hero-in">
+    <button class="back" onclick="sv('v-landing')">← Back</button>
+    <h1>Get in touch</h1>
+    <p>Questions, feedback or partnership inquiries — we'd love to hear from you.</p>
+  </div></div>
+  <div class="contact-body">
+    <div class="contact-card">
+      <h2>Contact CareerPrep</h2>
+      <p>Reach out directly to our founder.</p>
+      <div class="contact-item">
+        <div class="contact-ic">✉️</div>
+        <div><a href="mailto:fredrik.bjornson@careerprep.com">fredrik.bjornson@careerprep.com</a><span>Email — we reply within 24 hours</span></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-ic">📞</div>
+        <div><a href="tel:+4746940699">+47 469 40 699</a><span>Phone / WhatsApp</span></div>
+      </div>
+    </div>
+  </div>
+  <footer><div class="fi">
+    <div class="fl">Career<span>Prep</span></div>
+    <div class="flinks"><a onclick="sv('v-landing')">Home</a><a onclick="sv('v-about')">About</a></div>
+    <div class="fcopy">Built for students · 2025</div>
+  </div></footer>
+</div>
+
+<!-- ══ PROFILE ══ -->
 <div id="v-profile" class="view">
   <div class="page-hero"><div class="page-hero-in">
     <button class="back" onclick="sv('v-landing')">← Back</button>
@@ -292,51 +385,57 @@ footer{background:var(--navy);padding:2.5rem 3rem;border-top:1px solid var(--nav
       <h2>Academic Background</h2>
       <div class="form-row">
         <div class="fg"><label>Degree level</label><select><option>Bachelor's</option><option selected>Master's</option><option>MBA</option><option>PhD</option></select></div>
-        <div class="fg"><label>Field of study</label><select><option selected>Finance</option><option>Economics</option><option>Business Administration</option><option>Accounting</option><option>Marketing</option><option>Computer Science</option><option>Engineering</option><option>Law</option></select></div>
+        <div class="fg"><label>Field of study</label><select><option selected>Finance</option><option>Economics</option><option>Business Administration</option><option>Accounting</option><option>Marketing</option><option>Computer Science</option><option>Engineering</option><option>Law</option><option>Psychology / HR</option></select></div>
       </div>
       <div class="form-row">
-        <div class="fg"><label>Graduation year</label><select><option>Currently enrolled</option><option selected>2025 (this year)</option><option>2024</option><option>2023</option><option>2022 or earlier</option></select></div>
+        <div class="fg"><label>Graduation year</label>
+          <select>
+            <option>Currently enrolled</option>
+            <option selected>2025 (this year)</option>
+            <option>2026</option><option>2027</option><option>2028</option><option>2029</option><option>2030</option>
+            <option>2024</option><option>2023</option><option>2022 or earlier</option>
+          </select>
+        </div>
         <div class="fg"><label>Years of experience</label><select><option selected>0 – internships only</option><option>1–2 years</option><option>3–4 years</option><option>5+ years</option></select></div>
       </div>
+      <div class="form-row">
+        <div class="fg"><label>Position type</label>
+          <select id="pos-type">
+            <option selected>Full-time position</option>
+            <option>Internship / Summer analyst</option>
+            <option>Both</option>
+          </select>
+        </div>
+        <div class="fg"><label>Country</label><select><option selected>Norway</option><option>Sweden</option><option>Denmark</option><option>United Kingdom</option><option>Germany</option><option>Netherlands</option></select></div>
+      </div>
     </div>
+
     <div class="form-card">
       <h2>Target Industry</h2>
-      <div class="tag-grid">
-        <button class="tg on" onclick="this.classList.toggle('on')">Finance & Banking</button>
-        <button class="tg" onclick="this.classList.toggle('on')">Consulting</button>
-        <button class="tg" onclick="this.classList.toggle('on')">Audit & Accounting</button>
-        <button class="tg" onclick="this.classList.toggle('on')">Marketing</button>
-        <button class="tg" onclick="this.classList.toggle('on')">HR & People</button>
-        <button class="tg" onclick="this.classList.toggle('on')">Technology</button>
-        <button class="tg" onclick="this.classList.toggle('on')">Private Equity</button>
-        <button class="tg" onclick="this.classList.toggle('on')">Real Estate</button>
+      <div class="tag-grid" id="industry-tags">
+        <button class="tg on" onclick="toggleInd(this,'finance')">Finance & Banking</button>
+        <button class="tg" onclick="toggleInd(this,'consulting')">Consulting</button>
+        <button class="tg" onclick="toggleInd(this,'audit')">Audit & Accounting</button>
+        <button class="tg" onclick="toggleInd(this,'pe')">Private Equity & VC</button>
+        <button class="tg" onclick="toggleInd(this,'am')">Asset Management</button>
+        <button class="tg" onclick="toggleInd(this,'re')">Real Estate</button>
+        <button class="tg" onclick="toggleInd(this,'marketing')">Marketing & Comms</button>
+        <button class="tg" onclick="toggleInd(this,'hr')">HR & People</button>
+        <button class="tg" onclick="toggleInd(this,'tech')">Technology</button>
+        <button class="tg" onclick="toggleInd(this,'energy')">Energy & Sustainability</button>
       </div>
     </div>
-    <div class="form-card">
+
+    <div class="form-card" id="roles-card">
       <h2>Preferred Roles</h2>
-      <div class="tag-grid">
-        <button class="tg on" onclick="this.classList.toggle('on')">M&A / Investment Banking</button>
-        <button class="tg on" onclick="this.classList.toggle('on')">Corporate Finance</button>
-        <button class="tg" onclick="this.classList.toggle('on')">Equity Research</button>
-        <button class="tg" onclick="this.classList.toggle('on')">Strategy Consulting</button>
-        <button class="tg" onclick="this.classList.toggle('on')">Audit (Big 4)</button>
-        <button class="tg" onclick="this.classList.toggle('on')">CFO Advisory</button>
-        <button class="tg" onclick="this.classList.toggle('on')">Private Equity</button>
-        <button class="tg" onclick="this.classList.toggle('on')">Treasury</button>
-      </div>
+      <div id="roles-container"></div>
     </div>
-    <div class="form-card">
-      <h2>Location Preference</h2>
-      <div class="form-row">
-        <div class="fg"><label>Country</label><select><option selected>Norway</option><option>Sweden</option><option>Denmark</option><option>United Kingdom</option><option>Germany</option><option>Netherlands</option></select></div>
-        <div class="fg"><label>Job type</label><select><option selected>Full-time</option><option>Internship / Summer analyst</option><option>Both</option></select></div>
-      </div>
-    </div>
+
     <button class="submit-btn" onclick="sv('v-jobs')">Find matching jobs →</button>
   </div>
 </div>
 
-<!-- JOBS -->
+<!-- ══ JOBS ══ -->
 <div id="v-jobs" class="view">
   <div class="page-hero"><div class="page-hero-in">
     <button class="back" onclick="sv('v-profile')">← Back to profile</button>
@@ -346,57 +445,39 @@ footer{background:var(--navy);padding:2.5rem 3rem;border-top:1px solid var(--nav
   <div class="results-layout">
     <div class="filter-panel">
       <div class="fp-h">Industry</div>
-      <label class="fc"><input type="checkbox" checked><span>Finance & Banking</span><span class="fc-n">12</span></label>
+      <label class="fc"><input type="checkbox" checked><span>Finance & Banking</span><span class="fc-n">10</span></label>
       <label class="fc"><input type="checkbox" checked><span>Consulting</span><span class="fc-n">8</span></label>
-      <label class="fc"><input type="checkbox"><span>Audit & Accounting</span><span class="fc-n">6</span></label>
-      <label class="fc"><input type="checkbox"><span>Technology</span><span class="fc-n">4</span></label>
-      <div class="fp-h">Role type</div>
-      <label class="fc"><input type="checkbox" checked><span>Full-time analyst</span></label>
-      <label class="fc"><input type="checkbox" checked><span>Associate</span></label>
-      <label class="fc"><input type="checkbox"><span>Summer internship</span></label>
+      <label class="fc"><input type="checkbox"><span>Audit (Big 4)</span><span class="fc-n">7</span></label>
+      <label class="fc"><input type="checkbox"><span>Private Equity</span><span class="fc-n">4</span></label>
+      <label class="fc"><input type="checkbox"><span>Asset Management</span><span class="fc-n">3</span></label>
+      <div class="fp-h">Position type</div>
+      <label class="fc"><input type="checkbox" checked><span>Full-time</span></label>
+      <label class="fc"><input type="checkbox"><span>Internship / Summer</span></label>
       <div class="fp-h">Location</div>
       <label class="fc"><input type="checkbox" checked><span>Oslo</span></label>
       <label class="fc"><input type="checkbox"><span>Bergen</span></label>
       <label class="fc"><input type="checkbox"><span>Stockholm</span></label>
+      <label class="fc"><input type="checkbox"><span>Copenhagen</span></label>
       <label class="fc"><input type="checkbox"><span>London</span></label>
       <div class="fp-h">Posted</div>
       <label class="fc"><input type="checkbox" checked><span>Last 7 days</span></label>
       <label class="fc"><input type="checkbox"><span>Last 30 days</span></label>
     </div>
     <div class="jobs-panel">
-      <div class="portal-note">⚡ <strong>Live job search coming soon.</strong> These are sample listings. We'll connect LinkedIn, Finn.no, and 10+ portals filtered by your exact profile.</div>
-      <div class="jobs-top"><h2>20 matching positions</h2><span>Sorted by relevance</span></div>
+      <div class="portal-note">⚡ <strong>Live job search coming soon.</strong> These are sample listings. We'll connect Finn.no, LinkedIn, Glassdoor and more — filtered by your exact profile. Click "View posting" to search for live listings.</div>
+      <div class="jobs-top"><h2 id="jobs-count">24 matching positions</h2><span>Sorted by relevance</span></div>
       <div class="search-bar"><input type="text" placeholder="Search by title, company or keyword…"><button>Search</button></div>
-      <div class="job-card" onclick="openPrep('Goldman Sachs','M&A Analyst','🏦','Goldman Sachs · Oslo','M&A','Finance')">
-        <div class="jl">🏦</div><div class="ji"><div class="jt">M&A Analyst — Investment Banking</div><div class="jc">Goldman Sachs · Oslo, Norway</div><div class="jm"><span class="jtag new">New</span><span class="jtag">Full-time</span><span class="jtag">M&A</span></div></div>
-        <div class="ja"><span class="jdate">2 days ago</span><button class="prep-btn" onclick="event.stopPropagation();openPrep('Goldman Sachs','M&A Analyst','🏦','Goldman Sachs · Oslo','M&A','Finance')">Prepare →</button></div>
-      </div>
-      <div class="job-card" onclick="openPrep('McKinsey','Business Analyst','📊','McKinsey & Company · Oslo','Strategy Consulting','Consulting')">
-        <div class="jl">📊</div><div class="ji"><div class="jt">Business Analyst</div><div class="jc">McKinsey & Company · Oslo, Norway</div><div class="jm"><span class="jtag hot">Popular</span><span class="jtag">Full-time</span><span class="jtag">Consulting</span></div></div>
-        <div class="ja"><span class="jdate">3 days ago</span><button class="prep-btn" onclick="event.stopPropagation();openPrep('McKinsey','Business Analyst','📊','McKinsey & Company · Oslo','Strategy Consulting','Consulting')">Prepare →</button></div>
-      </div>
-      <div class="job-card" onclick="openPrep('DNB','Corporate Finance Analyst','🏛️','DNB Markets · Oslo','Corporate Finance','Finance')">
-        <div class="jl">🏛️</div><div class="ji"><div class="jt">Corporate Finance Analyst</div><div class="jc">DNB Markets · Oslo, Norway</div><div class="jm"><span class="jtag new">New</span><span class="jtag">Full-time</span><span class="jtag">Corporate Finance</span></div></div>
-        <div class="ja"><span class="jdate">1 day ago</span><button class="prep-btn" onclick="event.stopPropagation();openPrep('DNB','Corporate Finance Analyst','🏛️','DNB Markets · Oslo','Corporate Finance','Finance')">Prepare →</button></div>
-      </div>
-      <div class="job-card" onclick="openPrep('Deloitte','Transaction Services Analyst','🔷','Deloitte Norway · Oslo','Transaction Services','Audit')">
-        <div class="jl">🔷</div><div class="ji"><div class="jt">Transaction Services Analyst</div><div class="jc">Deloitte Norway · Oslo, Norway</div><div class="jm"><span class="jtag">Full-time</span><span class="jtag">Big 4</span><span class="jtag">Due Diligence</span></div></div>
-        <div class="ja"><span class="jdate">5 days ago</span><button class="prep-btn" onclick="event.stopPropagation();openPrep('Deloitte','Transaction Services Analyst','🔷','Deloitte Norway · Oslo','Transaction Services','Audit')">Prepare →</button></div>
-      </div>
-      <div class="job-card" onclick="openPrep('Pareto','Equity Research Analyst','📈','Pareto Securities · Oslo','Equity Research','Finance')">
-        <div class="jl">📈</div><div class="ji"><div class="jt">Equity Research Analyst</div><div class="jc">Pareto Securities · Oslo, Norway</div><div class="jm"><span class="jtag">Full-time</span><span class="jtag">Equity Research</span></div></div>
-        <div class="ja"><span class="jdate">1 week ago</span><button class="prep-btn" onclick="event.stopPropagation();openPrep('Pareto','Equity Research Analyst','📈','Pareto Securities · Oslo','Equity Research','Finance')">Prepare →</button></div>
-      </div>
+      <div id="job-list"></div>
     </div>
   </div>
 </div>
 
-<!-- PREP -->
+<!-- ══ PREP ══ -->
 <div id="v-prep" class="view">
   <div class="page-hero"><div class="page-hero-in">
     <button class="back" onclick="sv('v-jobs')">← Back to jobs</button>
     <h1 id="ph">Prepare for your application</h1>
-    <p id="ps">Work through each step of the process below</p>
+    <p id="ps">Work through each step below</p>
   </div></div>
   <div class="prep-layout">
     <div class="job-banner" id="job-banner"></div>
@@ -408,29 +489,29 @@ footer{background:var(--navy);padding:2.5rem 3rem;border-top:1px solid var(--nav
       <button class="ptab" onclick="stab(this,'t-mock')">🤖 Mock Interview</button>
     </div>
     <div id="t-cv" class="pc active">
-      <div class="cv-sec"><h3>📄 CV Tips for this Role <span class="ai-badge">Tailored</span></h3><ul class="tip-list" id="cv-tips"></ul></div>
+      <div class="cv-sec"><h3>📄 CV Tips <span class="ai-badge">Tailored</span></h3><ul class="tip-list" id="cv-tips"></ul></div>
       <div class="cv-sec"><h3>🔍 What recruiters look for</h3><ul class="tip-list" id="cv-rec"></ul></div>
     </div>
     <div id="t-letter" class="pc">
       <div class="cv-sec">
         <h3>✉️ Cover Letter <span class="ai-badge">AI placeholder</span></h3>
-        <p style="font-size:13px;color:var(--text2);margin-bottom:1rem;">When connected to an AI model, this generates a personalised cover letter based on your CV and the job description.</p>
+        <p style="font-size:13px;color:var(--text2);margin-bottom:1rem;">Connect an API key to generate a fully personalised cover letter based on your CV and the job description.</p>
         <div class="letter-box" id="letter-box"></div>
         <button class="gen-btn">🤖 Generate with AI — connect API key to activate</button>
       </div>
     </div>
     <div id="t-interview" class="pc">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;"><h2 style="font-size:16px;font-weight:600;">Common first-round questions</h2><span class="badge" id="role-badge"></span></div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;"><h2 style="font-size:16px;font-weight:600;">First-round interview questions</h2><span class="badge" id="role-badge"></span></div>
       <div id="q-list"></div>
     </div>
     <div id="t-case" class="pc">
       <div class="case-dark" id="case-box"></div>
-      <div class="cv-sec"><h3>📐 Case frameworks to know</h3><ul class="tip-list"><li>MECE — Mutually Exclusive, Collectively Exhaustive structuring</li><li>Profitability framework — Revenue vs Cost breakdown</li><li>Market entry — Size, competition, feasibility, financials</li><li>DCF / valuation — Essential for finance roles</li><li>Issue trees — Break the problem into branches before diving in</li></ul></div>
+      <div class="cv-sec"><h3>📐 Key frameworks</h3><ul class="tip-list"><li>MECE — Mutually Exclusive, Collectively Exhaustive structuring</li><li>Profitability tree — Revenue vs Cost breakdown</li><li>Market entry — Size, competition, feasibility, financials</li><li>DCF / valuation — Core for finance and deal-side roles</li><li>Issue trees — Decompose the problem before diving in</li></ul></div>
     </div>
     <div id="t-mock" class="pc">
       <div class="cv-sec">
         <h3>🤖 AI Mock Interview <span class="ai-badge">Placeholder</span></h3>
-        <p style="font-size:13px;color:var(--text2);margin-bottom:1rem;">Upload your CV and the AI interviewer will ask questions tailored to your exact background — just like a real recruiter would. Connect an API key (Claude or GPT-4) to activate full AI responses.</p>
+        <p style="font-size:13px;color:var(--text2);margin-bottom:1rem;">Upload your CV and the AI interviewer will ask questions tailored to your exact background — referencing your specific experiences, just like a real recruiter. Connect a Claude or GPT-4 API key to activate full AI responses.</p>
         <div class="upload-area" onclick="document.getElementById('cv-file').click()">
           <div style="font-size:28px;margin-bottom:6px;">📄</div>
           <label class="upload-lbl">Click to upload your CV</label>
@@ -443,7 +524,7 @@ footer{background:var(--navy);padding:2.5rem 3rem;border-top:1px solid var(--nav
   </div>
 </div>
 
-<!-- MOCK INTERVIEW -->
+<!-- ══ MOCK INTERVIEW ══ -->
 <div id="v-interview" class="view">
   <div class="iv-bar">
     <button class="back" style="margin-bottom:0" onclick="sv('v-prep')">← Back to prep</button>
@@ -452,7 +533,7 @@ footer{background:var(--navy);padding:2.5rem 3rem;border-top:1px solid var(--nav
   </div>
   <div class="iv-layout">
     <div class="iv-main">
-      <div class="iv-hdr"><h2>Mock Interview</h2><span class="ai-badge">Connect API key for full AI responses</span></div>
+      <div class="iv-hdr"><h2>Mock Interview</h2><span class="ai-badge">Connect API key for full AI</span></div>
       <div class="interviewer-card">
         <div class="iv-avatar">👩‍💼</div>
         <div class="iv-info">
@@ -467,66 +548,242 @@ footer{background:var(--navy);padding:2.5rem 3rem;border-top:1px solid var(--nav
         <button class="send-btn" onclick="send()">Send</button>
       </div>
     </div>
-    <div class="iv-sidebar ss">
-      <h3>Progress</h3>
+    <div class="iv-sidebar">
+      <div class="ss-h">Progress</div>
       <div id="prog-list"></div>
-      <h3>Performance</h3>
+      <div class="ss-h" style="margin-top:1.2rem;">Performance</div>
       <div class="score-card"><div class="score-n" id="score-n">—</div><div class="score-l">Overall score</div><div id="score-bars" style="margin-top:.75rem;"></div></div>
-      <h3>Tips</h3>
-      <ul class="tip-list" style="font-size:12px;"><li>Use the STAR method for behavioural questions</li><li>Keep answers under 90 seconds</li><li>Quantify your impact with numbers</li></ul>
+      <div class="ss-h" style="margin-top:1.2rem;">Tips</div>
+      <ul class="tip-list" style="font-size:12px;"><li>Use STAR method for behavioural questions</li><li>Keep answers under 90 seconds</li><li>Quantify impact with numbers</li><li>Show you've researched the company</li></ul>
     </div>
   </div>
 </div>
 
 <script>
-const JC={
-  'M&A':{
-    cvTips:['Quantify everything — deal sizes, team sizes, outcomes','Highlight financial modelling: DCF, LBO, comparable companies','Include any M&A coursework, competitions or investment case presentations','Show Excel / Bloomberg / Capital IQ proficiency explicitly','Keep to 1 page — recruiters spend 30 seconds on average'],
-    cvRec:['Strong academic record from a target university','Prior investment banking, PE or corporate finance experience','Analytical internships showing quantitative rigour','Leadership in finance societies or case competitions','CFA Level 1 signals motivation'],
-    qs:[{q:'Walk me through a DCF.',a:'Project free cash flows, discount at WACC, add terminal value. Know each driver — revenue growth, margins, capex, working capital changes.'},{q:'EV vs Equity Value?',a:'EV = market cap + net debt. Equity Value belongs to shareholders. EV is capital-structure neutral — use it when comparing companies.'},{q:'Why do companies merge?',a:'Cost/revenue synergies, market share, diversification, financial benefits, or eliminating a competitor.'},{q:'What is accretion/dilution?',a:"Whether EPS increases (accretive) or decreases (dilutive) post-acquisition. Driven by price, financing mix, and synergy realisation."},{q:'Walk me through an LBO.',a:'PE fund acquires with ~60-70% debt. Over 5 years, value created through debt paydown, EBITDA growth, multiple expansion. Targets 20%+ IRR.'}],
-    case:{title:'Acquisition of NorTech AS',tag:'M&A Case',body:'A PE fund is evaluating the acquisition of NorTech AS for NOK 500m. EBITDA is NOK 80m, growing at 10% per year with stable margins.',task:'Task: Is the price justified? What synergies do you see? What would your due diligence priorities be?',hint:'💡 Start with EV/EBITDA (500/80 = 6.25x). Compare to sector (typically 6–10x for tech). Discuss growth premium, synergy potential, key risks.'},
-    letter:"Dear Hiring Manager,\n\nI am writing to express my strong interest in the M&A Analyst position at Goldman Sachs. As a Master's student in Finance graduating this year, I have developed a solid foundation in financial modelling, valuation, and deal analysis.\n\n[Connect an AI API key to generate a personalised version based on your CV]\n\nI am particularly drawn to Goldman Sachs's leading position in Nordic M&A and the opportunity to work on complex cross-border transactions.\n\nThank you for considering my application.\n\nBest regards,\n[Your name]",
-    mockQs:["Good morning! I'm Sarah Mitchell, Senior Recruiter at Goldman Sachs. Let's start with the classic: tell me about yourself and why you're interested in investment banking.","Great background. Why M&A specifically, rather than sales & trading or asset management?","Let's test your technical knowledge. Walk me through how you would value a company using a DCF.","Tell me about a time you worked under significant time pressure and had to deliver a high-quality output.","Why Goldman Sachs specifically? What do you know about our recent deals in the Nordic region?"]
+/* ══════════════════════
+   INDUSTRY → ROLES DATA
+══════════════════════ */
+const INDUSTRY_ROLES = {
+  finance: {
+    label: 'Finance & Banking',
+    groups: [
+      { firm: 'Investment Banking', roles: ['M&A Analyst','Leveraged Finance','ECM / DCM Analyst','Restructuring','Debt Advisory'] },
+      { firm: 'Corporate Finance', roles: ['Corporate Finance Analyst','CFO Advisory','Treasury Analyst','Financial Planning & Analysis (FP&A)','Investor Relations'] },
+      { firm: 'Markets', roles: ['Equity Sales & Trading','Fixed Income Analyst','Derivatives','Structuring','Research Analyst'] }
+    ]
   },
-  'Corporate Finance':{
-    cvTips:['Highlight financial analysis projects with concrete outcomes','Show experience with reporting, budgeting or forecasting','Excel modelling skills are essential — mention them explicitly','Include relevant internships in finance, consulting or accounting','CFA Level 1 is a strong differentiator'],
-    cvRec:['Solid accounting and finance fundamentals','Experience in FP&A or financial modelling','Understanding of capital structure decisions','Clear communication — CFOs need analysts who explain numbers simply','Attention to detail — one error in a model costs credibility'],
-    qs:[{q:'How do the three financial statements connect?',a:'Net income from the P&L flows to retained earnings on the balance sheet and to CFO in the cash flow statement. Changes in balance sheet accounts flow to the cash flow statement.'},{q:'What is WACC?',a:'Weighted Average Cost of Capital = (E/V × Re) + (D/V × Rd × (1-T)). Blends cost of equity (CAPM) and after-tax cost of debt.'},{q:'Explain optimal capital structure.',a:'The mix of debt and equity that minimises WACC and maximises firm value. Depends on industry stability, asset tangibility, and tax benefits of debt.'},{q:'NPV vs IRR — which do you prefer?',a:'NPV is absolute value creation in currency. IRR is the discount rate that makes NPV = 0. NPV is theoretically superior; IRR is easier to communicate to management.'},{q:'What is working capital?',a:'Current assets minus current liabilities. Poor WC management can bankrupt a profitable company — cash flow ≠ profit.'}],
-    case:{title:'Capital Structure Decision — NorEnergy',tag:'Corporate Finance Case',body:'NorEnergy is considering raising NOK 200m in debt to fund a wind farm with projected IRR of 12%. Current WACC is 9% and leverage is low.',task:'Task: Should they proceed? What is the impact on capital structure and credit rating?',hint:'💡 IRR (12%) > WACC (9%) = value-creating. Discuss debt capacity, interest coverage ratio, covenant risk, and rating implications.'},
-    letter:"Dear Hiring Manager,\n\nI am applying for the Corporate Finance Analyst position. My background in Finance and passion for capital allocation makes this role an ideal fit.\n\n[Connect an AI API key to generate a personalised version based on your CV]\n\nThank you for your consideration.\n\nBest regards,\n[Your name]",
-    mockQs:["Hello! I'm Sarah Mitchell, and I'll be interviewing you today for the Corporate Finance Analyst role. Tell me about yourself and what draws you to corporate finance.","Walk me through how the three financial statements connect to each other.","If a company has strong net income but is running out of cash, what might be happening?","Tell me about a time you had to analyse a complex problem and present findings to others.","Where do you see yourself in 3 years, and how does this role fit that path?"]
+  consulting: {
+    label: 'Consulting',
+    groups: [
+      { firm: 'Strategy Consulting', roles: ['Strategy Analyst','Corporate Strategy','Market Entry','Growth Strategy','Organisational Design'] },
+      { firm: 'Deloitte', roles: ['Technology Transformation','M&A / Transaction Services','Valuation Advisory','Business Transformation','Risk Advisory','Finance Transformation'] },
+      { firm: 'McKinsey / BCG / Bain', roles: ['Business Analyst','Associate Consultant','Operations','Digital Transformation','Sustainability & ESG'] },
+      { firm: 'PwC / EY', roles: ['Management Consulting Analyst','People & Org','Deals Strategy','Supply Chain','Regulatory Strategy'] }
+    ]
+  },
+  audit: {
+    label: 'Audit & Accounting',
+    groups: [
+      { firm: 'Big 4 Audit', roles: ['External Audit Analyst','Financial Statement Audit','IT Audit','Sustainability Assurance'] },
+      { firm: 'Advisory / Deals', roles: ['Transaction Services','Forensic Accounting','Valuation','Due Diligence','Corporate Recovery'] },
+      { firm: 'Tax', roles: ['Corporate Tax','Transfer Pricing','VAT / Indirect Tax','International Tax','M&A Tax'] }
+    ]
+  },
+  pe: {
+    label: 'Private Equity & VC',
+    groups: [
+      { firm: 'Private Equity', roles: ['PE Analyst','Deal Sourcing','Portfolio Management','LBO Modelling','Value Creation'] },
+      { firm: 'Venture Capital', roles: ['VC Analyst','Startup Due Diligence','Portfolio Support','Fund of Funds'] }
+    ]
+  },
+  am: {
+    label: 'Asset Management',
+    groups: [
+      { firm: 'Buy-side', roles: ['Investment Analyst','Portfolio Management','Quantitative Research','Risk Management','ESG Integration'] },
+      { firm: 'Wealth Management', roles: ['Wealth Advisor Analyst','Client Portfolio Manager','Structured Products'] }
+    ]
+  },
+  re: {
+    label: 'Real Estate',
+    groups: [
+      { firm: 'Real Estate Finance', roles: ['Real Estate Analyst','REIT Analysis','Property Valuation','Real Estate M&A','Development Finance'] }
+    ]
+  },
+  marketing: {
+    label: 'Marketing & Comms',
+    groups: [
+      { firm: 'Brand & Strategy', roles: ['Brand Manager','Market Strategy Analyst','Consumer Insights','Pricing Strategy'] },
+      { firm: 'Digital', roles: ['Digital Marketing Analyst','Performance Marketing','Growth Marketing','SEO/SEM Specialist','Social Media Strategy'] },
+      { firm: 'Communications', roles: ['Communications Advisor','PR & Media Relations','Internal Comms','Corporate Affairs'] }
+    ]
+  },
+  hr: {
+    label: 'HR & People',
+    groups: [
+      { firm: 'Talent & Recruitment', roles: ['Talent Acquisition Specialist','Campus Recruiter','Executive Search Analyst','Employer Branding'] },
+      { firm: 'HR Business Partner', roles: ['HRBP Analyst','Organisational Development','Change Management','HR Analytics'] },
+      { firm: 'Compensation & Learning', roles: ['C&B Analyst','Learning & Development','People Analytics','Diversity & Inclusion'] }
+    ]
+  },
+  tech: {
+    label: 'Technology',
+    groups: [
+      { firm: 'Product & Strategy', roles: ['Product Manager','Product Analyst','Business Development','Partnerships','Go-to-Market Strategy'] },
+      { firm: 'Engineering & Data', roles: ['Software Engineer','Data Analyst','Data Scientist','Machine Learning Engineer','Cloud Engineer'] },
+      { firm: 'Tech Consulting', roles: ['IT Consultant','ERP Implementation','Cybersecurity Analyst','Digital Transformation Analyst'] }
+    ]
+  },
+  energy: {
+    label: 'Energy & Sustainability',
+    groups: [
+      { firm: 'Energy Finance', roles: ['Energy Finance Analyst','Project Finance','Infrastructure Advisory','Commodity Trading Analyst'] },
+      { firm: 'ESG & Sustainability', roles: ['ESG Analyst','Sustainability Reporting','Climate Risk','Green Finance','Carbon Markets'] },
+      { firm: 'Oil & Gas / Renewables', roles: ['Corporate Development Analyst','Business Analyst (Equinor/Aker)','Renewables Project Manager'] }
+    ]
   }
 };
-const DEF={
-  cvTips:['Quantify your impact with numbers wherever possible','Mirror keywords from the job description','Keep to 1 page — tight, action-oriented language','Proofread meticulously — one typo can end an application','Lead with your strongest, most relevant experience'],
-  cvRec:['Relevant academic background for the role','Internship or project experience in the field','Leadership or initiative outside the classroom','Strong GPA or relevant coursework listed clearly','Clean, professional formatting'],
-  qs:[{q:'Tell me about yourself.',a:"Keep it to 60–90 seconds. Degree → key experience → why this role. Practise this until it's natural."},{q:'Why this company?',a:"Show research. Reference specific news, strategy, culture, or deals. Generic answers fail."},{q:"What is your greatest strength?",a:"One strength relevant to the role, backed by a specific STAR example."},{q:"Describe a challenging situation and how you handled it.",a:"STAR method: Situation, Task, Action, Result. Focus on YOUR actions and measurable outcome."},{q:"Where do you see yourself in 5 years?",a:"Show ambition and link to the company. Avoid vagueness."}],
-  case:{title:'General Case Framework',tag:'Case Tips',body:'Most cases involve a business problem requiring structured analysis and a clear recommendation.',task:'Approach: 1) Clarify the question 2) Structure MECE 3) State hypothesis early 4) Analyse systematically 5) Give a clear justified recommendation.',hint:"💡 Think out loud. The interviewer wants your process, not just the answer. Silence is bad — narrate your thinking."},
-  letter:"Dear Hiring Manager,\n\nI am writing to apply for this position.\n\n[Connect an AI API key to generate a personalised cover letter based on your CV and the job description]\n\nThank you for your consideration.\n\nBest regards,\n[Your name]",
-  mockQs:["Hi! I'm Sarah Mitchell, and I'll be interviewing you today. Tell me about yourself and why you're applying for this role.","Tell me about a time when you had to work in a team under pressure. What was your role and outcome?","What has been your most challenging academic or professional experience, and what did you learn?","Why this company specifically? What do you know about us?","Do you have any questions for me about the role or the company?"]
-};
 
-let CJ={company:'Goldman Sachs',title:'M&A Analyst',logo:'🏦',sub:'Goldman Sachs · Oslo',role:'M&A'};
-let qIdx=0;
+/* ══════════════════════
+   SAMPLE JOBS
+══════════════════════ */
+const JOBS = [
+  { logo:'🏦', title:'M&A Analyst', co:'Goldman Sachs', loc:'Oslo', tags:['New','Full-time','M&A'], date:'2 days ago', role:'M&A', ind:'finance', search:'M%26A+analyst+oslo', hot:false },
+  { logo:'🏛️', title:'Corporate Finance Analyst', co:'DNB Markets', loc:'Oslo', tags:['New','Full-time','Corporate Finance'], date:'1 day ago', role:'Corporate Finance', ind:'finance', search:'corporate+finance+analyst+oslo', hot:false },
+  { logo:'📊', title:'Business Analyst', co:'McKinsey & Company', loc:'Oslo', tags:['Popular','Full-time','Strategy'], date:'3 days ago', role:'Strategy Consulting', ind:'consulting', search:'business+analyst+mckinsey+oslo', hot:true },
+  { logo:'🔵', title:'Strategy Analyst', co:'Boston Consulting Group', loc:'Oslo', tags:['Full-time','Strategy'], date:'4 days ago', role:'Strategy Consulting', ind:'consulting', search:'strategy+analyst+bcg+oslo', hot:false },
+  { logo:'🔷', title:'Transaction Services Analyst', co:'Deloitte Norway', loc:'Oslo', tags:['Full-time','Big 4','Deals'], date:'5 days ago', role:'Transaction Services', ind:'audit', search:'transaction+services+deloitte+oslo', hot:false },
+  { logo:'🔷', title:'Technology Transformation Analyst', co:'Deloitte Norway', loc:'Oslo', tags:['Full-time','Tech','Consulting'], date:'3 days ago', role:'Technology Transformation', ind:'consulting', search:'technology+transformation+deloitte+oslo', hot:false },
+  { logo:'📈', title:'Equity Research Analyst', co:'Pareto Securities', loc:'Oslo', tags:['Full-time','Equity Research'], date:'1 week ago', role:'Equity Research', ind:'finance', search:'equity+research+analyst+oslo', hot:false },
+  { logo:'🟡', title:'Risk & Compliance Analyst', co:'PwC Norway', loc:'Oslo', tags:['Full-time','Risk','Big 4'], date:'6 days ago', role:'Risk Advisory', ind:'audit', search:'risk+compliance+analyst+pwc+oslo', hot:false },
+  { logo:'🟢', title:'Valuation Advisory Analyst', co:'EY Norway', loc:'Oslo', tags:['New','Full-time','Valuation'], date:'2 days ago', role:'Valuation Advisory', ind:'audit', search:'valuation+analyst+ey+oslo', hot:false },
+  { logo:'🏢', title:'ESG & Sustainability Analyst', co:'Storebrand', loc:'Oslo', tags:['Full-time','ESG','Finance'], date:'1 week ago', role:'ESG Analyst', ind:'energy', search:'ESG+analyst+oslo', hot:false },
+  { logo:'⚡', title:'Energy Finance Analyst', co:'Equinor', loc:'Stavanger', tags:['Full-time','Energy','Finance'], date:'5 days ago', role:'Energy Finance Analyst', ind:'energy', search:'energy+finance+analyst+equinor', hot:false },
+  { logo:'🏦', title:'Summer Analyst — Investment Banking', co:'Nordea', loc:'Oslo', tags:['New','Internship','IBD'], date:'1 day ago', role:'M&A Analyst', ind:'finance', search:'summer+analyst+investment+banking+oslo', hot:false },
+  { logo:'🔵', title:'PE Analyst', co:'FSN Capital', loc:'Oslo', tags:['Full-time','Private Equity'], date:'3 days ago', role:'PE Analyst', ind:'pe', search:'private+equity+analyst+oslo', hot:true },
+  { logo:'📊', title:'Management Consultant Analyst', co:'Accenture Norway', loc:'Oslo', tags:['Full-time','Consulting'], date:'4 days ago', role:'Business Transformation', ind:'consulting', search:'management+consultant+analyst+accenture+oslo', hot:false },
+  { logo:'🏛️', title:'FP&A Analyst', co:'Kongsberg Gruppen', loc:'Oslo', tags:['Full-time','Finance'], date:'1 week ago', role:'Financial Planning & Analysis (FP&A)', ind:'finance', search:'FPA+analyst+norway', hot:false },
+];
+
+let selectedIndustries = new Set(['finance']);
+let selectedRoles = new Set();
+let CJ = { company:'Goldman Sachs', title:'M&A Analyst', logo:'🏦', sub:'Goldman Sachs · Oslo', role:'M&A', ind:'finance' };
+let qIdx = 0;
 
 function sv(id){
   document.querySelectorAll('.view').forEach(v=>{v.classList.remove('active');v.style.display='none';});
-  const el=document.getElementById(id);el.style.display='block';el.classList.add('active');window.scrollTo(0,0);
+  const el = document.getElementById(id);
+  el.style.display = 'block';
+  el.classList.add('active');
+  window.scrollTo(0,0);
 }
 
-function openPrep(co,title,logo,sub,role,ind){
-  CJ={company:co,title,logo,sub,role,ind};
-  document.getElementById('ph').textContent='Prepare for '+title;
-  document.getElementById('ps').textContent=sub;
-  document.getElementById('job-banner').innerHTML=`<div class="jbl">${logo}</div><div class="jbi"><h2>${title}</h2><p>${sub}</p><div class="jbt"><span class="jtag">${role}</span><span class="jtag">${ind}</span></div></div>`;
-  const c=JC[role]||DEF;
-  document.getElementById('cv-tips').innerHTML=c.cvTips.map(t=>`<li>${t}</li>`).join('');
-  document.getElementById('cv-rec').innerHTML=c.cvRec.map(t=>`<li>${t}</li>`).join('');
-  document.getElementById('letter-box').textContent=c.letter;
-  document.getElementById('role-badge').textContent=role;
-  document.getElementById('q-list').innerHTML=c.qs.map(q=>`<div class="q-card"><strong>${q.q}</strong><div class="q-hint">${q.a}</div></div>`).join('');
-  const ca=c.case;
-  document.getElementById('case-box').innerHTML=`<div class="ctag">${ca.tag}</div><h3>${ca.title}</h3><p class="cbody">${ca.body}</p><p class="ctask">${ca.task}</p><div class="chint">${ca.hint}</div>`;
+/* INDUSTRY TOGGLE */
+function toggleInd(btn, key){
+  btn.classList.toggle('on');
+  if(btn.classList.contains('on')) selectedIndustries.add(key);
+  else selectedIndustries.delete(key);
+  renderRoles();
+}
+
+function renderRoles(){
+  const container = document.getElementById('roles-container');
+  if(selectedIndustries.size === 0){ container.innerHTML = '<p style="font-size:13px;color:var(--text3)">Select an industry above to see relevant roles.</p>'; return; }
+  let html = '';
+  selectedIndustries.forEach(ind => {
+    const data = INDUSTRY_ROLES[ind];
+    if(!data) return;
+    html += `<div class="role-section"><h3>${data.label}</h3><div class="tag-grid">`;
+    data.groups.forEach(g => {
+      g.roles.forEach(r => {
+        const on = selectedRoles.has(r) ? 'on' : '';
+        html += `<button class="tg ${on}" onclick="toggleRole(this,'${r.replace(/'/g,"\\'")}'">${r}</button>`;
+      });
+    });
+    html += '</div></div>';
+  });
+  container.innerHTML = html;
+}
+
+function toggleRole(btn, role){
+  btn.classList.toggle('on');
+  if(btn.classList.contains('on')) selectedRoles.add(role);
+  else selectedRoles.delete(role);
+}
+
+/* RENDER JOBS */
+function renderJobs(){
+  const list = document.getElementById('job-list');
+  list.innerHTML = '';
+  JOBS.forEach(j => {
+    const searchUrl = `https://www.finn.no/job/fulltime/search.html?q=${j.search}`;
+    const glassdoor = `https://www.glassdoor.com/Job/norway-${j.search.toLowerCase()}-jobs-SRCH_IL.0,6_IN179_KO7,40.htm`;
+    list.innerHTML += `
+    <div class="job-card" onclick="openPrep('${j.co}','${j.title}','${j.logo}','${j.co} · ${j.loc}','${j.role}','${j.ind}')">
+      <div class="jl">${j.logo}</div>
+      <div class="ji">
+        <div class="jt">${j.title}</div>
+        <div class="jc">${j.co} · ${j.loc}, Norway</div>
+        <div class="jm">${j.tags.map(t=>`<span class="jtag ${t==='New'?'new':t==='Popular'?'hot':''}">${t}</span>`).join('')}</div>
+      </div>
+      <div class="ja">
+        <span class="jdate">${j.date}</span>
+        <button class="prep-btn" onclick="event.stopPropagation();openPrep('${j.co}','${j.title}','${j.logo}','${j.co} · ${j.loc}','${j.role}','${j.ind}')">Prepare →</button>
+        <a class="view-btn" href="${searchUrl}" target="_blank" onclick="event.stopPropagation()">View on Finn.no ↗</a>
+      </div>
+    </div>`;
+  });
+}
+
+/* JOB CONTENT */
+const JC = {
+  'M&A':{
+    cvTips:['Quantify everything — deal sizes, team sizes, outcomes','Highlight DCF, LBO and comparable company modelling experience','Include any M&A coursework, case competitions or investment presentations','Show Excel / Bloomberg / Capital IQ proficiency explicitly','1 page max — recruiters spend 30 seconds on average'],
+    cvRec:['Strong academic record, ideally from a target university (BI, NHH, CBS, SSE)','Prior investment banking, PE or corporate finance experience','Analytical internships showing quantitative rigour','Leadership in finance societies or case competitions (e.g. NHH Finance Club)','CFA Level 1 signals commitment and technical grounding'],
+    qs:[{q:'Walk me through a DCF.',a:'Project unlevered free cash flows, discount at WACC, add terminal value (Gordon Growth or exit multiple). Know each driver — revenue growth, margins, capex, change in working capital.'},{q:'EV vs Equity Value?',a:'EV = market cap + net debt (debt minus cash + minority interest). Equity Value belongs to shareholders. EV is capital-structure neutral — use when comparing companies across different leverage profiles.'},{q:'Why do companies merge?',a:'Cost and revenue synergies, market share consolidation, geographic expansion, financial benefits (tax shields, cheaper cost of debt), or eliminating a competitor.'},{q:'What is accretion/dilution?',a:"Whether EPS increases (accretive) or decreases (dilutive) post-acquisition. Driven by price paid, financing mix (debt vs equity), and synergy realisation speed."},{q:'Walk me through an LBO.',a:'PE fund buys a company using ~60-70% debt. Over 5 years, value is created through debt paydown, EBITDA growth, and exit multiple expansion. Target IRR is typically 20%+.'}],
+    case:{title:'Acquisition of NorTech AS',tag:'M&A Case',body:'A PE fund is evaluating the acquisition of NorTech AS for NOK 500m. EBITDA is NOK 80m growing at 10% p.a. with stable margins and strong recurring revenue.',task:'Task: Is the price justified? What synergies do you see? What are your top due diligence priorities?',hint:'💡 Start with EV/EBITDA (500/80 = 6.25x). Compare to sector norms (tech typically 6–10x). Then discuss growth premium, synergy potential, management quality, and key risks.'},
+    letter:"Dear Hiring Manager,\n\nI am writing to express my strong interest in the M&A Analyst position. As a Master's student in Finance graduating this year, I have built a strong foundation in financial modelling, valuation and deal analysis through coursework and internships.\n\n[Connect a Claude or GPT-4 API key to generate a fully personalised version based on your CV and this specific job description]\n\nI am particularly drawn to this role because of the firm's leading position in Nordic M&A and the opportunity to work on complex, cross-border transactions from day one.\n\nThank you for considering my application.\n\nBest regards,\n[Your name]",
+    mockQs:["Good morning! I'm Sarah Mitchell, Senior Recruiter. Let's start with the classic opener: tell me about yourself and why you're interested in investment banking.","Great. Why M&A specifically, rather than other areas like sales & trading or asset management?","Let's test your technical knowledge. Walk me through how you would value a company using a DCF.","Tell me about a time you worked under significant time pressure and delivered a high-quality output. What was the situation?","Why this firm specifically? What do you know about our recent Nordic M&A activity?"]
+  },
+  'Technology Transformation':{
+    cvTips:['Highlight any technology implementation or digital transformation projects','Show both business AND technical understanding — this role bridges both worlds','Include experience with ERP, cloud, data or AI projects if relevant','Show project management or change management exposure','Consulting firms want structured thinkers — show MECE-style reasoning in your CV'],
+    cvRec:['Finance or business background with a technology affinity','Coursework or certifications in digital topics (cloud, agile, data)','Any consulting internship, even outside tech','Strong communication skills — you will present to C-suite clients','Intellectual curiosity and comfort with ambiguity'],
+    qs:[{q:'What is a technology transformation and why do companies undertake one?',a:'A technology transformation is a fundamental overhaul of how a company uses technology — from legacy systems to modern digital platforms. Companies do it to reduce costs, improve agility, enable AI/data capabilities, or meet regulatory requirements.'},{q:'How would you structure a technology due diligence?',a:'Assess IT architecture, system debt, cybersecurity posture, data quality, licensing costs, and integration risk. The key question: what will it cost to modernise and how long will it take?'},{q:'What is ERP and when should a company replace it?',a:'Enterprise Resource Planning (e.g. SAP, Oracle) integrates finance, HR, procurement and operations. Replace when systems are too fragmented, costs are high, or business needs have outgrown the platform.'},{q:'How do you manage change in a large transformation?',a:'Early stakeholder engagement, clear communication, training, pilot programmes, and measuring adoption. The tech is usually easier than the people change.'},{q:'What makes a technology transformation fail?',a:'Scope creep, poor executive sponsorship, underestimating change management, poor data migration, and not defining success metrics upfront.'}],
+    case:{title:'ERP Replacement at NorRetail',tag:'Tech Transformation Case',body:'NorRetail, a Scandinavian retailer with 300 stores, is running on a 15-year-old SAP system. IT costs are 3x industry average and the system cannot support e-commerce integration.',task:'Task: Should they replace the ERP? How would you structure the business case and transformation roadmap?',hint:'💡 Frame around: current cost vs future cost, strategic value of new capabilities, risk of delay vs risk of transformation. Structure into Assess → Design → Build → Deploy phases.'},
+    letter:"Dear Hiring Manager,\n\nI am applying for the Technology Transformation Analyst role. My background in Finance and interest in digital transformation make this an ideal fit.\n\n[Connect a Claude or GPT-4 API key to personalise this based on your CV]\n\nBest regards,\n[Your name]",
+    mockQs:["Hi! I'm Sarah Mitchell. Let's get started. Tell me about yourself and what draws you to technology consulting specifically.","What do you think is the hardest part of a technology transformation project — and why?","Walk me through how you would build a business case for replacing a company's core IT system.","Tell me about a time you had to influence people who disagreed with your approach. How did you handle it?","Where do you see AI having the biggest impact on business transformation in the next 3 years?"]
+  },
+  'Strategy Consulting':{
+    cvTips:['Lead with impact — show results, not just activities','Include any case competition experience (NTNU, BI, NHH competitions are well-regarded)','Show structured thinking in how you describe your experience','Consulting firms read CVs looking for: leadership, analytical ability, and client-facing skills','GPA matters — include it if it is strong'],
+    cvRec:['Top academic performance from a recognised school','Case competition finalist or winner','Leadership role in student society, sports, or organisation','Any internship showing analytical thinking, even outside consulting','Demonstrated intellectual curiosity — broad interests are a plus'],
+    qs:[{q:'Why consulting over industry?',a:'Show you want the breadth of experience, steep learning curve, exposure to many industries and senior decision-makers, and the problem-solving culture — not just the salary.'},{q:'Tell me about a time you solved a complex problem with limited information.',a:'Use STAR. Show structured approach: what did you know, what did you assume, how did you structure your analysis, what was the outcome?'},{q:'What is a market sizing question and how do you approach it?',a:'A market sizing estimates the revenue potential of a market. Start from either demand-side (population × penetration × spend) or supply-side (competitors × market share). Show structure and sanity-checking.'},{q:'Why this firm?',a:'Be specific: reference the firm\'s methodology, a recent project in your sector of interest, culture, or a specific person you\'ve spoken to. Generic answers are immediately spotted.'},{q:'How would you structure a profitability problem?',a:'Revenue = Volume × Price. Cost = Fixed + Variable. Segment each and look for where the anomaly is. Always benchmark against competitors or prior periods.'}],
+    case:{title:'Norwegian Grocery Chain Profitability',tag:'Strategy Case',body:'MatBudsjett, a Norwegian discount grocery chain, has seen EBIT margins fall from 4% to 1.5% over 3 years despite growing revenue. Management is worried and has hired your firm.',task:'Task: Diagnose the profitability problem and recommend 3 concrete actions.',hint:'💡 Structure: Revenue side (pricing, volume, mix) vs Cost side (COGS, labour, SG&A). Compare to Rema 1000 / Kiwi benchmarks. Look for mix shift to lower-margin categories or cost inflation in labour/logistics.'},
+    letter:"Dear Hiring Manager,\n\nI am writing to apply for the Strategy Analyst position. My passion for structured problem-solving and delivering strategic insight in complex situations makes this an ideal role for me.\n\n[Connect API key to personalise]\n\nBest regards,\n[Your name]",
+    mockQs:["Hello! I'm Sarah Mitchell. Let's start — tell me about yourself and why you want to work in strategy consulting.","Let's do a quick case. Your client is a Norwegian hotel chain that has seen occupancy drop 15% over 2 years. What are your first three questions?","Tell me about a time you had to work in a team where there was disagreement. How did you handle it?","Why this firm over McKinsey / BCG / Bain? What specifically appeals to you?","What's a business or strategic challenge in Norway right now that you find interesting — and why?"]
+  }
+};
+
+const DEF = {
+  cvTips:['Quantify your impact with numbers wherever possible','Mirror keywords from the job description','Keep to 1 page — tight, action-oriented language','Proofread meticulously — one typo can end an application','Lead with your strongest, most relevant experience'],
+  cvRec:['Relevant academic background for the role','Internship or project experience in the field','Leadership or initiative outside the classroom','Strong GPA or relevant coursework listed clearly','Clean, professional formatting'],
+  qs:[{q:'Tell me about yourself.',a:"Keep it to 60–90 seconds. Degree → key experience → why this role. Practise until it's completely natural."},{q:'Why this company?',a:"Show you've done research. Reference specific news, strategy, culture, or deals. Generic answers are immediately spotted."},{q:"What is your greatest strength?",a:"One strength relevant to the role, backed by a specific STAR example."},{q:"Describe a challenging situation and how you handled it.",a:"STAR method: Situation, Task, Action, Result. Focus on YOUR specific actions and measurable outcomes."},{q:"Where do you see yourself in 5 years?",a:"Show ambition, link to the company's growth, and be realistic about the career path in this specific industry."}],
+  case:{title:'General Case Framework',tag:'Case Tips',body:'Most cases require structured analysis and a clear, justified recommendation.',task:'Approach: 1) Clarify the question — ask for missing info. 2) Structure MECE. 3) State a hypothesis early. 4) Analyse systematically. 5) Conclude with a clear recommendation.',hint:"💡 Think out loud. The interviewer wants to see your thought process, not just the answer. Silence is dangerous — narrate your reasoning at every step."},
+  letter:"Dear Hiring Manager,\n\nI am writing to apply for this position.\n\n[Connect a Claude or GPT-4 API key to generate a fully personalised cover letter based on your CV and this specific job posting]\n\nThank you for your consideration.\n\nBest regards,\n[Your name]",
+  mockQs:["Hi! I'm Sarah Mitchell, and I'll be interviewing you today. Let's start with the classic opener — tell me about yourself and why you're applying for this role.","Tell me about a time when you had to work in a team under pressure. What was your role and what was the outcome?","What has been your most challenging academic or professional experience, and what did you learn from it?","Why this company specifically? What do you know about us that makes you want to work here?","Do you have any questions for me about the role or the company?"]
+};
+
+function openPrep(co, title, logo, sub, role, ind){
+  CJ = {company:co, title, logo, sub, role, ind};
+  document.getElementById('ph').textContent = 'Prepare for ' + title;
+  document.getElementById('ps').textContent = sub;
+  document.getElementById('job-banner').innerHTML = `<div class="jbl">${logo}</div><div class="jbi"><h2>${title}</h2><p>${sub}</p><div class="jbt"><span class="jtag">${role}</span><span class="jtag">${ind}</span></div></div>`;
+  const c = JC[role] || DEF;
+  document.getElementById('cv-tips').innerHTML = c.cvTips.map(t=>`<li>${t}</li>`).join('');
+  document.getElementById('cv-rec').innerHTML = c.cvRec.map(t=>`<li>${t}</li>`).join('');
+  document.getElementById('letter-box').textContent = c.letter;
+  document.getElementById('role-badge').textContent = role;
+  document.getElementById('q-list').innerHTML = c.qs.map(q=>`<div class="q-card"><strong>${q.q}</strong><div class="q-hint">${q.a}</div></div>`).join('');
+  const ca = c.case;
+  document.getElementById('case-box').innerHTML = `<div class="ctag">${ca.tag}</div><h3>${ca.title}</h3><p class="cbody">${ca.body}</p><p class="ctask">${ca.task}</p><div class="chint">${ca.hint}</div>`;
   document.querySelectorAll('.ptab').forEach(t=>t.classList.remove('active'));
   document.querySelectorAll('.pc').forEach(t=>t.classList.remove('active'));
   document.querySelector('.ptab').classList.add('active');
@@ -534,54 +791,68 @@ function openPrep(co,title,logo,sub,role,ind){
   sv('v-prep');
 }
 
-function stab(el,id){
+function stab(el, id){
   document.querySelectorAll('.ptab').forEach(t=>t.classList.remove('active'));
   document.querySelectorAll('.pc').forEach(t=>t.classList.remove('active'));
-  el.classList.add('active');document.getElementById(id).classList.add('active');
+  el.classList.add('active');
+  document.getElementById(id).classList.add('active');
 }
 
-function cvUp(input){if(input.files.length)document.querySelector('.upload-area p').textContent='✅ '+input.files[0].name+' uploaded';}
+function cvUp(input){ if(input.files.length) document.querySelector('.upload-area p').textContent = '✅ ' + input.files[0].name + ' uploaded'; }
 
 function setupIV(){
-  const c=JC[CJ.role]||DEF;
-  qIdx=0;
-  document.getElementById('iv-co').textContent=CJ.company;
-  document.getElementById('iv-label').textContent=CJ.title+' · '+CJ.company;
-  document.getElementById('chat-area').innerHTML='';
-  document.getElementById('score-n').textContent='—';
-  document.getElementById('score-bars').innerHTML='';
-  document.getElementById('prog-list').innerHTML=c.mockQs.map((q,i)=>`<div class="prog-item"><div class="prog-ic ${i===0?'act':'todo'}">${i===0?'▶':'○'}</div><span class="prog-txt">Question ${i+1}</span></div>`).join('');
-  setTimeout(()=>addMsg('ai',c.mockQs[0]),700);
+  const c = JC[CJ.role] || DEF;
+  qIdx = 0;
+  document.getElementById('iv-co').textContent = CJ.company;
+  document.getElementById('iv-label').textContent = CJ.title + ' · ' + CJ.company;
+  document.getElementById('chat-area').innerHTML = '';
+  document.getElementById('score-n').textContent = '—';
+  document.getElementById('score-bars').innerHTML = '';
+  document.getElementById('prog-list').innerHTML = c.mockQs.map((q,i)=>`<div class="prog-item"><div class="prog-ic ${i===0?'act':'todo'}">${i===0?'▶':'○'}</div><span class="prog-txt">Question ${i+1}</span></div>`).join('');
+  setTimeout(()=>addMsg('ai', c.mockQs[0]), 700);
 }
 
-function addMsg(role,text){
-  const a=document.getElementById('chat-area');
-  const t=new Date().toLocaleTimeString('en',{hour:'2-digit',minute:'2-digit'});
-  a.innerHTML+=`<div class="msg ${role}"><div class="mavatar">${role==='ai'?'👩‍💼':'👤'}</div><div><div class="mbubble">${text}</div><div class="mtime">${t}</div></div></div>`;
-  a.scrollTop=a.scrollHeight;
+function addMsg(role, text){
+  const a = document.getElementById('chat-area');
+  const t = new Date().toLocaleTimeString('en',{hour:'2-digit',minute:'2-digit'});
+  a.innerHTML += `<div class="msg ${role}"><div class="mavatar">${role==='ai'?'👩‍💼':'👤'}</div><div><div class="mbubble">${text}</div><div class="mtime">${t}</div></div></div>`;
+  a.scrollTop = a.scrollHeight;
 }
 
 function send(){
-  const inp=document.getElementById('chat-input');
-  const txt=inp.value.trim();if(!txt)return;
-  addMsg('user',txt);inp.value='';
-  const c=JC[CJ.role]||DEF;
+  const inp = document.getElementById('chat-input');
+  const txt = inp.value.trim();
+  if(!txt) return;
+  addMsg('user', txt);
+  inp.value = '';
+  const c = JC[CJ.role] || DEF;
   qIdx++;
-  const items=document.querySelectorAll('.prog-item');
-  items.forEach((item,i)=>{const ic=item.querySelector('.prog-ic');if(i<qIdx){ic.className='prog-ic done';ic.textContent='✓';}else if(i===qIdx&&qIdx<c.mockQs.length){ic.className='prog-ic act';ic.textContent='▶';}else{ic.className='prog-ic todo';ic.textContent='○';}});
-  const area=document.getElementById('chat-area');
-  area.innerHTML+=`<div class="msg ai" id="typ"><div class="mavatar">👩‍💼</div><div class="typing"><div class="tdot"></div><div class="tdot"></div><div class="tdot"></div></div></div>`;
-  area.scrollTop=area.scrollHeight;
+  document.querySelectorAll('.prog-item').forEach((item,i)=>{
+    const ic = item.querySelector('.prog-ic');
+    if(i < qIdx){ic.className='prog-ic done';ic.textContent='✓';}
+    else if(i === qIdx && qIdx < c.mockQs.length){ic.className='prog-ic act';ic.textContent='▶';}
+    else{ic.className='prog-ic todo';ic.textContent='○';}
+  });
+  const area = document.getElementById('chat-area');
+  area.innerHTML += `<div class="msg ai" id="typ"><div class="mavatar">👩‍💼</div><div class="typing"><div class="tdot"></div><div class="tdot"></div><div class="tdot"></div></div></div>`;
+  area.scrollTop = area.scrollHeight;
   setTimeout(()=>{
-    const t=document.getElementById('typ');if(t)t.remove();
-    if(qIdx<c.mockQs.length){addMsg('ai',c.mockQs[qIdx]);}
-    else{
-      addMsg('ai',"That concludes our mock interview — well done for completing all questions! 🎉 In the full AI-powered version, I would now give you detailed feedback on each answer, a performance score, and specific tips to improve. Connect an API key in settings to unlock this.");
-      document.getElementById('score-n').textContent='7.4';
-      document.getElementById('score-bars').innerHTML=['Clarity:80','Structure:72','Technical:65','Confidence:78'].map(s=>{const[l,v]=s.split(':');return`<div class="sbar-row"><span class="sbar-lbl">${l}</span><div class="sbar-track"><div class="sbar-fill" style="width:${v}%"></div></div></div>`;}).join('');
+    const t = document.getElementById('typ'); if(t) t.remove();
+    if(qIdx < c.mockQs.length){ addMsg('ai', c.mockQs[qIdx]); }
+    else {
+      addMsg('ai', "Excellent — that wraps up our mock interview! 🎉 You answered all " + c.mockQs.length + " questions. In the full AI-powered version, I would now give you detailed feedback on each answer, a performance score, and specific improvement tips. Connect a Claude or GPT-4 API key to unlock this.");
+      document.getElementById('score-n').textContent = '7.4';
+      document.getElementById('score-bars').innerHTML = ['Clarity:80','Structure:72','Technical:65','Confidence:78'].map(s=>{
+        const [l,v] = s.split(':');
+        return `<div class="sbar-row"><span class="sbar-lbl">${l}</span><div class="sbar-track"><div class="sbar-fill" style="width:${v}%"></div></div></div>`;
+      }).join('');
     }
-  },1800);
+  }, 1800);
 }
+
+/* INIT */
+renderRoles();
+renderJobs();
 </script>
 </body>
 </html>
